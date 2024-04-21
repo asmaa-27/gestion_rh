@@ -4,13 +4,13 @@ import { AuthProvider } from "./contexts/AuthContext"
 
 function App() {
 
-  return (
-    <>
-<RouterProvider router={router}>
-    <AuthProvider />
-</RouterProvider>
-    </>
-  )
+    return (
+        <>
+            <AuthProvider>
+                <RouterProvider router={router} />
+            </AuthProvider>
+        </>
+    )
 }
 
 export default App
