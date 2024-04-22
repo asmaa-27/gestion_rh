@@ -7,6 +7,9 @@ import Register from "./pages/Auth/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ResetPassword from "./pages/Auth/ResetPassword";
+import AffichageFonctionnaire from "./pages/DossierPersonnels/AffichageFonctionnaire";
+import DemandAbsence from "./pages/DemandAbsences/DemandAbsence";
+
 
 export  const router = createBrowserRouter ([
     {
@@ -16,6 +19,12 @@ export  const router = createBrowserRouter ([
             {
                 path:'/dashboard',
                 element:<Dashboard/>
+            },{
+                path:'/Information-personnels',
+                element:<AffichageFonctionnaire/>
+            },{
+                path:'/Demande-absence',
+                element:<DemandAbsence/>
             },
         ]
     },{
