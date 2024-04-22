@@ -10,27 +10,27 @@ const ResetPassword = () => {
     const [password_confirmation,setPasswordConfirmation]=useState("");
     const [status,setStatus] = useState(null)
     const [errors,setErrors]=useState([])
-    const {crsf}=useAuthContext()
+    const {csrf}=useAuthContext()
     const [searchParams]=useSearchParams()
     const {token} = useParams()
 
     useEffect(()=>{
         setEmail(searchParams.get("email"))
         console.log(email)
-    },[])
+    },[email])
 
     const handleSubmit = async(event) =>{
         event.preventDefault()
-        await crsf()
+        await csrf()
         setErrors([])
         setStatus(null)
         try{
-            const response =await axiosClient.post('/password-reset',{email,token,password,password_confirmation})
+            const response =await axiosClient.post('/reset-password',{email,token,password,password_confirmation})
             setStatus(response.data.status)
 
         }catch(e){
             if(e.response.status === 422){
-                setErrors(e.reponse.data.errors)
+                setErrors(e.response.data.errors)
             }
         }
     }
@@ -69,7 +69,7 @@ const ResetPassword = () => {
                         <p>{errors.password_confirmation[0]}</p>
                     </div>
                     }
-              <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Reset passwod</button>
+              <button type="submit" className=" w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Reset passwod</button>
           </form>
       </div>
     </>

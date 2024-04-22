@@ -64,8 +64,8 @@ const DefaultLayout = () => {
         </main>
       </div>
     </div>)
-    :
-(<Navigate to='/login'/>)}
+        :
+        (<Navigate to='/login'/>)}
     </>
   )
 }

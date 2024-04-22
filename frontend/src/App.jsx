@@ -6,9 +6,9 @@ function App() {
 
   return (
     <>
-<RouterProvider router={router}>
-    <AuthProvider />
-</RouterProvider>
+<AuthProvider>
+    <RouterProvider router={router}/>
+</AuthProvider>
     </>
   )
 }

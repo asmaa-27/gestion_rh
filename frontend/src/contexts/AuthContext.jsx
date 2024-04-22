@@ -1,15 +1,11 @@
 import { useContext,createContext,useState } from "react";
 import axiosClient from "../api/axios";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-const AuthContext=createContext({
-
-})
+const AuthContext=createContext( );
 
 
 export const AuthProvider=({children})=>{
-    const navigate=useNavigate()
-    const [user,setUser]=useState(null)
+  const [user,setUser]=useState(null)
     const[errors,setErrors]=useState([])
     const csrf=()=>axiosClient.get('/sanctum/csrf-cookie')
 
@@ -23,7 +19,7 @@ export const AuthProvider=({children})=>{
         try{
             await axiosClient.post('/login',data);
             await getUser();
-            navigate("/")
+
         }catch(e){
             if(e.response.status === 422){
                 setErrors(e.response.data.errors)
@@ -32,28 +28,30 @@ export const AuthProvider=({children})=>{
     }
     const register = async({...data})=>{
         await csrf()
-        setErrors[]
+        setErrors([])
         try{
             await axiosClient.post('/register',data)
             await getUser()
-            navigate("/")
+
         }catch(e){
             if(e.response.status === 422){
                 setErrors(e.response.data.errors)
             }
         }
     }
-    const logout=()=>{
-        axiosClient.post('/logout').then(()=>{
-            setUser(null)
-        })
+     // Function to handle logout
+ const logout = () => {
+    axiosClient.post("/logout").then(() => {
+      setUser(null);
+    });
+ };
 
+ // Effect to fetch the user on component mount
+ useEffect(() => {
+    if (!user) {
+      getUser();
     }
-    useEffect(()=>{
-        if(!user){
-            getUser();
-        }
-    },[])
+ }, []);
 
     return <AuthContext.Provider value={{user,errors,getUser,login,register,logout,csrf}}>
         {children}

@@ -9,7 +9,7 @@ const ForgotPassword = () => {
     const [status,setStatus]=useState(null)
     const {csrf } = useAuthContext()
 
-    const onSubmit = async(event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault()
         await csrf();
         setErrors([])
@@ -20,7 +20,8 @@ const ForgotPassword = () => {
 
         }catch(e){
             if(e.response.status === 422){
-                setErrors(e.reponse.data.errors)
+                console.log(e.response.data.errors);
+                setErrors(e.response.data.errors)
             }
         }
     }
@@ -28,14 +29,14 @@ const ForgotPassword = () => {
     < >
 <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                 Forgot your password ? let us know your email address and we will email you a password reset link
-              </h1>
+          <p className="text-lg font-bold leading-tight tracking-tight text-gray-900 md:text-xl dark:text-white">
+            Forgot your password ? <br/>Let us know your email address, and we will email you a password reset link.
+          </p>
               {
-                status && <div className="bg-green-700 m-2 p-2 rounded text-white"> {status}</div>
+                status && <div className=" m-2 p-2 rounded text-green-700"> {status}</div>
               }
               <form className="space-y-4 md:space-y-6"
-              onSubmit={onSubmit}
+              onSubmit={handleSubmit}
               >
                   <div>
                       <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
