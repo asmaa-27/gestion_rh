@@ -17,7 +17,7 @@ class ConjointFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_information_familiales' => \App\Models\InformationFamiliale::factory(),
+            'id_information_familiales' => \App\Models\InformationFamiliale::factory()->create()->id,
             'date_mariage' => $this->faker->date(),
             'date_divorce' => $this->faker->randomElement([$this->faker->date(), null]),
             'nom_conjoint' => $this->faker->name(),

@@ -28,19 +28,16 @@ class DiplomeController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_fonctionnaire' => 'required|exists:fonctionnaires,id',
+        // Validate the request data
+        $validatedData = $request->validate([
+            'cin' => 'required|exists:fonctionnaires,cin', // Corrected validation rule
             'intitule' => 'required|string',
             'specialite' => 'nullable|string',
             'date_obtention' => 'required|date',
             'etablissement' => 'required|string',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-
-        $diplome = Diplome::create($request->all());
+        $diplome = Diplome::create($validatedData);
         return response()->json(['message' => 'Diplome created successfully', 'diplome' => $diplome], 201);
     }
 

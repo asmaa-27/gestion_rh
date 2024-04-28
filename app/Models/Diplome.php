@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Diplome extends Model
 {
     use HasFactory;
-    protected $fillable=["id_fonctionnaire","intitule","specialite","date_obtention","etablissement"];
+    protected $fillable=["cin","intitule","specialite","date_obtention","etablissement"];
 
     public function fonctionnaire()
     {
-        return $this->belongsTo(Fonctionnaire::class, 'id_fonctionnaire');
+        return $this->belongsTo(Fonctionnaire::class, 'cin');
     }
 }

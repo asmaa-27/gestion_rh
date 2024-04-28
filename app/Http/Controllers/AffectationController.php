@@ -28,18 +28,16 @@ class AffectationController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_fonctionnaire' => 'required|exists:fonctionnaires,id',
+        $validatedData = $request->validate( [
+            'cin' => 'required|exists:fonctionnaires,cin',
             'entite' => 'required|string',
             'date_affectation' => 'required|date',
             'poste' => 'required|string',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
 
-        $affectation = Affectation::create($request->all());
+
+        $affectation = Affectation::create($validatedData);
         return response()->json(['message' => 'Affectation created successfully', 'affectation' => $affectation], 201);
     }
 

@@ -28,17 +28,14 @@ class NotationController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_fonctionnaire' => 'required|exists:fonctionnaires,id',
+        // Validate the request data
+        $validatedData = $request->validate([
+            'cin' => 'required|exists:fonctionnaires,cin',
             'annee' => 'required|integer',
             'note' => 'required|numeric',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-
-        $notation = Notation::create($request->all());
+        $notation = Notation::create($validatedData);
         return response()->json(['message' => 'Notation created successfully', 'notation' => $notation], 201);
     }
 

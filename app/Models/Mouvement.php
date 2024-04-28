@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Mouvement extends Model
 {
     use HasFactory;
-    protected $fillable=["id_fonctionnaire","administration","date_debut","date_fin"];
+    protected $fillable=["cin","administration","date_debut","date_fin"];
 
     public function fonctionnaire()
     {
-        return $this->belongsTo(Fonctionnaire::class, 'id_fonctionnaire');
+        return $this->belongsTo(Fonctionnaire::class, 'cin');
     }
 }

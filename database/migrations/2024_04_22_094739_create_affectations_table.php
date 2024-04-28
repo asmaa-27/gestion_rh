@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('affectations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fonctionnaire');
+            $table->string('cin');
             $table->string('entite');
             $table->date('date_affectation');
             $table->string('poste');
             $table->timestamps();
-            $table->foreign('id_fonctionnaire')->references('id')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
-        
+            $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

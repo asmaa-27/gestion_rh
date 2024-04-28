@@ -17,7 +17,7 @@ class DemandeAbsenceFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_fonctionnaire' => \App\Models\Fonctionnaire::factory(),
+            'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
             'date_depart' => $this->faker->date(),
             'nombre_de_jours' => $this->faker->numberBetween(1, 10),
             'nombre_a_deduire' => $this->faker->numberBetween(1, 10),

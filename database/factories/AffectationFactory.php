@@ -17,7 +17,7 @@ class AffectationFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_fonctionnaire' => \App\Models\Fonctionnaire::factory(),
+            'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
             'entite' => $this->faker->company,
             'date_affectation' => $this->faker->date(),
             'poste' => $this->faker->jobTitle,

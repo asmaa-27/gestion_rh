@@ -17,7 +17,7 @@ class DiplomeFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_fonctionnaire' => \App\Models\Fonctionnaire::factory(),
+            'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
             'intitule' => $this->faker->sentence(3),
             'specialite' => $this->faker->word,
             'date_obtention' => $this->faker->date(),

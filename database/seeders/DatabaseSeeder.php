@@ -35,7 +35,11 @@ class DatabaseSeeder extends Seeder
             DemandeAbsenceSeeder::class,
             SanctionSeeder::class,
             DocumentSeeder::class,
-            DocumentPieceJointeSeeder::class
+            FormationSeeder::class,
+            FormationRealiseeSeeder::class,
+            EtatPresenceSeeder::class,
+            EvaluationSeeder::class,
+            RecapitulatifSeeder::class
         ]);
     }
 }

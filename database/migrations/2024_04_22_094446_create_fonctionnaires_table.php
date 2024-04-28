@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('fonctionnaires', function (Blueprint $table) {
             $table->id();
-            $table->string('cin');
+            $table->string('cin')->unique();
             $table->string('nom');
             $table->string('prenom');
             $table->enum('sexe',[ 'Homme','Femme']);
@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('codePostal',10)->nullable();
             $table->string('telephone',20)->nullable();
             $table->string('email');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -33,8 +34,12 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::dropIfExists('fonctionnaires');
+
+        Schema::enableForeignKeyConstraints();
     }
 };

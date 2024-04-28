@@ -1,17 +1,19 @@
 <?php
 
 namespace Database\Seeders;
-use App\Models\DocumentPieceJointe;
+
+use App\Models\FormationRealisee;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DocumentPieceJointeSeeder extends Seeder
+class FormationRealiseeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DocumentPieceJointe::factory()->count(10)->create();
+        FormationRealisee::factory()->count(10)->create();
+
     }
 }

@@ -17,19 +17,20 @@ class FonctionnaireFactory extends Factory
     public function definition(): array
     {
         return [
-            'cin' => $this->faker->unique()->randomNumber(8),
+            'cin' => $this->faker->unique()->regexify('[A-Za-z0-9]{10}'),
             'nom' => $this->faker->lastName,
             'prenom' => $this->faker->firstName,
             'sexe' => $this->faker->randomElement(['Homme', 'Femme']),
             'date_naissance' => $this->faker->date(),
             'lieu_naissance' => $this->faker->city,
             'ville' => $this->faker->city,
-            'quartier' => $this->faker->randomElement(['Quartier 1', 'Quartier 2', 'Quartier 3']),
-            'rue' => $this->faker->streetName,
-            'numeroRue' => $this->faker->buildingNumber,
-            'codePostal' => $this->faker->postcode,
-            'telephone' => $this->faker->phoneNumber,
+            'quartier' => $this->faker->optional()->word,
+            'rue' => $this->faker->optional()->streetName,
+            'numeroRue' => $this->faker->optional()->numberBetween(1, 9999),
+            'codePostal' => $this->faker->optional()->postcode,
+            'telephone' => $this->faker->optional()->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,
+            'image' => $this->faker->optional()->imageUrl(),  
         ];
     }
 }

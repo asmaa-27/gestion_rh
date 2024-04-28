@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
+
 use App\Models\Document;
 use Illuminate\Http\Request;
-use App\Models\DocumentPieceJointe;
 class DocumentController extends Controller
 {
     /**
@@ -29,39 +27,29 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_fonctionnaire' => 'required|exists:fonctionnaires,id',
-            'nom' => 'required|string',
-            'description' => 'nullable|string',
-            'sous_dossier' => 'nullable|string',
-            'documentsPiecesJointes' => 'required|array',
-            'documentsPiecesJointes.*.nom_fichier' => 'required|string',
-            'documentsPiecesJointes.*.chemin_fichier' => 'required|string',
+        $request->validate([
+            'cin' => 'required|exists:fonctionnaires,cin',
+            'type' => 'required|string',
+            'nom' => 'nullable|string',
+            'chemin' => 'required|file',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
+        if ($request->hasFile('chemin')) {
+            $file = $request->file('chemin');
+            $path = $file->store('documents', 'public');
+
+            $document = Document::create([
+                'cin' => $request->input('cin'),
+                'type' => $request->input('type'),
+                'nom' => $request->input('nom'),
+                'chemin' => $path,
+            ]);
+
+            return response()->json(['message' => 'Document created successfully', 'document' => $document], 201);
+        } else {
+            return response()->json(['message' => 'No file uploaded'], 400);
         }
 
-        DB::beginTransaction();
-
-        try {
-            $document = Document::create($request->only('id_fonctionnaire', 'nom', 'description', 'sous_dossier'));
-
-            foreach ($request->documentsPiecesJointes as $pieceJointe) {
-                DocumentPieceJointe::create([
-                    'id_document' => $document->id,
-                    'nom_fichier' => $pieceJointe['nom_fichier'],
-                    'chemin_fichier' => $pieceJointe['chemin_fichier'],
-                ]);
-            }
-
-            DB::commit();
-            return response()->json(['message' => 'Document and DocumentPieceJointes created successfully', 'document' => $document], 201);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json(['message' => 'Error creating document and DocumentPieceJointes', 'error' => $e->getMessage()], 500);
-        }
     }
 
     /**

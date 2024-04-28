@@ -17,7 +17,7 @@ class InformationPrevoyanceSocialeFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_fonctionnaire' => \App\Models\Fonctionnaire::factory(),
+            'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
             'organisme_retraite' => $this->faker->randomElement(['CMR', 'RCAR']),
             'numero_affiliation_retraite' => $this->faker->randomNumber(5),
             'date_affiliation_retraite' => $this->faker->date(),

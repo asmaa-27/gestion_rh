@@ -17,7 +17,7 @@ class OrganismeRetraiteHistoriqueFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_info_prevS' => \App\Models\InformationPrevoyanceSociale::factory(),
+            'id_info_prevS' => \App\Models\InformationPrevoyanceSociale::factory()->create()->id,
             'organisme_retraite' => $this->faker->randomElement(['CMR', 'RCAR']),
         ];
     }

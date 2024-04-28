@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('diplomes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fonctionnaire');
+            $table->string('cin');
             $table->string('intitule');
             $table->string('specialite');
             $table->date('date_obtention');
             $table->string('etablissement');
             $table->timestamps();
 
-        $table->foreign('id_fonctionnaire')->references('id')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
+        $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
     });
     }
 

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('demande_absences', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fonctionnaire');
+            $table->string('cin');
             $table->date('date_depart');
             $table->integer('nombre_de_jours');
             $table->integer('nombre_a_deduire');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('cumul_des_absences_de_maladie')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_fonctionnaire')->references('id')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

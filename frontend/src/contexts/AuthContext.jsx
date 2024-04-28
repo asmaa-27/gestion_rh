@@ -10,8 +10,13 @@ export const AuthProvider=({children})=>{
     const csrf=()=>axiosClient.get('/sanctum/csrf-cookie')
 
     const getUser=async()=>{
-        const {data}=await axiosClient.get('/api/user')
+        try{
+            const {data}=await axiosClient.get('/api/user')
+            setUser(data)
         setUser(data);
+        }catch(error){
+            console.error('Failed to fetch user',error)
+        }
     }
     const login = async({...data})=>{
         await csrf()

@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('mouvements', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fonctionnaire');
+            $table->string('cin');
             $table->string('administration');
             $table->date('date_debut');
             $table->date('date_fin');
             $table->timestamps();
 
-            $table->foreign('id_fonctionnaire')->references('id')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

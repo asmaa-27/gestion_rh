@@ -17,7 +17,7 @@ class MouvementFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_fonctionnaire' => \App\Models\Fonctionnaire::factory(),
+            'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
             'administration' => $this->faker->company,
             'date_debut' => $this->faker->date(),
             'date_fin' => $this->faker->date(),

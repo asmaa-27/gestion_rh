@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class InformationFamiliale extends Model
 {
     use HasFactory;
-    protected $fillable=["id_fonctionnaire","nom_pere","nom_mere","situation_familiale","date_mariage","nom_conjoint","cin_conjoint","date_naissance_conjoint","fonction_conjoint","nombre_enfants"];
+    protected $fillable=["cin","nom_pere","nom_mere","situation_familiale","date_mariage","nom_conjoint","cin_conjoint","date_naissance_conjoint","fonction_conjoint","nombre_enfants"];
 
     public function fonctionnaire(){
-        return $this->belongsTo(Fonctionnaire::class,"id_fonctionnaire");
+        return $this->belongsTo(Fonctionnaire::class,"cin");
     }
 
     public function conjoints (){

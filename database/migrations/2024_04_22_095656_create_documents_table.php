@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fonctionnaire');
-            $table->string('nom');
-            $table->string('description')->nullable();
-            $table->string('sous_dossier'); // Pour stocker le type de sous-dossier
+            $table->string('cin');
+            $table->string('type');
+            $table->string('nom')->nullable();
+            $table->string('chemin');
             $table->timestamps();
-            $table->foreign('id_fonctionnaire')->references('id')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
     });
     }
 

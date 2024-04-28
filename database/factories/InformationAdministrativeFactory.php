@@ -17,7 +17,7 @@ class InformationAdministrativeFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_fonctionnaire' => \App\Models\Fonctionnaire::factory(),
+            'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
             'ppr' => $this->faker->randomNumber(5),
             'numero_poste_budgetaire' => $this->faker->randomNumber(5),
             'date_recrutement' => $this->faker->date(),

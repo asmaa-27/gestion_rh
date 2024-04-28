@@ -17,9 +17,9 @@ class NotationFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_fonctionnaire' => \App\Models\Fonctionnaire::factory(),
+            'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
             'annee' => $this->faker->year(),
-            'note' => $this->faker->randomFloat(2, 0, 20), // Generates a float with 2 decimal places between 0 and 20
+            'note' => $this->faker->randomFloat(2, 0, 20),  
         ];
     }
 }

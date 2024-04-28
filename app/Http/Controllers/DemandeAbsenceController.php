@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use App\Models\DemandeAbsence;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DemandeAbsenceController extends Controller
@@ -28,8 +29,9 @@ class DemandeAbsenceController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_fonctionnaire' => 'required|exists:fonctionnaires,id',
+        // Validate the request data
+        $request->validate([
+            'cin' => 'required|exists:fonctionnaires,cin',
             'date_depart' => 'required|date',
             'nombre_de_jours' => 'required|integer',
             'nombre_a_deduire' => 'required|integer',
@@ -41,13 +43,46 @@ class DemandeAbsenceController extends Controller
             'cumul_des_absences_de_maladie' => 'nullable|integer',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
+        // Calculate return date, considering weekends and holidays
+        $endDate = Carbon::parse($request->date_de_retour)->addDays($request->nombre_de_jours - 1);
+        $holidays = $this->getHolidays(); // Assuming you have a method to get holidays
+
+        while ($endDate->isWeekend() || in_array($endDate->format('Y-m-d'), $holidays)) {
+            $endDate->addDay();
         }
 
-        $demandeAbsence = DemandeAbsence::create($request->all());
+        // Create a new DemandeAbsence record
+        $demandeAbsence = DemandeAbsence::create([
+            'cin' => $request->cin,
+            'date_depart' => $request->date_depart,
+            'nombre_de_jours' => $request->nombre_de_jours,
+            'nombre_a_deduire' => $request->nombre_a_deduire,
+            'nombre_a_ne_pas_deduire' => $request->nombre_a_ne_pas_deduire,
+            'type_d_absence' => $request->type_d_absence,
+            'date_de_retour' => $endDate->format('Y-m-d'),
+            'remplaçant' => $request->remplaçant,
+            'reliquat' => $request->reliquat,
+            'cumul_des_absences_de_maladie' => $request->cumul_des_absences_de_maladie,
+        ]);
+
         return response()->json(['message' => 'Demande Absence created successfully', 'demandeAbsence' => $demandeAbsence], 201);
     }
+
+    private function getHolidays()
+    {
+        // Placeholder for fetching holidays
+        // Implement logic to fetch holidays from an external source or database
+        return [];
+    }
+
+    private function resetLeaveBalance($userId)
+    {
+        // Placeholder for resetting leave balance
+        // Implement logic to reset leave balance for the given user ID
+    }
+
+    // Other methods...
+
 
     /**
      * Display the specified resource.

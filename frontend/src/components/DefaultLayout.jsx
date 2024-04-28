@@ -1,16 +1,22 @@
 import { Outlet,Link, Navigate } from "react-router-dom"
 import useAuthContext from "../contexts/AuthContext"
+import { useState } from "react"
 
 const DefaultLayout = () => {
     const {user, logout}=useAuthContext()
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
 
   return (
     <>
     {
-        (user) ? (<div >
-        <div>
-        <aside id="default-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+        (user) ? (
+        <div className="row">
+        <div className="  ">
+        <aside id="default-sidebar" className={`col-span-2 fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`} aria-label="Sidebar">
             <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <ul className="space-y-2 font-medium">
                     <li>
@@ -53,8 +59,8 @@ const DefaultLayout = () => {
             </div>
         </aside>
         </div>
-      <div >
-        <header className=" bg-slate-600 ">
+      <div className=" col-span-10">
+        <header className=" bg-slate-600 w-full ">
           <div className="text-white">Header</div>
           <div>
             {user.name} &nbsp; &nbsp;
@@ -65,6 +71,8 @@ const DefaultLayout = () => {
           <Outlet />
         </main>
       </div>
+      <button onClick={toggleSidebar}>Toggle Sidebar</button>
+
     </div>)
         :
         (<Navigate to='/login'/>)}

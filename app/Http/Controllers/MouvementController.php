@@ -28,18 +28,16 @@ class MouvementController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_fonctionnaire' => 'required|exists:fonctionnaires,id',
+        $validatedData  = $request->validate( [
+            'cin' => 'required|exists:fonctionnaires,cin',
             'administration' => 'required|string',
             'date_debut' => 'required|date',
             'date_fin' => 'required|date',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
 
-        $mouvement = Mouvement::create($request->all());
+
+        $mouvement = Mouvement::create($validatedData );
         return response()->json(['message' => 'Mouvement created successfully', 'mouvement' => $mouvement], 201);
     }
 

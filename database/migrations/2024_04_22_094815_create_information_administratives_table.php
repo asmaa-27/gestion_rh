@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('information_administratives', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fonctionnaire');
+            $table->string('cin');
             $table->string('ppr')->nullable();
             $table->string('numero_poste_budgetaire')->nullable();
             $table->date('date_recrutement')->nullable();
@@ -40,8 +40,8 @@ return new class extends Migration
             $table->string('administration_accueil')->nullable()->comment("L'administration ou le service d'accueil");
             $table->string('statut_activite')->nullable()->comment("Le statut d'activité du fonctionnaire (actif, inactif)");
             $table->timestamps();
-            $table->foreign('id_fonctionnaire')->references('id')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
-        
+            $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
+
         });
     }
 

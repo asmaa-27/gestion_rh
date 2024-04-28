@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Sanction extends Model
 {
     use HasFactory;
-    protected $fillable = ["id_fonctionnaire","date_sanction","motif","nature_sanction","sanction"];
+    protected $fillable = ["cin","date_sanction","motif","nature_sanction","sanction"];
 
     public function fonctionnaire()
     {
-        return $this->belongsTo(Fonctionnaire::class, 'id_fonctionnaire');
+        return $this->belongsTo(Fonctionnaire::class, 'cin');
     }
 }

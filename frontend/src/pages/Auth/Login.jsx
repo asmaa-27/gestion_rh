@@ -1,5 +1,5 @@
 import { Link ,useNavigate} from "react-router-dom"
-import { useState,useEffect } from "react"
+import { useState  } from "react"
 import useAuthContext from "../../contexts/AuthContext"
 
 
@@ -7,7 +7,7 @@ import useAuthContext from "../../contexts/AuthContext"
     const navigate=useNavigate()
      const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
-    const {login,errors,user}=useAuthContext()
+    const {login,errors   }=useAuthContext()
 
      const handleSubmit = async(event)=>{
         event.preventDefault()
@@ -15,10 +15,11 @@ import useAuthContext from "../../contexts/AuthContext"
         navigate("/")
 
  }
- useEffect(() => {
-    if (!user) return;
-    navigate("/")
-}, [user, navigate])
+//  useEffect(() => {
+//     if (user) {
+//         navigate("/dashboard");
+//     }
+// }, [user, navigate]);
 
 
 

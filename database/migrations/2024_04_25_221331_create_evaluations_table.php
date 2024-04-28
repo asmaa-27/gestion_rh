@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('document_piece_jointes', function (Blueprint $table) {
+        Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_document');
-            $table->string('nom_fichier');
-            $table->string('chemin_fichier');
+            $table->string('theme');
+            $table->float('taux_satisfaction');
             $table->timestamps();
-
-            $table->foreign('id_document')->references('id')->on('documents')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('theme')->references('theme')->on('formations')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('document_piece_jointes');
+        Schema::dropIfExists('evaluations');
     }
 };

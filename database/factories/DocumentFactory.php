@@ -17,10 +17,10 @@ class DocumentFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_fonctionnaire' => \App\Models\Fonctionnaire::factory(),
-            'nom' => $this->faker->word,
-            'description' => $this->faker->sentence(),
-            'sous_dossier' => $this->faker->randomElement(['Personnel', 'Financier', 'Administratif']),
-        ];
+            'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
+            'type' => $this->faker->word,
+            'nom' => $this->faker->sentence(),
+            'chemin' => $this->faker->filePath(),
+                ];
     }
 }

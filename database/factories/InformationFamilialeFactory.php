@@ -17,7 +17,7 @@ class InformationFamilialeFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_fonctionnaire' => \App\Models\Fonctionnaire::factory(),
+            'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
             'nom_pere' => $this->faker->lastName,
             'nom_mere' => $this->faker->lastName,
             'situation_familiale' => $this->faker->randomElement(['Célibataire', 'Marié(e)', 'Divorcé(e)', 'Veuf(ve)']),

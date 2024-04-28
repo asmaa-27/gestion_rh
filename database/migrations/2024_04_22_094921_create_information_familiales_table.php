@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('information_familiales', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fonctionnaire');
+            $table->string('cin');
             $table->string('nom_pere') ;
             $table->string('nom_mere') ;
             $table->string('situation_familiale') ;
@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('fonction_conjoint')->nullable();
             $table->integer('nombre_enfants')->nullable();
             $table->timestamps();
-            $table->foreign('id_fonctionnaire')->references('id')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
-        
+            $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
+
         });
     }
 

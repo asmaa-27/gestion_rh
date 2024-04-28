@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('notations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fonctionnaire');
+            $table->string('cin');
             $table->year('annee');
             $table->decimal('note', 8, 2);
             $table->timestamps();
-
-        $table->foreign('id_fonctionnaire')->references('id')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
+        $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
     });
     }
 

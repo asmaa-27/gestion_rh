@@ -17,7 +17,7 @@ class SanctionFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_fonctionnaire' => \App\Models\Fonctionnaire::factory(),
+            'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
             'date_sanction' => $this->faker->date(),
             'motif' => $this->faker->sentence(3),
             'nature_sanction' => $this->faker->randomElement(['Avertissement', 'Suspension', 'Révocation']),

@@ -29,8 +29,8 @@ class InformationAdministrativeController extends Controller
     public function store(Request $request)
     {
         // Validate the request data
-        $validator = Validator::make($request->all(), [
-            'id_fonctionnaire' => 'required|exists:fonctionnaires,id',
+        $validatedData = $request->validate([
+            'cin' => 'required|exists:fonctionnaires,string',
             'ppr' => 'required|numeric', // Assuming PPR is a numeric value
             'numero_poste_budgetaire' => 'required|numeric', // Assuming Numero Poste Budgetaire is a numeric value
             'date_recrutement' => 'required|date',
@@ -58,17 +58,10 @@ class InformationAdministrativeController extends Controller
             'statut_activite' => 'required|string',
         ]);
 
-        // If validation fails, return the error messages
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-
-        // Create a new InformationsAdministratives
-        $informationsAdministratives = InformationAdministrative::create($request->all());
-
+        $informationsAdministratives = InformationAdministrative::create($validatedData);
         // Return a success response
         return response()->json(['message' => 'Informations Administratives created successfully', 'informationsAdministratives' => $informationsAdministratives], 201);
-    }
+        }
 
     /**
      * Display the specified resource.

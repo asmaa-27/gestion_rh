@@ -28,19 +28,16 @@ class SanctionController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_fonctionnaire' => 'required|exists:fonctionnaires,id',
+        $validatedData = $request->validate( [
+            'cin' => 'required|exists:fonctionnaires,cin',
             'date_sanction' => 'required|date',
             'motif' => 'required|string',
             'nature_sanction' => 'required|string',
             'sanction' => 'required|string',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
 
-        $sanction = Sanction::create($request->all());
+        $sanction = Sanction::create($validatedData);
         return response()->json(['message' => 'Sanction created successfully', 'sanction' => $sanction], 201);
     }
 

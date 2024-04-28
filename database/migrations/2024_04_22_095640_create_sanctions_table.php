@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('sanctions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fonctionnaire');
+            $table->string('cin');
             $table->date('date_sanction');
             $table->string('motif');
             $table->string('nature_sanction');
             $table->text('sanction')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_fonctionnaire')->references('id')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

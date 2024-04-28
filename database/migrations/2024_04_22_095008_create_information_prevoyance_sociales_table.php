@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('information_prevoyance_sociales', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_fonctionnaire');
+            $table->string('cin');
             $table->enum('organisme_retraite', ['CMR', 'RCAR'])->nullable();
             $table->string('numero_affiliation_retraite')->nullable();
             $table->date('date_affiliation_retraite')->nullable();
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('numero_affiliation_assurance')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_fonctionnaire')->references('id')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

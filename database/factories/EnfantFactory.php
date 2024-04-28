@@ -17,7 +17,7 @@ class EnfantFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_information_familiales' => \App\Models\InformationFamiliale::factory(),
+            'id_information_familiales' => \App\Models\InformationFamiliale::factory()->create()->id,
             'prenom_enfant' => $this->faker->firstName,
             'nom_mere' => $this->faker->lastName,
             'date_naissance_enfant' => $this->faker->date(),

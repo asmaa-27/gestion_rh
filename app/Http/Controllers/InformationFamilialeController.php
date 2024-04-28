@@ -30,8 +30,9 @@ class InformationFamilialeController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_fonctionnaire' => 'required|exists:fonctionnaires,id',
+        // Validate the request data
+        $validatedData = $request->validate([
+            'cin' => 'required|exists:fonctionnaires,string',
             'nom_pere' => 'required|string',
             'nom_mere' => 'required|string',
             'situation_familiale' => 'required|string',
@@ -52,22 +53,18 @@ class InformationFamilialeController extends Controller
             'conjoints.*.cin_conjoint' => 'nullable|string',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-
         DB::beginTransaction();
 
         try {
-            $informationsFamiliales = InformationFamiliale::create($request->only('id_fonctionnaire', 'nom_pere', 'nom_mere', 'situation_familiale', 'date_mariage', 'nom_conjoint', 'cin_conjoint', 'date_naissance_conjoint', 'fonction_conjoint', 'nombre_enfants'));
+            $informationsFamiliales = InformationFamiliale::create($request->only('cin', 'nom_pere', 'nom_mere', 'situation_familiale', 'date_mariage', 'nom_conjoint', 'cin_conjoint', 'date_naissance_conjoint', 'fonction_conjoint', 'nombre_enfants'));
 
             foreach ($request->enfants as $enfantData) {
-                Enfant::create(array_merge($enfantData, ['id_inforamtions_familiales' => $informationsFamiliales->id]));
+                Enfant::create(array_merge($enfantData, ['id_information_familiales' => $informationsFamiliales->id]));
             }
 
             if ($request->has('conjoints')) {
                 foreach ($request->conjoints as $conjointData) {
-                    Conjoint::create(array_merge($conjointData, ['id_inforamtions_familiales' => $informationsFamiliales->id]));
+                    Conjoint::create(array_merge($conjointData, ['id_information_familiales' => $informationsFamiliales->id]));
                 }
             }
 
