@@ -1,7 +1,7 @@
 import {Link, useNavigate  } from "react-router-dom"
  import { useState } from "react"
  import useAuthContext from "../../contexts/AuthContext"
-import wilaya from '../../assets/image.png'
+import wilaya from '../../assets/logo.png'
 
 const Register = () => {
     const navigate=useNavigate

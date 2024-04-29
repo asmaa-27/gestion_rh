@@ -1,6 +1,6 @@
 import { Link ,useNavigate} from "react-router-dom"
 import { useState  } from "react"
-import wilaya from '../../assets/image.png'
+import wilaya from '../../assets/logo.png'
 import useAuthContext from "../../contexts/AuthContext"
 
 

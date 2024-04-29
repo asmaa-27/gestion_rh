@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import useAuthContext from "../../contexts/AuthContext"
 import axiosClient from "../../api/axios"
-import wilaya from '../../assets/image.png'
+import wilaya from '../../assets/logo.png'
 
 const ForgotPassword = () => {
     const[email,setEmail]=useState("")
