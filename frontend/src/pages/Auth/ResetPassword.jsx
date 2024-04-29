@@ -2,7 +2,7 @@ import {useState ,useEffect} from 'react'
 import useAuthContext from '../../contexts/AuthContext'
 import axiosClient from '../../api/axios'
 import { useParams,useSearchParams,Link } from 'react-router-dom'
-
+import wilaya from '../../assets/image.png'
 
 const ResetPassword = () => {
     const [email,setEmail] = useState("")
@@ -38,17 +38,20 @@ const ResetPassword = () => {
   return (
     <>
     <div className="w-full p-6 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
+    <Link to="/login" className="flex items-center justify-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+  <img className="w-14 h-14 mr-2" src={wilaya} alt="Logo" />
+</Link>
           <h2 className="mb-1 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Add your new password
           </h2>
-          {
-                status &&
-                <div className="bg-green-700 m-2 p-2 rounded text-white"> {status}
-                    <div className='m-2 p-2'>Go To
-                    <Link to="/login">Login</Link>
+          {status && (
+                    <div className="bg-green-400 text-white p-4 rounded-lg mb-4">
+                        <p>{status}</p>
+                        <div className="mt-2">
+                            Go to <Link to="/login" className="text-blue-600 hover:underline">Login</Link>
+                        </div>
                     </div>
-                </div>
-              }
+                )}
           <form className="mt-4 space-y-4 lg:mt-5 md:space-y-5" onSubmit={handleSubmit}>
 
               <div>
