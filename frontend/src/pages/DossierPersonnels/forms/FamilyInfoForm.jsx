@@ -27,7 +27,7 @@ const FamilyInfoForm = () => {
 
  return (
   <>
-    <div className="flex items-center justify-center mt-4  text-2xl font-bold"><h1>Les données Familiales :</h1></div>
+    <div className="flex items-center justify-center mt-4  text-2xl font-bold"><h1>Les informations Familiales :</h1></div>
     <div className="flex items-center justify-center mt-4 min-h-screen">
       <form onSubmit={handleSubmit} className="space-y-4 mt-1 block w-1/2 p-2 border border-gray-300 rounded-md">
         <div className="bg-white shadow-md rounded-lg p-6">

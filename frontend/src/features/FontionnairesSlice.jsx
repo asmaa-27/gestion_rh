@@ -3,15 +3,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const displayFonctionnaire=createAsyncThunk('/fonctionnaires/displayFonctionnaire',
+export const displayFonctionnaire=createAsyncThunk('/fonctionnaire/displayFonctionnaire',
 async()=>{
     const response=await axios.get('/api/fonctionnaire');
-    return response.data;
+    return Array.isArray(response.data) ? response.data : [];
 });
 
 
 export const deleteFonctionnaire = createAsyncThunk(
-  'fonctionnaires/deleteFonctionnaire',
+  'fonctionnaire/deleteFonctionnaire',
   async (cin) => {
      await axios.delete(`/api/fonctionnaire/${cin}`);
     return cin;
@@ -19,7 +19,7 @@ export const deleteFonctionnaire = createAsyncThunk(
 );
 
 export const showDetailsByCin = createAsyncThunk(
-  'fonctionnaires/showDetailsByCin',
+  'fonctionnaire/showDetailsByCin',
   async (cin) => {
     const response = await axios.get(`/api/fonctionnaire/${cin}`);
     return response.data;

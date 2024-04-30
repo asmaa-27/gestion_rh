@@ -12,7 +12,7 @@ const Navbar = () => {
     setIsDarkMode(!isDarkMode);
   };
   return (
-    <header className="bg-gray-800 text-white py-4 px-6 flex justify-between items-center">
+    <header className="bg-blue-400 text-white py-4 px-6 flex justify-between items-center">
       <div className="flex items-center">
         <a href="/" className="text-xl font-bold">
           RH App

@@ -1,7 +1,7 @@
 import { Outlet, Navigate } from 'react-router-dom';
 import useAuthContext from '../contexts/AuthContext';
 import Navbar from '../pages/Navbar/Navbar';
-import Sidebar from "../pages/SideBar/SideBar"
+import SideBar from '../pages/SideBar/SideBar';
 import { Provider } from 'react-redux';
 import Store from '../app/Store';
 
@@ -14,17 +14,17 @@ const DefaultLayout = () => {
 
  return (
     <Provider store={Store}>
-        <div className="flex h-screen bg-gray-200">
-      <Sidebar />
-      <div className="flex flex-col w-full">
-        <Navbar />
-        <main className="p-4">
-          <Outlet />
-        </main>
+      <div className="grid grid-cols-[256px_minmax(900px,_1fr)] bg-gray-200">
+        <SideBar />
+        <div className="grid grid-rows-[72px_calc(100vh-72px)] ">
+          <Navbar />
+          <main className="p-4 overflow-auto">
+            <Outlet />
+          </main>
+        </div>
       </div>
-    </div>
     </Provider>
  );
 };
 
-export default DefaultLayout;
+export default  DefaultLayout;

@@ -14,7 +14,7 @@ import DocumentForm from "../forms/DocumentForm";
 import SanctionForm from "../forms/SanctionForm";
 import { useNavigate } from "react-router-dom";
 const Stepper = () => {
- const steps = ["Info Personnels", "Info Familiales", "Info Administrative", " Info Sociale Prev"," Notation"," Diplome"," Mouvements"," Affectations","Sanctions"," Documents"];
+ const steps = [" Personnels", " Familiales", " Administrative", "  Sociale Prev"," Notation"," Diplome"," Mouvements"," Affectations","Sanctions"," Documents"];
  const [currentStep, setCurrentStep] = useState(1);
  const [complete, setComplete] = useState(false);
  const navigate = useNavigate();
@@ -47,8 +47,8 @@ const Stepper = () => {
  };
 
  return (
-    <main className="flex flex-col gap-10 h-screen ">
-     <div className="flex justify-between items-center max-w m-auto ">
+    <main className="flex flex-col gap-8 h-screen ">
+     <div className="flex flex-col sm:flex-row justify-between items-center  mt-16) ">
 
 
         {steps?.map((step, i) => (
@@ -90,7 +90,7 @@ const Stepper = () => {
                 setCurrentStep((prev) => prev + 1);
               }
             }}
-            disabled={false} 
+            disabled={false}
           >
             {currentStep === steps.length ? "Finish" : "Next"}
           </button>

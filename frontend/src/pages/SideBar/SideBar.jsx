@@ -21,7 +21,7 @@ const Sidebar = () => {
       </div>
 
       {/* Sidebar */}
-      <div className={`bg-gray-800 text-white h-screen w-64 px-4 py-6 flex flex-col justify-between fixed top-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-200 ease-in-out md:translate-x-0 md:static md:translate-x-0 z-10`}>
+      <div className={` fixed bg-blue-400 text-white h-screen px-4 py-6 flex flex-col justify-between  top-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-200 ease-in-out md:translate-x-0 md:static md:translate-x-0 z-10`}>
         <div>
         <div className="flex items-center justify-center mb-8">
             <img src={logo} alt="Logo" className="h-20 w-auto" />
@@ -66,4 +66,4 @@ const Sidebar = () => {
  );
 };
 
-export default Sidebar;
+export default  Sidebar;

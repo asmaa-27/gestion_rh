@@ -40,7 +40,7 @@ const PersonalInfoForm = () => {
 
  return (
   <>
-    <div className="flex items-center justify-center  text-2xl font-bold"><h1>Les données personnels :</h1></div>
+    <div className="flex items-center justify-center  text-2xl font-bold"><h1>Les informations  personnels :</h1></div>
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleSubmit} className="space-y-4 mt-1 block w-1/2 p-2 border border-gray-300 rounded-md">
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
