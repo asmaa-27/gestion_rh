@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {   return $request->user();
     });
-    Route::apiResource('/fonctionnaire',  FonctionnaireController::class );
-
-    Route::get('/fonctionnaire/{cin}/details', [FonctionnaireController::class, 'showDetailsByCin']);
+    Route::post('/fonctionnaire', [FonctionnaireController::class, 'store']);
+    Route::get('/fonctionnaire', [FonctionnaireController::class, 'index']);
+    Route::get('/fonctionnaire/{cin}', [FonctionnaireController::class, 'show']);
+    Route::delete('/fonctionnaire/{cin}', [FonctionnaireController::class, 'destroy']);
 
     Route::apiResource('/info-administrative' ,InformationAdministrativeController::class );
     Route::apiResource('/info-familiale', InformationFamilialeController::class );

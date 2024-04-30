@@ -7,8 +7,10 @@ import Register from "./pages/Auth/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ResetPassword from "./pages/Auth/ResetPassword";
-import AffichageFonctionnaire from "./pages/DossierPersonnels/AffichageFonctionnaire";
-import DemandAbsence from "./pages/DemandAbsences/DemandAbsence";
+import DetailsFonctionnaires from "./pages/DossierPersonnels/DetailsFonctionnaires";
+import Stepper from "./pages/DossierPersonnels/stepper/Stepper";
+import DemandAbsence from "./pages/DemandAbsences/DemandAbsence"
+import AffichageFonctionnaires from "./pages/DossierPersonnels/AffichageFonctionnaire";
 
 
 export  const router = createBrowserRouter ([
@@ -20,8 +22,18 @@ export  const router = createBrowserRouter ([
                 path:'/dashboard',
                 element:<Dashboard/>
             },{
-                path:'/Information-personnels',
-                element:<AffichageFonctionnaire/>
+                path:'/AffichageFonctionnaires',
+                element:<AffichageFonctionnaires/>,
+                children:[
+                    {
+                        path:'Stepper',
+                        element:<Stepper/>
+                    },
+                    {
+                        path:'DetailsFonctionnaire',
+                        element:<DetailsFonctionnaires/>
+                    }
+                ]
             },{
                 path:'/Demande-absence',
                 element:<DemandAbsence/>

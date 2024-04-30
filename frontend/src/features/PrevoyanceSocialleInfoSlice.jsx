@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const addNotation = createAsyncThunk('/addNotation', async () => {
-    const response = await axios.post('http://localhost:3000/api/notation');
+export const addInfoprev = createAsyncThunk('/addInfoprev', async () => {
+    const response = await axios.post('http://localhost:3000/api/info-prevoyance-sociale');
     return response.data;
 });
 
-const notationInfoSlice = createSlice({
+const prevoyenceSocialleSlice = createSlice({
     name: 'info',
     initialState: {
         info: [],
@@ -16,18 +16,18 @@ const notationInfoSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(addNotation.pending, (state) => {
+            .addCase(addInfoprev.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(addNotation.fulfilled, (state, action) => {
+            .addCase(addInfoprev.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.info = action.payload;
             })
-            .addCase(addNotation.rejected, (state, action) => {
+            .addCase(addInfoprev.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             });
     },
 });
 
-export default notationInfoSlice.reducer;
+export default prevoyenceSocialleSlice.reducer;
