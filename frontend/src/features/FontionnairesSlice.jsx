@@ -1,19 +1,23 @@
 // fonctionnairesSlice.js
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosClient from "../api/axios";
 
 export const displayFonctionnaire=createAsyncThunk('/fonctionnaire/displayFonctionnaire',
 async()=>{
-    const response=await axios.get('/api/fonctionnaire');
+  try {
+    const response=await axiosClient.get('http://localhost:8000/api/fonctionnaire');
+    console.log(response)
     return Array.isArray(response.data) ? response.data : [];
+  }catch(err){console.log(err)} 
+
 });
 
 
 export const deleteFonctionnaire = createAsyncThunk(
   'fonctionnaire/deleteFonctionnaire',
   async (cin) => {
-     await axios.delete(`/api/fonctionnaire/${cin}`);
+     await axiosClient.delete(`/api/fonctionnaire/${cin}`);
     return cin;
   }
 );
@@ -21,7 +25,7 @@ export const deleteFonctionnaire = createAsyncThunk(
 export const showDetailsByCin = createAsyncThunk(
   'fonctionnaire/showDetailsByCin',
   async (cin) => {
-    const response = await axios.get(`/api/fonctionnaire/${cin}`);
+    const response = await axiosClient.get(`/api/fonctionnaire/${cin}`);
     return response.data;
   }
 );

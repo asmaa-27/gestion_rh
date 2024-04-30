@@ -20,9 +20,26 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const Dashboard = () => {
   return (
-    <main className="bg-gray-100 bg-gray-100 p-8">
-      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 space-x-4 gap-4 md:gap-8">
+    <main className="bg-gray-100 p-8">
+      {/* <div className="bg-blue-500 text-white text-center py-4">
+        <h1 className="text-3xl font-bold">Welcome to Your Dashboard</h1>
+      </div> */}
+
+      <h1 className="text-2xl font-bold mt-8 mb-4">Dashboard</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+        <div className="bg-white rounded-lg shadow-md p-4">
+          <h2 className="text-lg font-bold mb-2">Card 1</h2>
+          <p>Content for Card 1</p>
+        </div>
+        <div className="bg-white rounded-lg shadow-md p-4">
+          <h2 className="text-lg font-bold mb-2">Card 2</h2>
+          <p>Content for Card 2</p>
+        </div>
+        <div className="bg-white rounded-lg shadow-md p-4">
+          <h2 className="text-lg font-bold mb-2">Card 3</h2>
+          <p>Content for Card 3</p>
+        </div>
         <div className="bg-white rounded-lg shadow-md p-4">
           <h2 className="text-lg font-bold mb-2">Charte Absences</h2>
           <LineChart width={250} height={200} data={data}>

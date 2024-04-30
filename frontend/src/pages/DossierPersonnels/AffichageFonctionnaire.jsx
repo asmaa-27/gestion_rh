@@ -14,8 +14,9 @@ const AffichageFonctionnaires = () => {
  const {loading, error,fonctionnaires } = useSelector((state) => state.fonctionnaire);
 
  useEffect(() => {
+  console.log('bonjour')
     dispatch(displayFonctionnaire());
- }, [dispatch]);
+ }, []);
 
  const [filterDate, setFilterDate] = useState('');
  const [searchQuery, setSearchQuery] = useState('');

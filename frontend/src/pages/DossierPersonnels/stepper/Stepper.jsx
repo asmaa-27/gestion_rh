@@ -56,7 +56,7 @@ const Stepper = () => {
             key={i}
             className={`step-item ${currentStep === i + 1 && "active"} ${
               (i + 1 < currentStep || complete) && "complete"
-            } `}
+            }  `}
           >
             <div className="step">
               {i + 1 < currentStep || complete ? <TiTick size={24} /> : i + 1}

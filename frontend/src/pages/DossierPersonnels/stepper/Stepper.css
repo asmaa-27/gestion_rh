@@ -20,3 +20,19 @@
   .active:not(:first-child):before {
     @apply bg-green-600;
   }
+  .btn {
+    @apply px-6 py-2 rounded-md font-semibold transition-colors duration-300;
+  }
+  
+  .btn-previous {
+    @apply bg-blue-400 hover:bg-blue-600 text-white;
+  }
+  
+  .btn-next {
+    @apply bg-emerald-400 hover:bg-emerald-600 text-white;
+  }
+  
+  .btn-finish {
+    @apply bg-green-500 hover:bg-green-600 text-white;
+  }
+  

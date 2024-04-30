@@ -44,7 +44,7 @@ const AffectationForm = () =>{
  <div className="flex items-center">
     <FaExclamationCircle className="text-red-500 mr-2 text-2xl" />
     <span className="text-red-500 font-bold">Veuillez vérifier les informations avant de continuer</span>
-    <button className="bg-green-500 text-white px-6 py-3 rounded ml-4 relative flex">
+    <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4 relative flex">
       <span className='pr-4'>Submit</span>
       <span className="inset-0 flex items-center justify-end pr-4">
         <FaRegCheckCircle className="text-2xl" />

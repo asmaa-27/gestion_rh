@@ -11,6 +11,7 @@ import DetailsFonctionnaires from "./pages/DossierPersonnels/DetailsFonctionnair
 import Stepper from "./pages/DossierPersonnels/stepper/Stepper";
 import DemandAbsence from "./pages/DemandAbsences/DemandAbsence"
 import AffichageFonctionnaires from "./pages/DossierPersonnels/AffichageFonctionnaire";
+import AjouterDemande from "./pages/DemandAbsences/AjouterDemande";
 
 
 export  const router = createBrowserRouter ([
@@ -34,6 +35,10 @@ export  const router = createBrowserRouter ([
             },{
                 path:'/Demande-absence',
                 element:<DemandAbsence/>
+            },
+            {
+                path:'/AjouterDemande',
+                element:<AjouterDemande/>
             },
         ]
     },{

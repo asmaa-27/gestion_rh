@@ -29,10 +29,32 @@ const AdminInfoForm = () => {
  };
 
  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    // Gérer la soumission des données du formulaire
- };
+  e.preventDefault();
+
+  // // Vérifier si le détachement est terminé
+  // if (informations.situationAdministrative === 'Détaché sortant' && informations.boolDetachement) {
+  //   // Vérifier si le détachement doit être renouvelé, prendre fin ou si le fonctionnaire doit être intégré
+  //   const dateDetachement = new Date(informations.dateRecrutement);
+  //   const dateFin = new Date(dateDetachement.getFullYear() + 3, dateDetachement.getMonth(), dateDetachement.getDate());
+  //   const dateAujourdHui = new Date();
+
+  //   if (dateAujourdHui >= dateFin) {
+  //     // Afficher un message pour demander le renouvellement, la fin du détachement ou l'intégration
+  //     if (window.confirm('Le détachement de ce fonctionnaire est terminé. Que souhaitez-vous faire ?')) {
+  //       // Mettre à jour les informations administratives en conséquence
+  //       setInformations({
+  //         ...informations,
+  //         situationAdministrative: 'Intégré',
+  //         boolDetachement: false,
+  //       });
+  //     }
+  //   }
+  // }
+
+  // // Traiter les autres informations administratives
+  // console.log(informations);
+  // // Ajouter ici la logique pour enregistrer les informations dans une base de données ou les envoyer à un serveur
+};
 
  return (
     <>
@@ -113,7 +135,7 @@ const AdminInfoForm = () => {
  <div className="flex items-center">
     <FaExclamationCircle className="text-red-500 mr-2 text-2xl" />
     <span className="text-red-500 font-bold">Veuillez vérifier les informations avant de continuer</span>
-    <button className="bg-green-500 text-white px-6 py-3 rounded ml-4 relative flex">
+    <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4 relative flex">
       <span className='pr-4'>Submit</span>
       <span className="inset-0 flex items-center justify-end pr-4">
         <FaRegCheckCircle className="text-2xl" />
@@ -133,3 +155,8 @@ const AdminInfoForm = () => {
 };
 
 export default AdminInfoForm;
+
+
+
+
+
