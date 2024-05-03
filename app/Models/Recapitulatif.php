@@ -12,7 +12,7 @@ class Recapitulatif extends Model
     protected $fillable = ['structure', 'theme','effectif','score'];
 
     public function formation() {
-        return $this->belongsTo(Formation::class, "theme");
+        return $this->belongsTo(Formation::class, "theme", "theme");
     }
 
 }

@@ -45,7 +45,7 @@ class FonctionnaireController extends Controller
         'quartier' => 'nullable',
         'rue' => 'nullable',
         'numeroRue' => 'nullable|integer',
-        'codePostal' => 'nullable|string|max:10',
+        'codePostal' => 'nullable|integer',
         'telephone' => 'nullable|string|max:20',
         'email' => 'required|email|unique:fonctionnaires',
         'image' => 'nullable|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
@@ -72,9 +72,12 @@ class FonctionnaireController extends Controller
      */
     public function show( Fonctionnaire $fonctionnaires ,$cin)
     {
-        $fonctionnaires = Fonctionnaire::with(['information_familiales','information_prevoyance_sociales','information_administratives','diplomes', 'affectations','demande_absences','mouvements','notations','sanctions','formation_realisees', 'documents'])->where('cin', $cin)->firstOrFail();
-    return response()->json($fonctionnaires);
-    }
+        // $fonctionnaires = Fonctionnaire::where('cin', $cin)->with(['informationsFamiliales','informationsPrevoyanceSociale','informationsAdministratives','diplomes', 'affectations','demandesAbsence','mouvements','notations','sanctions','formationsRealisees', 'documents'])->get();
+        $fonctionnaires = Fonctionnaire::where("cin",$cin)->firstOrFail();
+
+    return response()->json($fonctionnaires->with(["informationsFamiliales","informationsAdministratives","informationsPrevoyanceSociale","notations","formationsRealisees","diplomes","mouvements","affectations","demandesAbsence","sanctions","documents"])->get());
+
+}
 
     /**
      * Show the form for editing the specified resource.

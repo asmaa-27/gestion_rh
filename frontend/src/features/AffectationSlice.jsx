@@ -1,12 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosClient from "../api/axios";
 
-export const addaffectation = createAsyncThunk('/addaffectation', async () => {
-    const response = await axios.post('http://localhost:3000/api/affectation');
-    return response.data;
-});
+export const addaffectation = createAsyncThunk('/addaffectation',async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosClient.post('http://localhost:8000/api/affectation', data,{
+        headers:{
+            'Content-Type':'multipart/form-data'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  });
 
-const affectationInfoSlice = createSlice({
+const affectationSlice = createSlice({
     name: 'info',
     initialState: {
         info: [],
@@ -30,4 +38,4 @@ const affectationInfoSlice = createSlice({
     },
 });
 
-export default affectationInfoSlice.reducer;
+export default affectationSlice.reducer;

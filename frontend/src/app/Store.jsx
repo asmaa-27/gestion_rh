@@ -8,6 +8,7 @@ import MouvementReducer from "../features/MouvementSlice";
 import NotationReducer from "../features/NotationSlice";
 import PersonalInfoReducer from "../features/PersonallInfoSlice"
 import PrevoyenceSocialeReducer from "../features/PrevoyanceSocialleInfoSlice"
+import DemandAbsenceReducer from "../features/DemandAbsenceSlice";
 
 const Store=configureStore({
     reducer: {
@@ -19,7 +20,8 @@ const Store=configureStore({
         MouvementReducer,
         NotationReducer,
         PersonalInfoReducer,
-        PrevoyenceSocialeReducer
+        PrevoyenceSocialeReducer,
+        demandeAbsence:DemandAbsenceReducer
     }
 })
 

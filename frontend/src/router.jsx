@@ -26,14 +26,14 @@ export  const router = createBrowserRouter ([
                 path:'/AffichageFonctionnaires',
                 element:<AffichageFonctionnaires/>
             },{
-                path:'Stepper',
+                path:'/Stepper',
                 element:<Stepper/>
             },
             {
-                path:'DetailsFonctionnaire',
+                path:'/fonctionnaire/:cin',
                 element:<DetailsFonctionnaires/>
             },{
-                path:'/Demande-absence',
+                path:'/demande-absence',
                 element:<DemandAbsence/>
             },
             {

@@ -1,23 +1,32 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { FaExclamationCircle, FaRegCheckCircle } from 'react-icons/fa';
+import { useDispatch} from 'react-redux';
+import { addInfoprev} from '../../../features/PrevoyanceSocialleInfoSlice';
 
 const PrevoyanceSocialeForm = () => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
-    OrganismeRetraite: '',
-    N_Affiliation: '',
-    Date_Affiliation: '',
-    OrganismePrevoyanceSociale: {
+    cin:'',
+    organisme_retraite: '',
+    numero_affiliation_retraite: '',
+    date_affiliation_retraite_retraite: '',
+    organisme_prevoyance_sociale: {
       mutuelleGeneral: false,
       omfam: false,
       mgap: false
     },
-    N_Affiliation_CNOPS: '',
-    N_immatriculation_CNOPS: '',
-    DateAffiliation_CNOPS: '',
-    N_AffiliationFondationHassan: '',
-    OrganismeAssurance: '',
-    N_AffiliationAssurance: '',
+    numero_affiliation_cnops: '',
+    numero_immatriculation_cnops: '',
+    date_affiliation_cnops: '',
+    numero_affiliation_fondation_hassan_ii:'',
+    organisme_assurance: '',
+    numero_affiliation_assurance: '',
   });
+
+
+
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,7 +34,8 @@ const PrevoyanceSocialeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    dispatch(addInfoprev(formData));
+
   };
 
 
@@ -37,17 +47,22 @@ const PrevoyanceSocialeForm = () => {
 
  return(
   <>
-  <div className="flex items-center justify-center  ">
+  <div className="flex items-center justify-center p-4 mt-4 text-2xl font-bold  ">
     <h1>Les informations de la prévoyance sociale :</h1>
   </div>
   <div className="flex items-center justify-center min-h-screen">
-    <form onSubmit={handleSubmit} className="space-y-4 mt-1 block w-1/2 p-2 border border-gray-300 rounded-md">
+    <form onSubmit={handleSubmit} className="space-y-4 mt-1 mb-5 block w-1/2 p-2 border border-gray-300 rounded-md">
+
+    <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        </div>
     <div className="bg-white shadow-md rounded-lg m-6 p-6">
         <label className="block text-sm font-medium text-gray-700">Organisme de retraite :</label>
         <div className="flex items-center space-x-8">
-          <input type="radio" id="CMR" name="OrganismeRetraite" value="CMR" checked={formData.OrganismeRetraite === 'CMR'} onChange={handleChangeRadioButon} className="form-radio text-blue-500" />
+          <input type="radio" id="CMR" name="organisme_retraite" value="CMR" checked={formData.organisme_retraite === 'CMR'} onChange={handleChangeRadioButon} className="form-radio text-blue-500" />
           <label htmlFor="CMR" className="text-sm text-gray-700">CMR</label>
-          <input type="radio" id="RCAR" name="OrganismeRetraite" value="RCAR" checked={formData.OrganismeRetraite === 'RCAR'} onChange={handleChangeRadioButon} className="form-radio text-blue-500" />
+          <input type="radio" id="RCAR" name="organisme_retraite" value="RCAR" checked={formData.organisme_retraite === 'RCAR'} onChange={handleChangeRadioButon} className="form-radio text-blue-500" />
           <label htmlFor="RCAR" className="text-sm text-gray-700">RCAR</label>
       </div>
     </div>
@@ -56,21 +71,21 @@ const PrevoyanceSocialeForm = () => {
       <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
           <label htmlFor="N_Affiliation" className="block text-sm font-medium text-gray-700">Numéro Affiliation de retraite :
 </label>
-          <input type="number" name="N_Affiliation" id="N_Affiliation" value={formData.N_Affiliation} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <input type="number" name="numero_affiliation_retraite" id="numero_affiliation_retraite" value={formData.numero_affiliation_retraite} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="Date_Affiliation" className="block text-sm font-medium text-gray-700">Date affiliation de retraite :</label>
-          <input type="date" name="Date_Affiliation" id="Date_Affiliation" value={formData.Date_Affiliation} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="date_affiliation_retraite" className="block text-sm font-medium text-gray-700">Date affiliation de retraite :</label>
+          <input type="date" name="date_affiliation_retraite" id="date_affiliation_retraite" value={formData.date_affiliation_retraite} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
 
         <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="organismePrevoyance" className="block text-sm font-medium text-gray-700">Organisme de prévoyance sociale :</label>
+          <label htmlFor="organisme_prevoyance_sociale" className="block text-sm font-medium text-gray-700">Organisme de prévoyance sociale :</label>
           <select
-            id="organismePrevoyance"
-            name="organismePrevoyance"
-            value={formData.organismePrevoyance}
+            id="organisme_prevoyance_sociale"
+            name="organisme_prevoyance_sociale"
+            value={formData.organisme_prevoyance_sociale}
             onChange={handleChange}
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
           >
@@ -82,34 +97,34 @@ const PrevoyanceSocialeForm = () => {
         </div>
 
         <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="N_Affiliation_CNOPS" className="block text-sm font-medium text-gray-700">	N° affiliation CNOPS :</label>
-          <input type="number" name="N_Affiliation_CNOPS" id="N_Affiliation_CNOPS" value={formData.N_Affiliation_CNOPS} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="numero_affiliation_cnops" className="block text-sm font-medium text-gray-700">	N° affiliation CNOPS :</label>
+          <input type="number" name="numero_affiliation_cnops" id="numero_affiliation_cnops" value={formData.numero_affiliation_cnops} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
 
         <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="N_immatriculation_CNOPS" className="block text-sm font-medium text-gray-700">	N° immatriculation CNOPS :</label>
-          <input type="number" name="N_immatriculation_CNOPS" id="N_immatriculation_CNOPS" value={formData.N_immatriculation_CNOPS} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="numero_immatriculation_cnops" className="block text-sm font-medium text-gray-700">	N° immatriculation CNOPS :</label>
+          <input type="number" name="numero_immatriculation_cnops" id="numero_immatriculation_cnops" value={formData.numero_immatriculation_cnops} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="DateAffiliation_CNOPS" className="block text-sm font-medium text-gray-700">Date affiliation CNOPS :</label>
-          <input type="date" name="DateAffiliation_CNOPS" id="DateAffiliation_CNOPS" value={formData.DateAffiliation_CNOPS} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="date_affiliation_cnops" className="block text-sm font-medium text-gray-700">Date affiliation CNOPS :</label>
+          <input type="date" name="date_affiliation_cnops" id="date_affiliation_cnops" value={formData.date_affiliation_cnops} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="N_AffiliationFondationHassan" className="block text-sm font-medium text-gray-700">	N° affiliation fondation Hassan II :</label>
-          <input type="number" name="N_AffiliationFondationHassan" id="N_AffiliationFondationHassan" value={formData.N_AffiliationFondationHassan} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="numero_affiliation_fondation_hassan_ii" className="block text-sm font-medium text-gray-700">	N° affiliation fondation Hassan II :</label>
+          <input type="number" name="numero_affiliation_fondation_hassan_ii" id="numero_affiliation_fondation_hassan_ii" value={formData.numero_affiliation_fondation_hassan_ii} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="OrganismeAssurance" className="block text-sm font-medium text-gray-700">Organisme assurance :</label>
-          <input type="text" name="OrganismeAssurance" id="OrganismeAssurance" value={formData.OrganismeAssurance} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="organisme_assurance" className="block text-sm font-medium text-gray-700">Organisme assurance :</label>
+          <input type="text" name="organisme_assurance" id="organisme_assurance" value={formData.organisme_assurance} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="N_AffiliationAssurance" className="block text-sm font-medium text-gray-700">	N° affiliation assurance :</label>
-          <input type="number" name="N_AffiliationAssurance" id="N_AffiliationAssurance" value={formData.N_AffiliationAssurance} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="numero_affiliation_assurance" className="block text-sm font-medium text-gray-700">	N° affiliation assurance :</label>
+          <input type="number" name="numero_affiliation_assurance" id="numero_affiliation_assurance" value={formData.numero_affiliation_assurance} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="rounded-lg m-6 p-6 flex items-center justify-start space-x-4">

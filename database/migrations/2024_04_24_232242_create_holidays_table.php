@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('holidays', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->string('name')->nullable();
+            $table->string('name'); // Nom de la fête ou jour férié
+            $table->date('date'); // Date de la fête ou jour férié
+            $table->boolean('active')->default(1); // Actif par défaut
             $table->timestamps();
         });
     }

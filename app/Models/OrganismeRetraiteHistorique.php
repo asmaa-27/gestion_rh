@@ -11,6 +11,6 @@ class OrganismeRetraiteHistorique extends Model
     protected $fillable=["id_info_prevS","organisme_retraite"];
 
     public function informationsPrevoyanceSociale(){
-        return $this->belongsTo(InformationPrevoyanceSociale::class, 'id_info_prevS');
+        return $this->belongsTo(InformationPrevoyanceSociale::class, 'id_info_prevS','id');
     }
 }

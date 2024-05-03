@@ -1,10 +1,15 @@
-import  {useState}from "react";
-import { FaExclamationCircle, FaRegCheckCircle } from "react-icons/fa";
+import { useState } from 'react';
+import { FaExclamationCircle, FaRegCheckCircle } from 'react-icons/fa';
+import { useDispatch} from 'react-redux';
+import { addNotation} from '../../../features/NotationSlice';
 
 const NotationForm = () =>{
+  const dispatch = useDispatch();
+
     const [formData, setFormData] = useState({
-        Année: '',
-        Note: '',
+        cin:'',
+        annee: '',
+        note: '',
     })
 
     const handleChange = (e) => {
@@ -13,7 +18,8 @@ const NotationForm = () =>{
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
+        dispatch(addNotation(formData));
+
       };
 
     return(
@@ -22,16 +28,21 @@ const NotationForm = () =>{
           <h1>Les notations :</h1>
         </div>
         <div className="flex items-center justify-center min-h-screen">
-          <form onSubmit={handleSubmit} className="space-y-4 mb-40 block w-1/2 p-2 border border-gray-300 rounded-md">
+          <form onSubmit={handleSubmit} className="space-y-4 mb-1 block w-1/2 p-2 border border-gray-300 rounded-md">
 
           <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="Année" className="block text-sm font-medium text-gray-700">Année :</label>
-          <input type="text" name="Année" id="Année" value={formData.Année} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        </div>
+
+          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="annee" className="block text-sm font-medium text-gray-700">annee :</label>
+          <input type="text" name="annee" id="annee" value={formData.annee} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="Note" className="block text-sm font-medium text-gray-700">Note :</label>
-          <input type="text" name="Note" id="Note" value={formData.Note} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="note" className="block text-sm font-medium text-gray-700">note :</label>
+          <input type="text" name="note" id="note" value={formData.note} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="rounded-lg m-6 p-6 flex items-center justify-start space-x-4">

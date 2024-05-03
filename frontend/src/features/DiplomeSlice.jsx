@@ -1,12 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosClient from "../api/axios";
 
-export const adddiplome = createAsyncThunk('/adddiplome', async () => {
-    const response = await axios.post('http://localhost:3000/api/diplome');
-    return response.data;
-});
+export const adddiplome = createAsyncThunk('/adddiplome',async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosClient.post('http://localhost:8000/api/diplome', data,{
+        headers:{
+            'Content-Type':'multipart/form-data'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  });
 
-const diplomeInfoSlice = createSlice({
+const diplomeSlice = createSlice({
     name: 'info',
     initialState: {
         info: [],
@@ -30,4 +38,4 @@ const diplomeInfoSlice = createSlice({
     },
 });
 
-export default diplomeInfoSlice.reducer;
+export default diplomeSlice.reducer;

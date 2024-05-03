@@ -1,11 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosClient from "../api/axios";
 
-export const addInfofamily = createAsyncThunk('/addInfofamily', async () => {
-    const response = await axios.post('http://localhost:3000/api/info-familiale');
-    return response.data;
-});
-
+export const addInfofamily = createAsyncThunk('/addInfofamily',async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosClient.post('http://localhost:8000/api/info-familiale', data,{
+        headers:{
+            'Content-Type':'multipart/form-data'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  });
 const familyInfoSlice = createSlice({
     name: 'info',
     initialState: {

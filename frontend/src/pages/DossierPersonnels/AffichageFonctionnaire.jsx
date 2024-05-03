@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { displayFonctionnaire ,deleteFonctionnaire} from '../../features/FontionnairesSlice';
 import { RiSearchLine } from 'react-icons/ri';
 import { FcViewDetails } from "react-icons/fc";
-import { FaPlus ,FaTrash } from "react-icons/fa";
+import { FaPlus ,FaTrash,FaExclamationCircle } from "react-icons/fa";
 import ReactPaginate from 'react-paginate';
 import { AiFillLeftCircle, AiFillRightCircle } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
@@ -28,8 +28,22 @@ const AffichageFonctionnaires = () => {
     dispatch(deleteFonctionnaire(cin));
  };
 
- if (loading) return <div>Loading...</div>;
- if (error) return <div>Error: {error}</div>;
+ if (loading) return (<div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
+ <div className=" bg-white p-8 rounded-lg shadow-lg">
+   <div className="flex justify-center mb-4">
+     <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+   </div>
+   <p className="text-gray-900 font-bold text-lg">Loading...</p>
+ </div>
+</div> );
+ if (error) return (<div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
+ <div className="bg-white p-8 rounded-lg shadow-lg">
+   <div className="text-red-500 text-4xl mb-4">
+     <FaExclamationCircle />
+   </div>
+   <p className="text-gray-900 font-bold">Error: {error}</p>
+ </div>
+</div>);
 
  const filteredfonctionnaires = fonctionnaires
     .filter((fonctionnaires) => {
@@ -100,7 +114,7 @@ const AffichageFonctionnaires = () => {
                     <FaTrash />
                  </button>
                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    <Link to={`/api/fonctionnaires/${fonctionnaires.cin}`}>
+                    <Link to={`/fonctionnaire/${fonctionnaires.cin}`}>
                       <FcViewDetails />
                     </Link>
                  </button>

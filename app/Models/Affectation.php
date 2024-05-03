@@ -11,6 +11,6 @@ class Affectation extends Model
     protected $fillable= ["cin","entite","date_affectation","poste"];
     public function fonctionnaire()
     {
-        return $this->belongsTo(Fonctionnaire::class, 'cin');
+        return $this->belongsTo(Fonctionnaire::class, 'cin', 'cin');
     }
 }

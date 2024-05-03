@@ -11,14 +11,14 @@ class InformationFamiliale extends Model
     protected $fillable=["cin","nom_pere","nom_mere","situation_familiale","date_mariage","nom_conjoint","cin_conjoint","date_naissance_conjoint","fonction_conjoint","nombre_enfants"];
 
     public function fonctionnaire(){
-        return $this->belongsTo(Fonctionnaire::class,"cin");
+        return $this->belongsTo(Fonctionnaire::class,"cin", 'cin');
     }
 
     public function conjoints (){
-        return $this->hasMany(Conjoint::class);
+        return $this->hasMany(Conjoint::class ,'id_inforamtions_familiales','id');
     }
 
     public function enfants(){
-        return $this->hasMany(Enfant::class);
+        return $this->hasMany(Enfant::class , 'id_inforamtions_familiales','id');
     }
 }

@@ -6,6 +6,11 @@ export default {
     ],
     theme: {
         extend: {
+
+            backgroundImage: {
+              'header-bg': "url('./src/assets/titlebg.jpg')", // Assurez-vous que le chemin est correct
+            },
+
             colors: {
               primary: {
                 "50": "#eff6ff",
@@ -59,5 +64,6 @@ export default {
             }
           }
     },
+
     plugins: [],
   }

@@ -12,6 +12,10 @@ class DemandeAbsence extends Model
 
     public function fonctionnaire()
     {
-        return $this->belongsTo(Fonctionnaire::class, 'cin');
+        return $this->belongsTo(Fonctionnaire::class, 'cin','cin');
+    }
+    public function holiday()
+    {
+        return $this->belongsTo(Holiday::class);
     }
 }

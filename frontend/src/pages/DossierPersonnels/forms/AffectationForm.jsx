@@ -1,10 +1,15 @@
 import  {useState}from "react";
 import { FaExclamationCircle, FaRegCheckCircle } from "react-icons/fa";
+import { useDispatch} from 'react-redux';
+import { addaffectation } from '../../../features/AffectationSlice';
 
 const AffectationForm = () =>{
+  const dispatch = useDispatch();
+
     const [formData, setFormData] = useState({
-        Entité: '',
-        DateAffectation: '',
+        cin:'',
+        entite: '',
+        date_affectation: '',
         Poste: '',
     })
 
@@ -14,6 +19,8 @@ const AffectationForm = () =>{
 
       const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(addaffectation(formData));
+
         console.log(formData);
       };
 
@@ -23,16 +30,20 @@ const AffectationForm = () =>{
           <h1>Les affectations  :</h1>
         </div>
         <div className="flex items-center justify-center min-h-screen">
-          <form onSubmit={handleSubmit} className="space-y-4 mb-40 block w-1/2 p-2 border border-gray-300 rounded-md">
+          <form onSubmit={handleSubmit} className="space-y-4 mb-1 block w-1/2 p-2 border border-gray-300 rounded-md">
 
           <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="Entité" className="block text-sm font-medium text-gray-700">Entité :</label>
-          <input type="text" name="Entité" id="Entité" value={formData.Entité} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        </div>
+          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="entité" className="block text-sm font-medium text-gray-700">Entité :</label>
+          <input type="text" name="entite" id="entité" value={formData.entite} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
           <label htmlFor="DateAffectation" className="block text-sm font-medium text-gray-700">Date Affectation :</label>
-          <input type="date" name="DateAffectation" id="DateAffectation" value={formData.DateAffectation} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <input type="date" name="date_affectation" id="date_affectation" value={formData.date_affectationate_affectation} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">

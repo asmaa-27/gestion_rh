@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaMoon, FaSun, FaSearch, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { FaMoon, FaSun, FaSearch,   FaSignOutAlt } from 'react-icons/fa';
 import useAuthContext from '../../contexts/AuthContext';
 
 const Navbar = () => {
@@ -36,9 +36,6 @@ const Navbar = () => {
           {isDarkMode ? <FaSun /> : <FaMoon />}
         </button>
 
-        <button className="px-4 py-2 rounded-md hover:bg-blue-300 ">
-          <FaCog />
-        </button>
 
             <button onClick={logout} className="block w-full px-4 py-2 rounded-md hover:bg-blue-300">
               <FaSignOutAlt />

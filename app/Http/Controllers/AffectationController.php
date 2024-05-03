@@ -30,9 +30,9 @@ class AffectationController extends Controller
     {
         $validatedData = $request->validate( [
             'cin' => 'required|exists:fonctionnaires,cin',
-            'entite' => 'required|string',
-            'date_affectation' => 'required|date',
-            'poste' => 'required|string',
+            'entite' => 'nullable|string',
+            'date_affectation' => 'nullable|date',
+            'poste' => 'nullable|string',
         ]);
 
 

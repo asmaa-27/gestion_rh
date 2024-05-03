@@ -10,6 +10,6 @@ class Evaluation extends Model
     use HasFactory;
     protected $fillable = ['theme', 'taux_satisfaction'];
     public function formation() {
-        return $this->belongsTo(Formation::class, 'theme');
+        return $this->belongsTo(Formation::class, 'theme', "theme");
     }
 }

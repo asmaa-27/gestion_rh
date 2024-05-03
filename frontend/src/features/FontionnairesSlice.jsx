@@ -9,7 +9,7 @@ async()=>{
     const response=await axiosClient.get('http://localhost:8000/api/fonctionnaire');
     console.log(response)
     return Array.isArray(response.data) ? response.data : [];
-  }catch(err){console.log(err)} 
+  }catch(err){console.log(err)}
 
 });
 
@@ -24,9 +24,12 @@ export const deleteFonctionnaire = createAsyncThunk(
 
 export const showDetailsByCin = createAsyncThunk(
   'fonctionnaire/showDetailsByCin',
-  async (cin) => {
-    const response = await axiosClient.get(`/api/fonctionnaire/${cin}`);
-    return response.data;
+    async (cin) => {
+    try{
+        const response = await axiosClient.get(`http://localhost:8000/api/fonctionnaire/${cin}`);
+        console.log(response.data)
+        return Array.isArray(response.data) ? response.data : [];
+    }catch(err){console.log(err)}
   }
 );
 
@@ -70,7 +73,7 @@ const fonctionnairesSlice = createSlice({
 
         .addCase(deleteFonctionnaire.fulfilled, (state, action) => {
           state.loading = false;
-          state.fonctionnaires = state.fonctionnaires.filter(info => info.id !== action.payload);
+          state.fonctionnaires = state.fonctionnaires.filter(info => info.cin !== action.payload);
         })
 
   }

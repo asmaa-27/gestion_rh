@@ -1,4 +1,9 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, PieChart, Pie, Cell } from 'recharts';
+import Typewriter from 'typewriter-effect';
+
+
+
+
 
 const data = [
   { name: 'Jan', value: 20 },
@@ -20,28 +25,27 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const Dashboard = () => {
   return (
-    <main className="bg-gray-100 p-8">
-      {/* <div className="bg-blue-500 text-white text-center py-4">
-        <h1 className="text-3xl font-bold">Welcome to Your Dashboard</h1>
-      </div> */}
+    <> <header className="container mx-auto pb-12 px-4 flex justify-center bg-header-bg  rounded-lg shadow-2xl   bg-cover items-center mb-20 mt-4 p-8">
+    <div className="text-center lg:text-4xl font-bold text-white">
+      <div className="flex-1   bg-center bg-no-repeat h-full">
+        <Typewriter
+          onInit={(typewriter) => {
+            typewriter
+            .typeString('Welcome to Employees Management Web-Site')
+            .pauseFor(1000)
+            .start();
+          }}
+        />
+      </div>
+    </div>
+  </header>
 
-      <h1 className="text-2xl font-bold mt-8 mb-4">Dashboard</h1>
 
+    <main className=" p-8 pb-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h2 className="text-lg font-bold mb-2">Card 1</h2>
-          <p>Content for Card 1</p>
-        </div>
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h2 className="text-lg font-bold mb-2">Card 2</h2>
-          <p>Content for Card 2</p>
-        </div>
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h2 className="text-lg font-bold mb-2">Card 3</h2>
-          <p>Content for Card 3</p>
-        </div>
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h2 className="text-lg font-bold mb-2">Charte Absences</h2>
+
+        <div className="bg-white rounded-lg   shadow-2xl p-4 ">
+          <h2 className="text-lg font-bold mb-4">Charte Absences</h2>
           <LineChart width={250} height={200} data={data}>
             <XAxis dataKey="name" />
             <YAxis />
@@ -51,8 +55,8 @@ const Dashboard = () => {
             <Line type="monotone" dataKey="value" stroke="#8884d8" />
           </LineChart>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h2 className="text-lg font-bold mb-2">Charte des Stagiaires</h2>
+        <div className="bg-white rounded-lg shadow-2xl p-4">
+          <h2 className="text-lg font-bold mb-4">Charte des Stagiaires</h2>
           <BarChart width={260} height={200} data={data}>
             <XAxis dataKey="name" />
             <YAxis />
@@ -62,8 +66,8 @@ const Dashboard = () => {
             <Bar dataKey="value" fill="#8884d8" />
           </BarChart>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h2 className="text-lg font-bold mb-2">Charte de congés</h2>
+        <div className="bg-white rounded-lg shadow-2xl p-4">
+          <h2 className="text-lg font-bold mb-4">Charte de congés</h2>
           <PieChart width={250} height={200}>
             <Pie data={pieData} color="#000000" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={60}>
               {pieData.map((entry, index) => (
@@ -76,6 +80,7 @@ const Dashboard = () => {
         </div>
       </div>
     </main>
+    </>
   );
 };
 

@@ -1,12 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosClient from "../api/axios";
 
-export const addInfoPersonnel = createAsyncThunk('/addInfoPersonnel', async () => {
-    const response = await axios.post('http://localhost:3000/api/fonctionnaire');
-    return response.data;
-});
+export const addInfoPersonnel = createAsyncThunk('/addInfoPersonnel', async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosClient.post('http://localhost:8000/api/fonctionnaire', data,{
+        headers:{
+            'Content-Type':'multipart/form-data'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  });
 
-const personalInfoSlice = createSlice({
+
+const personallInfoSlice = createSlice({
     name: 'info',
     initialState: {
         info: [],
@@ -30,4 +39,4 @@ const personalInfoSlice = createSlice({
     },
 });
 
-export default personalInfoSlice.reducer;
+export default personallInfoSlice.reducer;

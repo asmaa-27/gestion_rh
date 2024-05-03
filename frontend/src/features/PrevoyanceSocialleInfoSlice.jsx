@@ -1,12 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosClient from "../api/axios";
 
-export const addInfoprev = createAsyncThunk('/addInfoprev', async () => {
-    const response = await axios.post('http://localhost:3000/api/info-prevoyance-sociale');
-    return response.data;
-});
+export const addInfoprev = createAsyncThunk('/addInfoprev', async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosClient.post('http://localhost:8000/api/info-prevoyance-sociale', data,{
+        headers:{
+            'Content-Type':'multipart/form-data'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  });
 
-const prevoyenceSocialleSlice = createSlice({
+const prevoyanceSocialleInfoSlice = createSlice({
     name: 'info',
     initialState: {
         info: [],
@@ -30,4 +38,4 @@ const prevoyenceSocialleSlice = createSlice({
     },
 });
 
-export default prevoyenceSocialleSlice.reducer;
+export default prevoyanceSocialleInfoSlice.reducer;

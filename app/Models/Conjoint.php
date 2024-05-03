@@ -11,6 +11,6 @@ class Conjoint extends Model
     protected $fillable=["id_inforamtions_familiales","date_mariage","date_divorce","nom_conjoint","cin_conjoint"];
 
     public function informationsFamiliales(){
-        return $this->belongsToMany(InformationFamiliale::class,'id_inforamtions_familiales');
+        return $this->belongsToMany(InformationFamiliale::class,'id_inforamtions_familiales','id');
 }
 }

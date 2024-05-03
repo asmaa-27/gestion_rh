@@ -1,11 +1,16 @@
-import  {useState}from "react";
-import { FaExclamationCircle, FaRegCheckCircle } from "react-icons/fa";
+import { useState } from 'react';
+import { FaExclamationCircle, FaRegCheckCircle } from 'react-icons/fa';
+import { useDispatch} from 'react-redux';
+import { addSanction} from '../../../features/SanctionSlice';
 
 const SanctionForm = () =>{
+  const dispatch = useDispatch();
+
     const [formData, setFormData] = useState({
-        DateMotif: '',
+      cin:'',
+        date_sanction: '',
         motif: '',
-        nature: '',
+        nature_sanction: '',
         sanction:'',
     })
 
@@ -15,7 +20,8 @@ const SanctionForm = () =>{
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
+        dispatch(addSanction(formData));
+
       };
 
     return(
@@ -24,10 +30,16 @@ const SanctionForm = () =>{
           <h1>Les sanctions  :</h1>
         </div>
         <div className="flex items-center justify-center min-h-screen">
-          <form onSubmit={handleSubmit} className="space-y-4 mb-40 block w-1/2 p-2 border border-gray-300 rounded-md">
+          <form onSubmit={handleSubmit} className="space-y-4 mb-7 block w-1/2 p-2 border border-gray-300 rounded-md">
+
           <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="DateMotif" className="block text-sm font-medium text-gray-700">Date Motif :</label>
-          <input type="date" name="DateMotif" id="DateMotif" value={formData.DateMotif} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        </div>
+
+          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="date_sanction" className="block text-sm font-medium text-gray-700">Date Motif :</label>
+          <input type="date" name="date_sanction" id="date_sanction" value={formData.date_sanction} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
           <label htmlFor="motif" className="block text-sm font-medium text-gray-700">Motif :</label>
@@ -35,8 +47,8 @@ const SanctionForm = () =>{
         </div>
 
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="nature" className="block text-sm font-medium text-gray-700">Nature :</label>
-          <input type="text" name="nature" id="nature" value={formData.nature} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <label htmlFor="nature_sanction" className="block text-sm font-medium text-gray-700">nature sanction :</label>
+          <input type="text" name="nature_sanction" id="nature_sanction" value={formData.nature_sanction} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500">

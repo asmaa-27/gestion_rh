@@ -38,24 +38,24 @@ class InformationAdministrativeController extends Controller
             'administration_recrutement' => 'required|string',
             'date_titularisation' => 'required|date',
             'grade' => 'required|string',
-            'anciennete_grade' => 'required|numeric', // Assuming Anciennete Grade is a numeric value
+            'anciennete_grade' => 'required|numeric',
             'echelle' => 'required|string',
-            'anciennete_echelle' => 'required|numeric', // Assuming Anciennete Echelle is a numeric value
+            'anciennete_echelle' => 'required|numeric',
             'echelon' => 'required|string',
-            'anciennete_echelon' => 'required|numeric', // Assuming Anciennete Echelon is a numeric value
-            'indice' => 'required|numeric', // Assuming Indice is a numeric value
+            'anciennete_echelon' => 'required|numeric',
+            'indice' => 'required|numeric',
             'statut_administratif' => 'required|string',
             'situation_administrative' => 'required|string',
-            'fin_periode_detachement' => 'nullable|date', // Assuming Fin Periode Detachement is optional and a date
-            'integre_apres_detachement' => 'required|boolean', // Assuming Integre Apres Detachement is a boolean value
-            'integre_apres_mise_disposition' => 'required|boolean', // Assuming Integre Apres Mise Disposition is a boolean value
-            'affectation' => 'required|string',
-            'fonction' => 'required|string',
-            'poste' => 'required|string',
-            'type_sortie' => 'required|string',
-            'date_sortie' => 'nullable|date', // Assuming Date Sortie is optional and a date
-            'administration_accueil' => 'required|string',
-            'statut_activite' => 'required|string',
+            'fin_periode_detachement' => 'nullable|date',
+            'integre_apres_detachement' => 'nullable|boolean',
+            'integre_apres_mise_disposition' => 'nullable|boolean',
+            'affectation' => 'nullable|string',
+            'fonction' => 'nullable|string',
+            'poste' => 'nullable|string',
+            'type_sortie' => 'nullable|string',
+            'date_sortie' => 'nullable|date',
+            'administration_accueil' => 'nullable|string',
+            'statut_activite' => 'nullable|string',
         ]);
 
         $informationsAdministratives = InformationAdministrative::create($validatedData);
@@ -63,9 +63,7 @@ class InformationAdministrativeController extends Controller
         return response()->json(['message' => 'Informations Administratives created successfully', 'informationsAdministratives' => $informationsAdministratives], 201);
         }
 
-    /**
-     * Display the specified resource.
-     */
+     
     public function show(InformationAdministrative $informationAdministrative)
     {
         //

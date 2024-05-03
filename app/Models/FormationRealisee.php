@@ -11,10 +11,10 @@ class FormationRealisee extends Model
     protected $fillable = ['theme', 'prestataire','beneficiaires','formateur','date_debut','date_fin','lieu_formation',"id_fonctionnaire"];
     public function formation()
     {
-        return $this->belongsTo(Formation::class, 'theme' );
+        return $this->belongsTo(Formation::class, 'theme', "theme" );
     }
     public function fonctionnaire() {
-        return $this->hasMany(Fonctionnaire::class, "cin");
+        return $this->hasMany(Fonctionnaire::class, "cin", 'cin');
     }
     }
 

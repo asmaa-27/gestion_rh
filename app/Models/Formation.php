@@ -12,21 +12,21 @@ class Formation extends Model
 
     public function recapitulatif()
     {
-        return $this->hasOne(Recapitulatif::class, 'theme' );
+        return $this->hasOne(Recapitulatif::class, 'theme', "theme" );
     }
 
     public function formationsRealisees()
     {
-        return $this->hasMany(FormationRealisee::class, 'theme' );
+        return $this->hasMany(FormationRealisee::class, 'theme', "theme" );
     }
 
     public function etatsPresence()
     {
-        return $this->hasOne(EtatPresence::class, 'theme' );
+        return $this->hasOne(EtatPresence::class, 'theme', "theme" );
     }
 
     public function evaluations()
     {
-        return $this->hasOne(Evaluation::class, 'theme' );
+        return $this->hasOne(Evaluation::class, 'theme', "theme" );
     }
 }

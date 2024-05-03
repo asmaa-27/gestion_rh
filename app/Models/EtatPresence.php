@@ -10,6 +10,6 @@ class EtatPresence extends Model
 
     protected $fillable = ['theme', 'nbr_presence','taux_presence'];
     public function formation() {
-        return $this->belongsTo(Formation::class, 'theme');
+        return $this->belongsTo(Formation::class, 'theme', "theme");
     }
 }

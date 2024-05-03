@@ -1,12 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosClient from "../api/axios";
 
-export const addNotation = createAsyncThunk('/addNotation', async () => {
-    const response = await axios.post('http://localhost:3000/api/notation');
-    return response.data;
-});
+export const addNotation = createAsyncThunk('/addNotation',async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosClient.post('http://localhost:8000/api/notation', data,{
+        headers:{
+            'Content-Type':'multipart/form-data'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  });
 
-const notationInfoSlice = createSlice({
+const notationSlice = createSlice({
     name: 'info',
     initialState: {
         info: [],
@@ -30,4 +38,4 @@ const notationInfoSlice = createSlice({
     },
 });
 
-export default notationInfoSlice.reducer;
+export default notationSlice.reducer;

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Holiday extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'date', 'active'];
+
+    public function DemandeAbsence()
+    {
+        return $this->hasMany(DemandeAbsence::class);
+    }
 }

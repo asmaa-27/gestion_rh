@@ -1,13 +1,18 @@
-import  {useState}from "react";
-import { FaExclamationCircle, FaRegCheckCircle } from "react-icons/fa";
+import { useState } from 'react';
+import { FaExclamationCircle, FaRegCheckCircle } from 'react-icons/fa';
+import { useDispatch} from 'react-redux';
+import { adddiplome} from '../../../features/DiplomeSlice';
 
 const DilpomeForm = () =>{
+  const dispatch = useDispatch();
     const [formData, setFormData] = useState({
-        IntituleDiplome: '',
-        SpecialiteDiplome: '',
-        DateObtention: '',
-        Etablissement: '',
+        cin:'',
+        intitule: '',
+        specialite: '',
+        date_obtention: '',
+        etablissement: '',
     })
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,6 +20,8 @@ const DilpomeForm = () =>{
 
       const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(adddiplome(formData));
+
         console.log(formData);
       };
 
@@ -24,26 +31,30 @@ const DilpomeForm = () =>{
           <h1>Les diplômes :</h1>
         </div>
         <div className="flex items-center justify-center min-h-screen">
-          <form onSubmit={handleSubmit} className="space-y-4 mb-40 block w-1/2 p-2 border border-gray-300 rounded-md">
+          <form onSubmit={handleSubmit} className="space-y-4 mb-5 block w-1/2 p-2 border border-gray-300 rounded-md">
+          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        </div>
 
             <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-            <label htmlFor="IntituleDiplome" className="block text-sm font-medium text-gray-700">Intitule Diplome :</label>
-            <input type="text" name="IntituleDiplome" id="IntituleDiplome" value={formData.IntituleDiplome} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+            <label htmlFor="intitule" className="block text-sm font-medium text-gray-700">Intitule Diplome :</label>
+            <input type="text" name="intitule" id="intitule" value={formData.intitule} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
             </div>
 
             <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-            <label htmlFor="SpecialiteDiplome" className="block text-sm font-medium text-gray-700">Specialité Diplome :</label>
-            <input type="text" name="SpecialiteDiplome" id="SpecialiteDiplome" value={formData.SpecialiteDiplome} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+            <label htmlFor="specialite" className="block text-sm font-medium text-gray-700">Specialité Diplome :</label>
+            <input type="text" name="specialite" id="specialite" value={formData.specialite} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
             </div>
 
             <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-            <label htmlFor="DateObtention" className="block text-sm font-medium text-gray-700">Date obtention :</label>
-            <input type="text" name="DateObtention" id="DateObtention" value={formData.DateObtention} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+            <label htmlFor="date_obtention" className="block text-sm font-medium text-gray-700">Date obtention :</label>
+            <input type="text" name="date_obtention" id="date_obtention" value={formData.date_obtention} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
             </div>
 
             <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-            <label htmlFor="Etablissement" className="block text-sm font-medium text-gray-700">Établissement :</label>
-            <input type="text" name="Etablissement" id="Etablissement" value={formData.Etablissement} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+            <label htmlFor="etablissement" className="block text-sm font-medium text-gray-700">Établissement :</label>
+            <input type="text" name="etablissement" id="etablissement" value={formData.etablissement} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
             </div>
 
             <div className="rounded-lg m-6 p-6 flex items-center justify-start space-x-4">

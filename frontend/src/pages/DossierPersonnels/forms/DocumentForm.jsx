@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const DocumentForm = () => {
     return (
        <div className="flex justify-center mx-auto">
-         <div className="grid grid-cols-3 gap-4 max-w-screen-md">
+         <div className="grid grid-cols-3 gap-4 max-w-screen-md mb-6">
 
          <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
                 <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dossier familial</h5>

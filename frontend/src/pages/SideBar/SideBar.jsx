@@ -18,7 +18,7 @@ const Sidebar = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-      </div> */} 
+      </div> */}
 
       {/* Sidebar */}
       <div className=' fixed bg-blue-400 text-white h-screen px-4 py-6 flex flex-col justify-between  top-0 left-0 transform transition-transform duration-200 ease-in-out md:translate-x-0 md:static md:translate-x-0 z-10'>
@@ -46,11 +46,11 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/Demande-absence" className="flex items-center space-x-4 hover:bg-blue-300 rounded-md p-2">
+                <Link to="/demande-absence" className="flex items-center space-x-4 hover:bg-blue-300 rounded-md p-2">
                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                  </svg>
-                 <span>Gestion des absences</span>
+                 <span>Autorisation Absences</span>
                 </Link>
               </li>
             </ul>

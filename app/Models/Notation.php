@@ -12,6 +12,6 @@ class Notation extends Model
 
     public function fonctionnaire()
     {
-        return $this->belongsTo(Fonctionnaire::class, 'cin');
+        return $this->belongsTo(Fonctionnaire::class, 'cin', 'cin');
     }
 }

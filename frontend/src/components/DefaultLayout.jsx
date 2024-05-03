@@ -14,7 +14,7 @@ const DefaultLayout = () => {
 
  return (
     <Provider store={Store}>
-      <div className="grid grid-cols-[256px_minmax(900px,_1fr)] bg-gray-200">
+      <div className="grid grid-cols-[256px_minmax(900px,_1fr)] bg-white">
         <SideBar />
         <div className="grid grid-rows-[72px_calc(100vh-72px)] ">
           <Navbar />

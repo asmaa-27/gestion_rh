@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosClient from "../api/axios";
 
-export const addMouvement = createAsyncThunk('/addMouvement',async (data, { rejectWithValue }) => {
+export const addSanction = createAsyncThunk('/addSanction', async (data, { rejectWithValue }) => {
     try {
-      const response = await axiosClient.post('http://localhost:8000/api/mouvement', data,{
+      const response = await axiosClient.post('http://localhost:8000/api/sanction', data,{
         headers:{
             'Content-Type':'multipart/form-data'
         }
@@ -14,7 +14,7 @@ export const addMouvement = createAsyncThunk('/addMouvement',async (data, { reje
     }
   });
 
-const mouvementSlice = createSlice({
+const sanctionSlice = createSlice({
     name: 'info',
     initialState: {
         info: [],
@@ -24,18 +24,18 @@ const mouvementSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(addMouvement.pending, (state) => {
+            .addCase(addSanction.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(addMouvement.fulfilled, (state, action) => {
+            .addCase(addSanction.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.info = action.payload;
             })
-            .addCase(addMouvement.rejected, (state, action) => {
+            .addCase(addSanction.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             });
     },
 });
 
-export default mouvementSlice.reducer;
+export default sanctionSlice.reducer;
