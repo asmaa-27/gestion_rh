@@ -32,23 +32,23 @@ const AffectationForm = () =>{
         <div className="flex items-center justify-center min-h-screen">
           <form onSubmit={handleSubmit} className="space-y-4 mb-1 block w-1/2 p-2 border border-gray-300 rounded-md">
 
-          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
-          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700 dark:text-white">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
-          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="entité" className="block text-sm font-medium text-gray-700">Entité :</label>
-          <input type="text" name="entite" id="entité" value={formData.entite} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
-        </div>
-
-        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="DateAffectation" className="block text-sm font-medium text-gray-700">Date Affectation :</label>
-          <input type="date" name="date_affectation" id="date_affectation" value={formData.date_affectationate_affectation} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="entité" className="block text-sm font-medium text-gray-700 dark:text-white">Entité :</label>
+          <input type="text" name="entite" id="entité" value={formData.entite} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="Poste" className="block text-sm font-medium text-gray-700">Poste :</label>
-          <input type="text" name="Poste" id="Poste" value={formData.Poste} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="DateAffectation" className="block text-sm font-medium text-gray-700 dark:text-white">Date Affectation :</label>
+          <input type="date" name="date_affectation" id="date_affectation" value={formData.date_affectationate_affectation} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
+        </div>
+
+        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="Poste" className="block text-sm font-medium text-gray-700 dark:text-white">Poste :</label>
+          <input type="text" name="Poste" id="Poste" value={formData.Poste} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="rounded-lg m-6 p-6 flex items-center justify-start space-x-4">

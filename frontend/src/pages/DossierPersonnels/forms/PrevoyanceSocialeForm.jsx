@@ -53,41 +53,41 @@ const PrevoyanceSocialeForm = () => {
   <div className="flex items-center justify-center min-h-screen">
     <form onSubmit={handleSubmit} className="space-y-4 mt-1 mb-5 block w-1/2 p-2 border border-gray-300 rounded-md">
 
-    <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
-          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+    <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500  dark:bg-primary-950 ">
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700 dark:text-white">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
-    <div className="bg-white shadow-md rounded-lg m-6 p-6">
-        <label className="block text-sm font-medium text-gray-700">Organisme de retraite :</label>
+    <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
+        <label className="block text-sm font-medium text-gray-700 dark:text-white">Organisme de retraite :</label>
         <div className="flex items-center space-x-8">
-          <input type="radio" id="CMR" name="organisme_retraite" value="CMR" checked={formData.organisme_retraite === 'CMR'} onChange={handleChangeRadioButon} className="form-radio text-blue-500" />
-          <label htmlFor="CMR" className="text-sm text-gray-700">CMR</label>
-          <input type="radio" id="RCAR" name="organisme_retraite" value="RCAR" checked={formData.organisme_retraite === 'RCAR'} onChange={handleChangeRadioButon} className="form-radio text-blue-500" />
-          <label htmlFor="RCAR" className="text-sm text-gray-700">RCAR</label>
+          <input type="radio" id="CMR" name="organisme_retraite" value="CMR" checked={formData.organisme_retraite === 'CMR'} onChange={handleChangeRadioButon} className="form-radio text-blue-500 dark:bg-primary-800" />
+          <label htmlFor="CMR" className="text-sm text-gray-700 dark:text-white">CMR</label>
+          <input type="radio" id="RCAR" name="organisme_retraite" value="RCAR" checked={formData.organisme_retraite === 'RCAR'} onChange={handleChangeRadioButon} className="form-radio text-blue-500 dark:bg-primary-800" />
+          <label htmlFor="RCAR" className="text-sm text-gray-700 dark:text-white">RCAR</label>
       </div>
     </div>
 
 
-      <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="N_Affiliation" className="block text-sm font-medium text-gray-700">Numéro Affiliation de retraite :
+      <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500  dark:bg-primary-950 ">
+          <label htmlFor="N_Affiliation" className="block text-sm font-medium text-gray-700 dark:text-white">Numéro Affiliation de retraite :
 </label>
-          <input type="number" name="numero_affiliation_retraite" id="numero_affiliation_retraite" value={formData.numero_affiliation_retraite} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <input type="number" name="numero_affiliation_retraite" id="numero_affiliation_retraite" value={formData.numero_affiliation_retraite} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="date_affiliation_retraite" className="block text-sm font-medium text-gray-700">Date affiliation de retraite :</label>
-          <input type="date" name="date_affiliation_retraite" id="date_affiliation_retraite" value={formData.date_affiliation_retraite} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500  dark:bg-primary-950 focus:ring-blue-500 ">
+          <label htmlFor="date_affiliation_retraite" className="block text-sm font-medium text-gray-700 dark:text-white">Date affiliation de retraite :</label>
+          <input type="date" name="date_affiliation_retraite" id="date_affiliation_retraite" value={formData.date_affiliation_retraite} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
 
-        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="organisme_prevoyance_sociale" className="block text-sm font-medium text-gray-700">Organisme de prévoyance sociale :</label>
+        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500  dark:bg-primary-950 focus:ring-blue-500 ">
+          <label htmlFor="organisme_prevoyance_sociale" className="block text-sm font-medium text-gray-700 dark:text-white">Organisme de prévoyance sociale :</label>
           <select
             id="organisme_prevoyance_sociale"
             name="organisme_prevoyance_sociale"
             value={formData.organisme_prevoyance_sociale}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+            className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md"
           >
             <option value="">Sélectionner un organisme</option>
             <option value="mutuelleGeneral">Mutuelle Générale</option>
@@ -96,35 +96,35 @@ const PrevoyanceSocialeForm = () => {
           </select>
         </div>
 
-        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="numero_affiliation_cnops" className="block text-sm font-medium text-gray-700">	N° affiliation CNOPS :</label>
-          <input type="number" name="numero_affiliation_cnops" id="numero_affiliation_cnops" value={formData.numero_affiliation_cnops} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500  dark:bg-primary-950 focus:ring-blue-500 ">
+          <label htmlFor="numero_affiliation_cnops" className="block text-sm font-medium text-gray-700 dark:text-white">	N° affiliation CNOPS :</label>
+          <input type="number" name="numero_affiliation_cnops" id="numero_affiliation_cnops" value={formData.numero_affiliation_cnops} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
 
-        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="numero_immatriculation_cnops" className="block text-sm font-medium text-gray-700">	N° immatriculation CNOPS :</label>
-          <input type="number" name="numero_immatriculation_cnops" id="numero_immatriculation_cnops" value={formData.numero_immatriculation_cnops} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500  dark:bg-primary-950 focus:ring-blue-500 ">
+          <label htmlFor="numero_immatriculation_cnops" className="block text-sm font-medium text-gray-700 dark:text-white">	N° immatriculation CNOPS :</label>
+          <input type="number" name="numero_immatriculation_cnops" id="numero_immatriculation_cnops" value={formData.numero_immatriculation_cnops} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="date_affiliation_cnops" className="block text-sm font-medium text-gray-700">Date affiliation CNOPS :</label>
-          <input type="date" name="date_affiliation_cnops" id="date_affiliation_cnops" value={formData.date_affiliation_cnops} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500  dark:bg-primary-950 focus:ring-blue-500 ">
+          <label htmlFor="date_affiliation_cnops" className="block text-sm font-medium text-gray-700 dark:text-white">Date affiliation CNOPS :</label>
+          <input type="date" name="date_affiliation_cnops" id="date_affiliation_cnops" value={formData.date_affiliation_cnops} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="numero_affiliation_fondation_hassan_ii" className="block text-sm font-medium text-gray-700">	N° affiliation fondation Hassan II :</label>
-          <input type="number" name="numero_affiliation_fondation_hassan_ii" id="numero_affiliation_fondation_hassan_ii" value={formData.numero_affiliation_fondation_hassan_ii} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500  dark:bg-primary-950 focus:ring-blue-500 ">
+          <label htmlFor="numero_affiliation_fondation_hassan_ii" className="block text-sm font-medium text-gray-700 dark:text-white">	N° affiliation fondation Hassan II :</label>
+          <input type="number" name="numero_affiliation_fondation_hassan_ii" id="numero_affiliation_fondation_hassan_ii" value={formData.numero_affiliation_fondation_hassan_ii} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="organisme_assurance" className="block text-sm font-medium text-gray-700">Organisme assurance :</label>
-          <input type="text" name="organisme_assurance" id="organisme_assurance" value={formData.organisme_assurance} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500  dark:bg-primary-950 ">
+          <label htmlFor="organisme_assurance" className="block text-sm font-medium text-gray-700 dark:text-white">Organisme assurance :</label>
+          <input type="text" name="organisme_assurance" id="organisme_assurance" value={formData.organisme_assurance} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="numero_affiliation_assurance" className="block text-sm font-medium text-gray-700">	N° affiliation assurance :</label>
-          <input type="number" name="numero_affiliation_assurance" id="numero_affiliation_assurance" value={formData.numero_affiliation_assurance} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500  dark:bg-primary-950 focus:ring-blue-500 ">
+          <label htmlFor="numero_affiliation_assurance" className="block text-sm font-medium text-gray-700 dark:text-white">	N° affiliation assurance :</label>
+          <input type="number" name="numero_affiliation_assurance" id="numero_affiliation_assurance" value={formData.numero_affiliation_assurance} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="rounded-lg m-6 p-6 flex items-center justify-start space-x-4">

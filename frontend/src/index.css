@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Configurer les couleurs pour le mode sombre */
+.dark {
+    --bg-color: #101113;
+    --text-color: #f3f4f6;
+}
+
+/* Configurer les couleurs pour le mode lumineux */
+.light {
+    --bg-color: #b6c7eb;
+    --text-color: #0e0f11;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.dark {
+    --bg-color: #1a202c; /* Couleur de fond sombre */
+    --text-color: #f7fafc; /* Couleur du texte en mode sombre */
+    /* Ajoutez d'autres styles spécifiques au mode sombre ici */
+  }

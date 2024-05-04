@@ -58,20 +58,20 @@ const AffichageFonctionnaires = () => {
     .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
 
  return (
-<main className="p-4 ">
+<main className="p-4  ">
       <div className="flex flex-col sm:flex-row justify-between items-center mt-16   mb-8">
         <div className="mb-4 sm:mb-0">
-          <label htmlFor="filterDate" className="mb-1 pr-4">Filter par Date : </label>
+          <label htmlFor="filterDate" className="mb-1 pr-4  ">Filter par Date : </label>
           <input
             id="filterDate"
             type="date"
             value={filterDate}
             onChange={(e) => setFilterDate(e.target.value)}
-            className="border rounded-md px-2 py-1"
+            className="border rounded-md px-2 py-1 dark:bg-primary-950"
           />
         </div>
         <div className="flex items-center">
-          <label htmlFor="searchQuery" className="mb-1 pr-4">Recherche : </label>
+          <label htmlFor="searchQuery" className="mb-1 pr-4 ">Recherche : </label>
           <div className="relative">
             <input
               id="searchQuery"
@@ -79,7 +79,7 @@ const AffichageFonctionnaires = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="recherche par nom"
-              className="border rounded-md px-2 py-1 pl-8 pr-3"
+              className="border rounded-md px-2 py-1 pl-8 pr-3 dark:bg-primary-950"
             />
             <RiSearchLine className="absolute h-5 w-5 text-gray-500 top-1/2 transform -translate-y-1/2 left-3" />
           </div>
@@ -89,7 +89,7 @@ const AffichageFonctionnaires = () => {
           <Link to="/Stepper">Ajouter</Link>
         </button>
       </div>
-      <table className="w-full border-collapse border">
+      <table className="w-full border-collapse border dark:bg-primary-950">
         <thead>
           <tr className="border px-4 py-2">
             <th>ID</th>

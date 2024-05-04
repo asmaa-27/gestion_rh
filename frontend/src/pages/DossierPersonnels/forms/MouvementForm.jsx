@@ -31,25 +31,25 @@ const MouvementForm = () =>{
         <div className="flex items-center justify-center min-h-screen">
           <form onSubmit={handleSubmit} className="space-y-4 mb-1 block w-1/2 p-2 border border-gray-300 rounded-md">
 
-          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
-          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <div className="bg-white shadow-md rounded-lg dark:bg-primary-950  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700 dark:text-white">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
 
-          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="administration" className="block text-sm font-medium text-gray-700">administration :</label>
-          <input type="text" name="administration" id="administration" value={formData.administration} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <div className="bg-white shadow-md rounded-lg dark:bg-primary-950  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="administration" className="block text-sm font-medium text-gray-700 dark:text-white">administration :</label>
+          <input type="text" name="administration" id="administration" value={formData.administration} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="date_debut" className="block text-sm font-medium text-gray-700">Date Debut :</label>
-          <input type="date" name="date_debut" id="date_debut" value={formData.date_debut} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg dark:bg-primary-950  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="date_debut" className="block text-sm font-medium text-gray-700 dark:text-white">Date Debut :</label>
+          <input type="date" name="date_debut" id="date_debut" value={formData.date_debut} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="date_fin" className="block text-sm font-medium text-gray-700">Date Fin :</label>
-          <input type="date" name="date_fin" id="date_fin" value={formData.date_fin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg dark:bg-primary-950  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="date_fin" className="block text-sm font-medium text-gray-700 dark:text-white">Date Fin :</label>
+          <input type="date" name="date_fin" id="date_fin" value={formData.date_fin} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="rounded-lg m-6 p-6 flex items-center justify-start space-x-4">

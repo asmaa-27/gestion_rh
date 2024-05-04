@@ -65,74 +65,74 @@ const PersonalInfoForm = () => {
   <>
     <div className="flex items-center justify-center  text-2xl font-bold"><h1>Les informations  personnels :</h1></div>
     <div className="flex items-center justify-center min-h-screen">
-      <form onSubmit={handleSubmit} className="space-y-4 mb-5 mt-1 block w-1/2 p-2 border border-gray-300 rounded-md">
-        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
-          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+      <form onSubmit={handleSubmit} className="space-y-4 mb-5 mt-1 block w-1/2 p-2 border border-gray-300  rounded-md">
+        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700 dark:text-white dark:text-white">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
-        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="nom" className="block text-sm font-medium text-gray-700">Nom</label>
-          <input type="text" name="nom" id="nom" value={formData.nom} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="nom" className="block text-sm font-medium text-gray-700 dark:text-white">Nom</label>
+          <input type="text" name="nom" id="nom" value={formData.nom} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
-        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="prenom" className="block text-sm font-medium text-gray-700">Prénom</label>
-          <input type="text" name="prenom" id="prenom" value={formData.prenom} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="prenom" className="block text-sm font-medium text-gray-700 dark:text-white">Prénom</label>
+          <input type="text" name="prenom" id="prenom" value={formData.prenom} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
-        <div className="bg-white shadow-md rounded-lg m-6 p-6">
-          <label className="block text-sm font-medium text-gray-700">Sexe</label>
+        <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
+          <label className="block text-sm font-medium text-gray-700 dark:text-white">Sexe</label>
           <div className="flex items-center space-x-8">
               <input type="radio" id="homme" name="sexe" value="homme" checked={formData.sexe === 'homme'} onChange={handleChange} className="form-radio text-blue-500" />
-              <label htmlFor="homme" className="text-sm text-gray-700">Homme</label>
+              <label htmlFor="homme" className="text-sm text-gray-700 dark:text-white">Homme</label>
               <input type="radio" id="femme" name="sexe" value="femme" checked={formData.sexe === 'femme'} onChange={handleChange} className="form-radio text-blue-500" />
-              <label htmlFor="femme" className="text-sm text-gray-700">Femme</label>
+              <label htmlFor="femme" className="text-sm text-gray-700 dark:text-white">Femme</label>
           </div>
         </div>
-        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="date_naissance" className="block text-sm font-medium text-gray-700">Date de naissance</label>
-          <input type="date" name="date_naissance" id="date_naissance" value={formData.date_naissance} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="date_naissance" className="block text-sm font-medium text-gray-700 dark:text-white">Date de naissance</label>
+          <input type="date" name="date_naissance" id="date_naissance" value={formData.date_naissance} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
-        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="lieu_naissance" className="block text-sm font-medium text-gray-700">Lieu de naissance</label>
-          <input type="text" name="lieu_naissance" id="lieu_naissance" value={formData.lieu_naissance} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="lieu_naissance" className="block text-sm font-medium text-gray-700 dark:text-white">Lieu de naissance</label>
+          <input type="text" name="lieu_naissance" id="lieu_naissance" value={formData.lieu_naissance} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
-        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500">
+        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
  <h2 className="text-lg font-semibold mb-4">Adresse</h2>
  <div className="grid grid-cols-2 gap-4">
-    <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500">
-      <label htmlFor="ville" className="block text-sm font-medium text-gray-700">Ville</label>
-      <select name="ville" id="ville" value={formData.ville} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+    <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
+      <label htmlFor="ville" className="block text-sm font-medium text-gray-700 dark:text-white">Ville</label>
+      <select name="ville" id="ville" value={formData.ville} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md">
         <option value="agadir" className="default">Agadir</option>
         <option value="tanger" className="default">Tanger</option>
         {/* Add more options as needed */}
       </select>
     </div>
-    <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500">
-      <label htmlFor="rue" className="block text-sm font-medium text-gray-700">Rue / Avenue</label>
-      <input type="text" name="rue" id="rue" value={formData.rue} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+    <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
+      <label htmlFor="rue" className="block text-sm font-medium text-gray-700 dark:text-white">Rue / Avenue</label>
+      <input type="text" name="rue" id="rue" value={formData.rue} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
     </div>
-    <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500">
-      <label htmlFor="numeroRue" className="block text-sm font-medium text-gray-700">Numéro</label>
-      <input type="number" name="numeroRue" id="numeroRue" value={formData.numeroRue} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+    <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
+      <label htmlFor="numeroRue" className="block text-sm font-medium text-gray-700 dark:text-white">Numéro</label>
+      <input type="number" name="numeroRue" id="numeroRue" value={formData.numeroRue} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
     </div>
-    <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500">
-      <label htmlFor="codePostal" className="block text-sm font-medium text-gray-700">Code Postal</label>
-      <input type="text" name="codePostal" id="codePostal" value={formData.codePostal} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+    <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
+      <label htmlFor="codePostal" className="block text-sm font-medium text-gray-700 dark:text-white">Code Postal</label>
+      <input type="text" name="codePostal" id="codePostal" value={formData.codePostal} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
     </div>
  </div>
 
 
         </div>
-        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="telephone" className="block text-sm font-medium text-gray-700">Numéro de Téléphone</label>
-          <input type="telephone" name="telephone" id="telephone" value={formData.telephone} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="telephone" className="block text-sm font-medium text-gray-700 dark:text-white">Numéro de Téléphone</label>
+          <input type="telephone" name="telephone" id="telephone" value={formData.telephone} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
-        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 ">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-          <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-white">Email</label>
+          <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
-        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 ">
-        <label htmlFor="image" className="block text-sm font-medium text-gray-700">Image</label>
-        <input type="file" name="image" id="image" onChange={handleFileChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" />
+        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950 ">
+        <label htmlFor="image" className="block text-sm font-medium text-gray-700 dark:text-white">Image</label>
+        <input type="file" name="image" id="image" onChange={handleFileChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
       </div>
 
 

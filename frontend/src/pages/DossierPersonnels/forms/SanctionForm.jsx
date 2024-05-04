@@ -32,28 +32,28 @@ const SanctionForm = () =>{
         <div className="flex items-center justify-center min-h-screen">
           <form onSubmit={handleSubmit} className="space-y-4 mb-7 block w-1/2 p-2 border border-gray-300 rounded-md">
 
-          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
-          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500  dark:bg-primary-950 ">
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700 dark:text-white">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="date_sanction" className="block text-sm font-medium text-gray-700">Date Motif :</label>
-          <input type="date" name="date_sanction" id="date_sanction" value={formData.date_sanction} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500  dark:bg-primary-950 ">
+          <label htmlFor="date_sanction" className="block text-sm font-medium text-gray-700 dark:text-white">Date Motif :</label>
+          <input type="date" name="date_sanction" id="date_sanction" value={formData.date_sanction} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
-        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="motif" className="block text-sm font-medium text-gray-700">Motif :</label>
-          <input type="text" name="motif" id="motif" value={formData.motif} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
-        </div>
-
-        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="nature_sanction" className="block text-sm font-medium text-gray-700">nature sanction :</label>
-          <input type="text" name="nature_sanction" id="nature_sanction" value={formData.nature_sanction} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500  dark:bg-primary-950 ">
+          <label htmlFor="motif" className="block text-sm font-medium text-gray-700 dark:text-white">Motif :</label>
+          <input type="text" name="motif" id="motif" value={formData.motif} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500">
-            <label htmlFor="sanction" className="block text-sm font-medium text-gray-700">Sanction :</label>
-            <textarea name="sanction" id="sanction" value={formData.sanction} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md resize-none" required></textarea>
+        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500  dark:bg-primary-950 ">
+          <label htmlFor="nature_sanction" className="block text-sm font-medium text-gray-700 dark:text-white">nature sanction :</label>
+          <input type="text" name="nature_sanction" id="nature_sanction" value={formData.nature_sanction} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
+        </div>
+
+        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500  dark:bg-primary-950">
+            <label htmlFor="sanction" className="block text-sm font-medium text-gray-700 dark:text-white">Sanction :</label>
+            <textarea name="sanction" id="sanction" value={formData.sanction} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md resize-none" required></textarea>
         </div>
 
 

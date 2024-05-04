@@ -1,18 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosClient from "../api/axios";
 
-export const addInfoAdmin = createAsyncThunk('/addInfoAdmin',async (data, { rejectWithValue }) => {
+export const addInfoAdmin = createAsyncThunk('/addInfoAdmin', async (data, { rejectWithValue }) => {
     try {
-      const response = await axiosClient.post('http://localhost:8000/api/info-administrative', data,{
-        headers:{
-            'Content-Type':'multipart/form-data'
-        }
-      });
-      return response.data;
+        const response = await axiosClient.post('http://localhost:8000/api/info-administrative', data, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || error.message);
+        return rejectWithValue(error.response?.data || error.message);
     }
-  });
+});
 
 const adminInfoSlice = createSlice({
     name: 'info',

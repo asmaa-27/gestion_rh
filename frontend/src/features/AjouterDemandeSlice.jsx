@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosClient from "../api/axios";
 
-export const addInfofamily = createAsyncThunk('family/addInfofamily', async (data, { rejectWithValue }) => {
+export const adddemandeAbsence = createAsyncThunk('/adddemandeAbsence',async (data, { rejectWithValue }) => {
     try {
-      const response = await axiosClient.post('http://localhost:8000/api/info-familiale', data,{
+      const response = await axiosClient.post('http://localhost:8000/api/demande-absence', data,{
         headers:{
             'Content-Type':'multipart/form-data'
         }
@@ -12,10 +12,10 @@ export const addInfofamily = createAsyncThunk('family/addInfofamily', async (dat
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
-});
+  });
 
-const familyInfoSlice = createSlice({
-    name: 'family',
+const demandeAbsenceSlice = createSlice({
+    name: 'info',
     initialState: {
         info: [],
         status: 'idle',
@@ -24,18 +24,18 @@ const familyInfoSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(addInfofamily.pending, (state) => {
+            .addCase(adddemandeAbsence.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(addInfofamily.fulfilled, (state, action) => {
+            .addCase(adddemandeAbsence.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.info = action.payload;
             })
-            .addCase(addInfofamily.rejected, (state, action) => {
+            .addCase(adddemandeAbsence.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             });
     },
 });
 
-export default familyInfoSlice.reducer;
+export default demandeAbsenceSlice.reducer;

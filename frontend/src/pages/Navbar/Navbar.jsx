@@ -3,16 +3,19 @@ import { FaMoon, FaSun, FaSearch,   FaSignOutAlt } from 'react-icons/fa';
 import useAuthContext from '../../contexts/AuthContext';
 
 const Navbar = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const { logout } = useAuthContext();
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+        if (!isDarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }; 
   return (
-    <header className="bg-blue-400 text-white py-4 px-6 flex justify-between items-center">
+<header className="bg-blue-400 dark:bg-primary-950 text-white py-4 px-6 flex justify-between items-center">
       <div className="flex items-center">
         <a href="/" className="text-xl font-bold">
           RH App

@@ -1,60 +1,52 @@
-import { FaPlus} from "react-icons/fa";
-import { Link } from "react-router-dom";
+import  { useState } from 'react';
 
-const DocumentForm = () => {
-    return (
-       <div className="flex justify-center mx-auto">
-         <div className="grid grid-cols-3 gap-4 max-w-screen-md mb-6">
+const SubFoldersManager = () => {
+  const [subFolders, setSubFolders] = useState([
+    { id: 1, name: 'Dossier familial' },
+    { id: 2, name: 'Dossier administratif' },
+    { id: 3, name: 'Dossier de la prévoyance sociale' },
+    { id: 4, name: 'Dossier notations' },
+    { id: 5, name: 'Dossier affectations' },
+    { id: 6, name: 'Dossier autorisations d’absences' },
+    { id: 7, name: 'Dossier Divers' },
+  ]);
 
-         <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
-                <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dossier familial</h5>
-                <Link to="" className="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white bg-blue-300 rounded-lg hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-400 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    <FaPlus className="text-2xl"/>
-                </Link>
-            </div>
-             <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
-                <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dossier administratif</h5>
-                <Link to="" className="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white bg-blue-300 rounded-lg hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-400 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    <FaPlus className="text-2xl"/>
-                </Link>
-            </div>
-             <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
-                <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dossier notations</h5>
-                <Link to="" className="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white bg-blue-300 rounded-lg hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-400 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    <FaPlus className="text-2xl"/>
-                </Link>
-            </div>
-             <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
-                <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dossier affectations</h5>
-                <Link to="" className="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white bg-blue-300 rounded-lg hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-400 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    <FaPlus className="text-2xl"/>
-                </Link>
-            </div>
-             <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
-                <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dossier autorisations absence</h5>
-                <Link to="" className="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white bg-blue-300 rounded-lg hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-400 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    <FaPlus className="text-2xl"/>
-                </Link>
-             </div>
-             <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
-                <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dossier de la prévoyance sociale</h5>
-                <Link to="" className="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white bg-blue-300 rounded-lg hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-400 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    <FaPlus className="text-2xl"/>
-                </Link>
-           </div>
-             <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
-                <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dossier Divers</h5>
-                <Link to="" className="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white bg-blue-300 rounded-lg hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-blue-400 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    <FaPlus className="text-2xl"/>
-                </Link>
-           </div>
+  const [newSubFolder, setNewSubFolder] = useState('');
 
+  const handleAddSubFolder = () => {
+    if (newSubFolder.trim()!== '') {
+      setSubFolders([...subFolders, { id: subFolders.length + 1, name: newSubFolder }]);
+      setNewSubFolder('');
+    }
+  };
 
-
-         </div>
-
-       </div>
-    );
+  return (
+    <div className="p-4">
+      <h2 className="text-2xl font-bold mb-4">Gestion des Sous-Dossiers</h2>
+      <div className="mb-4">
+        <input
+          type="text"
+          value={newSubFolder}
+          onChange={(e) => setNewSubFolder(e.target.value)}
+          placeholder="Ajouter un nouveau sous-dossier"
+          className="w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        />
+        <button
+          onClick={handleAddSubFolder}
+          className="ml-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Ajouter
+        </button>
+      </div>
+      <ul className="list-disc list-inside">
+        {subFolders.map((folder) => (
+          <li key={folder.id} className="mb-2">
+            {folder.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
-export default DocumentForm;
+export default SubFoldersManager;

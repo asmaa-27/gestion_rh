@@ -30,19 +30,19 @@ const NotationForm = () =>{
         <div className="flex items-center justify-center min-h-screen">
           <form onSubmit={handleSubmit} className="space-y-4 mb-1 block w-1/2 p-2 border border-gray-300 rounded-md">
 
-          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="cin" className="block text-sm font-medium text-gray-700">CIN</label>
-          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <div className="bg-white shadow-md rounded-lg dark:bg-primary-950  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700 dark:text-white">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="annee" className="block text-sm font-medium text-gray-700">annee :</label>
-          <input type="text" name="annee" id="annee" value={formData.annee} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+          <div className="bg-white shadow-md rounded-lg dark:bg-primary-950  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="annee" className="block text-sm font-medium text-gray-700 dark:text-white">annee :</label>
+          <input type="text" name="annee" id="annee" value={formData.annee} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
-        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 ">
-          <label htmlFor="note" className="block text-sm font-medium text-gray-700">note :</label>
-          <input type="text" name="note" id="note" value={formData.note} onChange={handleChange} className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+        <div className="bg-white shadow-md rounded-lg dark:bg-primary-950  m-6 p-6 focus:border-blue-500 ">
+          <label htmlFor="note" className="block text-sm font-medium text-gray-700 dark:text-white">note :</label>
+          <input type="text" name="note" id="note" value={formData.note} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="rounded-lg m-6 p-6 flex items-center justify-start space-x-4">
