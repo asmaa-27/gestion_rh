@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d95eeb1f99349dfbbc9f10fc6cf0d19e",
+    "content-hash": "2795f077c9511730ed33938a17f4952f",
     "packages": [
         {
             "name": "brick/math",
@@ -3181,6 +3181,53 @@
                 }
             ],
             "time": "2023-11-08T05:53:05+00:00"
+        },
+        {
+            "name": "remls/hijri-date",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Remls/hijri-date.git",
+                "reference": "17a62fe307dddb3278fef5bc37985f484638a776"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Remls/hijri-date/zipball/17a62fe307dddb3278fef5bc37985f484638a776",
+                "reference": "17a62fe307dddb3278fef5bc37985f484638a776",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Remls\\HijriDate\\HijriDateServiceProvider"
+                    ]
+                },
+                "aliases": {
+                    "HijriDate": "Remls\\HijriDate\\Facades\\HijriDate"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Remls\\HijriDate\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Raaif Nasheed",
+                    "email": "adam.raaif.nasheed7@gmail.com"
+                }
+            ],
+            "description": "Laravel helper package for Hijri dates. Supports displaying dates in Dhivehi, Arabic and English.",
+            "support": {
+                "issues": "https://github.com/Remls/hijri-date/issues",
+                "source": "https://github.com/Remls/hijri-date/tree/v1.1.0"
+            },
+            "time": "2022-05-09T09:03:11+00:00"
         },
         {
             "name": "symfony/clock",

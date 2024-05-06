@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { adddemandeAbsence } from '../../features/AjouterDemandeSlice';
+import { AddemandeAbsence } from '../../features/DemandAbsenceSlice';
 import { useDispatch } from 'react-redux';
 
 
@@ -30,7 +30,7 @@ const AjouterDemande = () => {
 
  const handleSubmit = (e) => {
   e.preventDefault();
-  dispatch(adddemandeAbsence(formData));
+  dispatch(AddemandeAbsence(formData));
 
   console.log(formData);
     // Calculate the return date
@@ -63,10 +63,10 @@ const AjouterDemande = () => {
     <form onSubmit={handleSubmit} className="space-y-4 mb-5 block w-1/2 p-2 border border-gray-300 rounded-md">
       <h1 className="text-2xl font-bold mb-4 text-center">Demande Absence</h1>
 
-     
+
       <div className="mb-4  dark:bg-primary-950">
-        <label className="block text-sm font-medium dark:text-white text-black" htmlFor="cin">
-           CIN  
+        <label className="block text-sm font-medium dark:text-white dark:bg-slate-900 text-black" htmlFor="cin">
+           CIN
        </label>
         <input type="text" name="cin" value={formData.cin} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800  border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
       </div>
@@ -121,7 +121,7 @@ const AjouterDemande = () => {
 
       <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="reliquat">
-          Reliquat 
+          Reliquat
         </label>
         <input type="number" name="reliquat" value={formData.reliquat} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
       </div>

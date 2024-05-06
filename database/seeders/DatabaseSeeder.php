@@ -39,7 +39,8 @@ class DatabaseSeeder extends Seeder
             FormationRealiseeSeeder::class,
             EtatPresenceSeeder::class,
             EvaluationSeeder::class,
-            RecapitulatifSeeder::class
+            RecapitulatifSeeder::class,
+            HolidaysSeeder::class,
         ]);
     }
 }

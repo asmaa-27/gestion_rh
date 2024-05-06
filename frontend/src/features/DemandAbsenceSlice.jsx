@@ -11,11 +11,14 @@ async()=>{
 
 });
 
+
 export const ShowbyCIN=createAsyncThunk('/demande-absence/displayDemande',
 async(cin)=>{
     const response=await axiosClient.get(`http://localhost:8000/api/demande-absence/${cin}`);
     return   response.data  ;
 });
+
+
 export const DeleteDemande = createAsyncThunk(
   '/demande-absence/deleteDemande',
   async (cin) => {
@@ -24,10 +27,18 @@ export const DeleteDemande = createAsyncThunk(
   }
 );
 
-export const AddDemand = createAsyncThunk('/demande-absence/addDemand', async () => {
-    const response = await axiosClient.post('http://localhost:8000/api/demande-absence');
-    return response.data;
-});
+export const AddemandeAbsence = createAsyncThunk('/AddemandeAbsence',async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosClient.post('http://localhost:8000/api/demande-absence', data,{
+        headers:{
+            'Content-Type':'multipart/form-data'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  });
 
 
 
@@ -43,14 +54,14 @@ const demandAbsenceSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(AddDemand.pending, (state) => {
+    .addCase(AddemandeAbsence.pending, (state) => {
         state.loading = true;
       })
-      .addCase(AddDemand.fulfilled, (state, action) => {
+      .addCase(AddemandeAbsence.fulfilled, (state, action) => {
         state.loading = false;
-        state.demandeAbsence = action.payload;
+        state.demandeAbsence.push(action.payload);
       })
-      .addCase(AddDemand.rejected, (state, action) => {
+      .addCase(AddemandeAbsence.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

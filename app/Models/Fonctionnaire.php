@@ -55,4 +55,9 @@ class Fonctionnaire extends Model
     public function documents(){
         return $this->hasMany(Document::class, 'cin', 'cin');
     }
+
+    public function soldConge()
+    {
+        return $this->hasOne(SoldConge::class, 'cin', 'cin');
+    }
 }
