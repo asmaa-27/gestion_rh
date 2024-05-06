@@ -26,6 +26,7 @@ const PersonalInfoForm = () => {
 
  const handleFileChange = (e) => {
     setUploadedFile(e.target.files[0]);
+    // setFormData({ ...formData, [e.target.name]: e.target.files[0]});
  };
 
  const handleChange = (e) => {
@@ -37,6 +38,8 @@ const PersonalInfoForm = () => {
     e.preventDefault();
     if (uploadedFile) {
       console.log('Uploaded file:', uploadedFile.name);
+      const formData = new FormData();
+    formData.append('image', uploadedFile);
       // Here you would handle the file upload, e.g., send it to a server
     }
     setFormData({

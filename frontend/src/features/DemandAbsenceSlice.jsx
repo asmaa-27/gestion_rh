@@ -12,7 +12,7 @@ async()=>{
 });
 
 
-export const ShowbyCIN=createAsyncThunk('/demande-absence/displayDemande',
+export const ShowbyCIN=createAsyncThunk('/demande-absence/Showbycin',
 async(cin)=>{
     const response=await axiosClient.get(`http://localhost:8000/api/demande-absence/${cin}`);
     return   response.data  ;
