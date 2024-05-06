@@ -79,14 +79,14 @@ const PersonalInfoForm = () => {
           <input type="text" name="prenom" id="prenom" value={formData.prenom} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
         <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
-          <label className="block text-sm font-medium text-gray-700 dark:text-white">Sexe</label>
-          <div className="flex items-center space-x-8">
-              <input type="radio" id="homme" name="sexe" value="homme" checked={formData.sexe === 'homme'} onChange={handleChange} className="form-radio text-blue-500" />
-              <label htmlFor="homme" className="text-sm text-gray-700 dark:text-white">Homme</label>
-              <input type="radio" id="femme" name="sexe" value="femme" checked={formData.sexe === 'femme'} onChange={handleChange} className="form-radio text-blue-500" />
-              <label htmlFor="femme" className="text-sm text-gray-700 dark:text-white">Femme</label>
-          </div>
-        </div>
+  <label className="block text-sm font-medium text-gray-700 dark:text-white">Sexe</label>
+  <div className="flex items-center space-x-8">
+    <input type="radio" id="homme" name="sexe" value="Homme" checked={formData.sexe === 'Homme'} onChange={handleChange} className="form-radio text-blue-500" />
+    <label htmlFor="homme" className="text-sm text-gray-700 dark:text-white">Homme</label>
+    <input type="radio" id="femme" name="sexe" value="Femme" checked={formData.sexe === 'Femme'} onChange={handleChange} className="form-radio text-blue-500" />
+    <label htmlFor="femme" className="text-sm text-gray-700 dark:text-white">Femme</label>
+  </div>
+</div>
         <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950 ">
           <label htmlFor="date_naissance" className="block text-sm font-medium text-gray-700 dark:text-white">Date de naissance</label>
           <input type="date" name="date_naissance" id="date_naissance" value={formData.date_naissance} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />

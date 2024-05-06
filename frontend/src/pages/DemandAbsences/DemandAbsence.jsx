@@ -95,6 +95,9 @@ const DemandAbsence = () => {
             <th>Nombre de jour</th>
             <th>CIN</th>
             <th>Type de absence</th>
+            <th>Date de retour</th>
+            <th>Reliquant</th>
+            <th>Cumul des absence</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -105,6 +108,9 @@ const DemandAbsence = () => {
               <td className="border px-4 py-2">{demandeAbsence.nombre_de_jours}</td>
               <td className="border px-4 py-2">{demandeAbsence.cin}</td>
               <td className="border px-4 py-2">{demandeAbsence.type_d_absence}</td>
+              <td className="border px-4 py-2">{demandeAbsence.date_de_retour}</td>
+              <td className="border px-4 py-2">{demandeAbsence.reliquat}</td>
+              <td className="border px-4 py-2">{demandeAbsence.cumul_des_absences_de_maladie}</td>
               <td className="border px-4 py-2">
                 <div className="flex space-x-6">
                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-1" onClick={() => handleDelete(demandeAbsence.cin)}>

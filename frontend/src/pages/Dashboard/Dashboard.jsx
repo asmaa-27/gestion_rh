@@ -47,7 +47,7 @@ const Dashboard = () => {
    <main className=" p-8 pb-8 ">
   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
 
-    <div className="shadow-2xl p-4  dark:bg-primary-950">
+    <div className="shadow-2xl p-4  dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
       <h2 className="text-lg font-bold mb-4">Charte Absences</h2>
       <LineChart width={250} height={200} data={data}>
         <XAxis dataKey="name" />
@@ -58,7 +58,7 @@ const Dashboard = () => {
         <Line type="monotone" dataKey="value" stroke="#8884d8" />
       </LineChart>
     </div>
-    <div className="shadow-2xl p-4 dark:bg-primary-950">
+    <div className="shadow-2xl p-4 dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
       <h2 className="text-lg font-bold mb-4">Charte des Stagiaires</h2>
       <BarChart width={260} height={200} data={data}>
         <XAxis dataKey="name" />
@@ -69,7 +69,7 @@ const Dashboard = () => {
         <Bar dataKey="value" fill="#8884d8" />
       </BarChart>
     </div>
-    <div className="shadow-2xl p-4 dark:bg-primary-950">
+    <div className="shadow-2xl p-4 dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
       <h2 className="text-lg font-bold mb-4">Charte de congés</h2>
       <PieChart width={250} height={200}>
         <Pie data={pieData} color="#000000" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={60}>

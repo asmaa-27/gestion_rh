@@ -30,7 +30,7 @@ class InformationAdministrativeController extends Controller
     {
         // Validate the request data
         $validatedData = $request->validate([
-            'cin' => 'required|exists:fonctionnaires,string',
+            'cin' => 'required|exists:fonctionnaires,cin',
             'ppr' => 'required|numeric', // Assuming PPR is a numeric value
             'numero_poste_budgetaire' => 'required|numeric', // Assuming Numero Poste Budgetaire is a numeric value
             'date_recrutement' => 'required|date',

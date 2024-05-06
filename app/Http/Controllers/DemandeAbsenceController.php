@@ -41,8 +41,7 @@ class DemandeAbsenceController extends Controller
             'nombre_a_deduire' => 'required|integer',
             'nombre_a_ne_pas_deduire' => 'required|integer',
             'type_d_absence' => 'required|string',
-            'remplaçant' => 'nullable|string',
-            'cumul_des_absences_de_maladie' => 'nullable|integer',
+            'remplaçant' => 'nullable|string', 
         ]);
 
         $dateDepart = Carbon::parse($validatedData['date_depart']);
@@ -62,6 +61,8 @@ class DemandeAbsenceController extends Controller
         $cumulAbsencesMaladie = DemandeAbsence::where('cin', $validatedData['cin'])
                             ->where('type_d_absence', 'maladie')
                             ->sum('nombre_de_jours');
+
+
         $demandeAbsence = DemandeAbsence::create([
             'cin' => $validatedData['cin'],
             'date_depart' => $validatedData['date_depart'],

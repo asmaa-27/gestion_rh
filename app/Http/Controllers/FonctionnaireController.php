@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Validator;
 use App\Models\Fonctionnaire;
 use Illuminate\Http\Request;
-
+use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Facades\Storage;
 class FonctionnaireController extends Controller
 {
     /**
@@ -48,23 +48,24 @@ class FonctionnaireController extends Controller
         'codePostal' => 'nullable|integer',
         'telephone' => 'nullable|string|max:20',
         'email' => 'required|email|unique:fonctionnaires',
-        'image' => 'nullable|image|max:2048|mimes:jpeg,png,jpg,gif,svg',
+        'image' => [
+            'image|required',
+            File::types(['jpg', 'png', 'jpeg', 'pdf'])
+        ],
     ]);
 
-    // Create a new fonctionnaire
-    $fonctionnaires = Fonctionnaire::create( $validatedData );
 
-    // Handle the image upload if present
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $imageName);
-        $fonctionnaires->image = $imageName;
-        $fonctionnaires->save();
-    }
+    $fonctionnaire = Fonctionnaire::create($validatedData);
 
-    // Return a success response
-    return response()->json(['message' => 'Fonctionnaire created successfully', 'fonctionnaire' => $fonctionnaires], 201);
+// Handle the image upload if present
+if ($request->hasFile('image')) {
+    $image_url = $request->file('image')->store('images');
+    $fonctionnaire->image = Storage::url($image_url);
+    $fonctionnaire->save();
+}
+
+// Return a success response
+return response()->json(['message' => 'Fonctionnaire created successfully', 'fonctionnaire' => $fonctionnaire], 201);
 }
 
     /**

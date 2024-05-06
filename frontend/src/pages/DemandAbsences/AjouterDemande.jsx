@@ -17,8 +17,8 @@ const AjouterDemande = () => {
     type_d_absence: '',
     date_de_retour: '',
     remplaçant: '',
-    reliquat: '',
-    cumul_des_absences_de_maladie: '',
+    // reliquat: '',
+    // cumul_des_absences_de_maladie: '',
  });
  const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,8 +44,8 @@ const AjouterDemande = () => {
     // Update the form data with the calculated values
     setFormData({
       ...formData,
-      date_de_retour: date_de_retour.toISOString().slice(0, 10),
-      reliquat: reliquat.toString(),
+      // date_de_retour: date_de_retour.toISOString().slice(0, 10),
+      // reliquat: reliquat.toString(),
     });
 
     // Handle form submission logic
@@ -105,12 +105,12 @@ const AjouterDemande = () => {
         <input type="text" name="type_d_absence" value={formData.type_d_absence} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
       </div>
 
-      <div className="mb-4  dark:bg-primary-950">
+      {/* <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="date_de_retour">
           Date de retour
         </label>
         <input type="date" name="date_de_retour" value={formData.date_de_retour} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
-      </div>
+      </div> */}
 
       <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="remplaçant">
@@ -119,7 +119,7 @@ const AjouterDemande = () => {
         <input type="text" name="remplaçant" value={formData.remplaçant} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
       </div>
 
-      <div className="mb-4  dark:bg-primary-950">
+      {/* <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="reliquat">
           Reliquat
         </label>
@@ -131,7 +131,7 @@ const AjouterDemande = () => {
           Cumul des absences de maladie
         </label>
         <input type="number" name="cumul_des_absences_de_maladie" value={formData.cumul_des_absences_de_maladie} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
-      </div>
+      </div> */}
 
       <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4  items-center  flex justify-end">
   <span className='pr-4'>Submit</span>

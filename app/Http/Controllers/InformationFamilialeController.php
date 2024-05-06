@@ -32,7 +32,7 @@ class InformationFamilialeController extends Controller
     {
         // Validate the request data
         $validatedData = $request->validate([
-            'cin' => 'required|exists:fonctionnaires,string',
+            'cin' => 'required|exists:fonctionnaires,cin',
             'nom_pere' => 'required|string',
             'nom_mere' => 'required|string',
             'situation_familiale' => 'required|string',
@@ -55,19 +55,32 @@ class InformationFamilialeController extends Controller
 
         DB::beginTransaction();
 
-        try {
-            $informationsFamiliales = InformationFamiliale::create($request->only('cin', 'nom_pere', 'nom_mere', 'situation_familiale', 'date_mariage', 'nom_conjoint', 'cin_conjoint', 'date_naissance_conjoint', 'fonction_conjoint', 'nombre_enfants'));
+         try {
+        // Create the main InformationFamiliale record
+        $informationsFamiliales = InformationFamiliale::create($validatedData);
 
-            foreach ($request->enfants as $enfantData) {
-                Enfant::create(array_merge($enfantData, ['id_information_familiales' => $informationsFamiliales->id]));
+        // Create Enfants records
+        foreach ($request->enfants as $enfantData) {
+            // Ensure the id_information_familiales key is present in the $enfantData array
+            $enfantData['id_information_familiales'] = $informationsFamiliales->id;
+            Enfant::create($enfantData);
+        }
+
+        // Create Conjoints records
+        if ($request->has('conjoints')) {
+            foreach ($request->conjoints as $conjointData) {
+                // Inside the foreach loop for creating Conjoints
+                $conjoint = new Conjoint($conjointData);
+// Check if 'cin_conjoint' is provided, otherwise set it to null
+                    $conjoint->cin_conjoint = isset($conjointData['cin_conjoint']) ? $conjointData['cin_conjoint'] : null;
+// Associate each Conjoint with the InformationFamiliale
+                    $conjoint->id_information_familiales = $informationsFamiliales->id;
+                    $conjoint->save();
             }
+        }
 
-            if ($request->has('conjoints')) {
-                foreach ($request->conjoints as $conjointData) {
-                    Conjoint::create(array_merge($conjointData, ['id_information_familiales' => $informationsFamiliales->id]));
-                }
-            }
-
+        // Load related Enfants and Conjoints before returning the response
+        $informationsFamiliales->load('enfants', 'conjoints');
             DB::commit();
             return response()->json(['message' => 'InformationsFamiliales, Enfants, and Conjoints created successfully', 'informationsFamiliales' => $informationsFamiliales], 201);
         } catch (\Exception $e) {

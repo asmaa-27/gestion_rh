@@ -15,10 +15,10 @@ class InformationFamiliale extends Model
     }
 
     public function conjoints (){
-        return $this->hasMany(Conjoint::class ,'id_inforamtions_familiales','id');
+        return $this->hasMany(Conjoint::class ,'id_information_familiales','id');
     }
 
     public function enfants(){
-        return $this->hasMany(Enfant::class , 'id_inforamtions_familiales','id');
+        return $this->hasMany(Enfant::class , 'id_information_familiales','id');
     }
 }
