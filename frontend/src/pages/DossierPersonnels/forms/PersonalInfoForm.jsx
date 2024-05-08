@@ -24,15 +24,9 @@ const PersonalInfoForm = () => {
  });
 
 
-<<<<<<< HEAD
  const handleInputChange = (event) => {
   const { name, type, value, files } = event.target;
-=======
- const handleFileChange = (e) => {
-    setUploadedFile(e.target.files[0]);
-    // setFormData({ ...formData, [e.target.name]: e.target.files[0]});
- };
->>>>>>> 180868d6edaf8598b2deca543f9701c1bb084dfa
+
 
   // Handle file inputs
   if (type === "file") {
