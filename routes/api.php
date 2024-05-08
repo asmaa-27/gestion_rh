@@ -14,7 +14,7 @@ use App\Http\Controllers\SanctionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
+// Route::get('/fonctionnaire/{cin}',[FonctionnaireController::class, 'show']); 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {   return $request->user();
     });
@@ -28,6 +28,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('/diplome',DiplomeController::class);
     Route::apiResource('/sanction',SanctionController::class);
     Route::apiResource('/demande-absence',DemandeAbsenceController::class);
+    Route::get('/demande-absence/{cin}/pdf',[DemandeAbsenceController::class  ,'downloadPdf']);
     Route::apiResource('/document',DocumentController::class);
 
 });

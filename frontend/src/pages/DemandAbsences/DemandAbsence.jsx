@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { DisplayDemande ,DeleteDemande} from '../../features/DemandAbsenceSlice';
+import { DisplayDemande ,DeleteDemande ,downloadPdf} from '../../features/DemandAbsenceSlice';
 import { RiSearchLine } from 'react-icons/ri';
 import { FaPlus ,FaTrash,FaExclamationCircle } from "react-icons/fa";
 import ReactPaginate from 'react-paginate';
@@ -17,6 +17,10 @@ const DemandAbsence = () => {
   console.log('bonjour')
     dispatch(DisplayDemande());
  }, []);
+
+ const handleDownloadPdf = (cin) => {
+  dispatch(downloadPdf(cin));
+};
 
  const [filterDate, setFilterDate] = useState('');
  const [searchQuery, setSearchQuery] = useState('');
@@ -116,9 +120,10 @@ const DemandAbsence = () => {
                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-1" onClick={() => handleDelete(demandeAbsence.cin)}>
                     <FaTrash />
                  </button>
-                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                 <HiOutlineDownload />
-                 </button>
+                 <button onClick={() => handleDownloadPdf(demandeAbsence.cin)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  <HiOutlineDownload />
+</button>
+
                 </div>
               </td>
             </tr>

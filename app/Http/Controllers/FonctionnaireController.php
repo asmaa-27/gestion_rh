@@ -75,7 +75,7 @@ return response()->json(['message' => 'Fonctionnaire created successfully', 'fon
     {
         // $fonctionnaires = Fonctionnaire::where('cin', $cin)->with(['informationsFamiliales','informationsPrevoyanceSociale','informationsAdministratives','diplomes', 'affectations','demandesAbsence','mouvements','notations','sanctions','formationsRealisees', 'documents'])->get();
         $fonctionnaires = Fonctionnaire::where("cin",$cin)->firstOrFail();
-
+         
     return response()->json($fonctionnaires->with(["informationsFamiliales","informationsAdministratives","informationsPrevoyanceSociale","notations","formationsRealisees","diplomes","mouvements","affectations","demandesAbsence","sanctions","documents"])->get());
 
 }

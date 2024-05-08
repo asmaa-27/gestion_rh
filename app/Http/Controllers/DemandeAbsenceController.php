@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Holiday;
 use App\Models\Fonctionnaire;
-
+use Barryvdh\DomPDF\Facade\Pdf ;
 
 class DemandeAbsenceController extends Controller
 {
@@ -104,12 +104,17 @@ class DemandeAbsenceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DemandeAbsence $demandeAbsence,$cin)
-    {
-        $demandeAbsence = DemandeAbsence::with(['fonctionnaire'])->where('cin', $cin)->firstOrFail();
-        return response()->json($demandeAbsence->get());
-    }
+    // public function show(DemandeAbsence $demandeAbsence,$cin)
+    // {
+    //     $demandeAbsence = DemandeAbsence::with(['fonctionnaire'])->where('cin', $cin)->firstOrFail();
+    //     return response()->json($demandeAbsence->get());
+    // }
+public function downloadPdf(Request $request,$cin){
+    $demandeAbsence =DemandeAbsence::with(['fonctionnaire'])->where('cin', $cin)->firstOrFail();
+    $pdf = PDF::loadView('pdf_view',['demandeAbsence'=>$demandeAbsence]);
 
+    return $pdf->download('demande_absence.pdf');
+}
     /**
      * Show the form for editing the specified resource.
      */

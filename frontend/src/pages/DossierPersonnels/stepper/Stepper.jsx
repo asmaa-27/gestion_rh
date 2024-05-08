@@ -67,7 +67,7 @@ const Stepper = () => {
       </div>
       <div>
  {renderForm()}
- <div className="flex items-center justify-center mb-24 space-x-8">
+ <div className="flex items-center justify-center mb-24 space-x-8 mt-5">
 
       <button
         className="btn btn-previous"

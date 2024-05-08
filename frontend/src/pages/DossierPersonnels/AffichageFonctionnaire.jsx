@@ -106,8 +106,14 @@ const AffichageFonctionnaires = () => {
               <td className="border px-4 py-2">{fonctionnaires.id}</td>
               <td className="border px-4 py-2">{fonctionnaires.nom} {fonctionnaires.prenom}</td>
               <td className="border px-4 py-2">{fonctionnaires.cin}</td>
-              <td className="border px-4 py-2">{fonctionnaires.adresse}</td>
-              <td className="border px-4 py-2">{fonctionnaires.image}</td>
+              <td className="border px-4 py-2">{fonctionnaires.ville} - {fonctionnaires.rue}</td>
+              <td className="border px-4 py-2"><div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden' }}>
+    <img
+      src={fonctionnaires.image}
+      alt="Fonctionnaire"
+      style={{ width: '100%', height: '100%' }}
+    />
+  </div></td>
               <td className="border px-4 py-2">
                 <div className="flex space-x-6">
                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-1" onClick={() => handleDelete(fonctionnaires.cin)}>
@@ -141,7 +147,7 @@ const AffichageFonctionnaires = () => {
  marginPagesDisplayed={2}
  pageRangeDisplayed={5}
  onPageChange={({ selected }) => setCurrentPage(selected)}
- containerClassName={"flex justify-center items-center mt-auto"}
+ containerClassName={"flex justify-center items-center mt-5"}
  subContainerClassName={"flex space-x-2"}
  activeClassName={"bg-blue-500 text-white"}
  pageClassName={"border border-blue-500 px-3 py-1 rounded"}
