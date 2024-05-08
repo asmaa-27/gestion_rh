@@ -5,6 +5,7 @@ use App\Models\Fonctionnaire;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 class FonctionnaireController extends Controller
 {
     /**
@@ -74,9 +75,17 @@ return response()->json(['message' => 'Fonctionnaire created successfully', 'fon
     public function show( Fonctionnaire $fonctionnaires ,$cin)
     {
         // $fonctionnaires = Fonctionnaire::where('cin', $cin)->with(['informationsFamiliales','informationsPrevoyanceSociale','informationsAdministratives','diplomes', 'affectations','demandesAbsence','mouvements','notations','sanctions','formationsRealisees', 'documents'])->get();
-        $fonctionnaires = Fonctionnaire::where("cin",$cin)->firstOrFail();
+    //     $fonctionnaires = Fonctionnaire::where("cin",$cin)->firstOrFail();
          
-    return response()->json($fonctionnaires->with(["informationsFamiliales","informationsAdministratives","informationsPrevoyanceSociale","notations","formationsRealisees","diplomes","mouvements","affectations","demandesAbsence","sanctions","documents"])->get());
+    // return response()->json($fonctionnaires->with(["informationsFamiliales","informationsAdministratives","informationsPrevoyanceSociale","notations","formationsRealisees","diplomes","mouvements","affectations","demandesAbsence","sanctions","documents"])->get());
+    $fonctionnaires = DB::table('fonctionnaires')
+    ->join('informationsFamiliales', 'fonctionnaires.cin', '=', 'informationsFamiliales.cin')
+    ->join('diplomes', 'fonctionnaires.cin', '=', 'diplomes.cin')
+    // Add more joins as needed
+    ->select('fonctionnaires.*', 'informationsFamiliales.column_name', 'diplomes.column_name') // Specify the columns you want to select
+    ->where('fonctionnaires.cin', $cin)
+    ->get();
+return response()->json($fonctionnaires);
 
 }
 
