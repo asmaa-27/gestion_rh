@@ -106,7 +106,11 @@ const AffichageFonctionnaires = () => {
               <td className="border px-4 py-2">{fonctionnaires.id}</td>
               <td className="border px-4 py-2">{fonctionnaires.nom} {fonctionnaires.prenom}</td>
               <td className="border px-4 py-2">{fonctionnaires.cin}</td>
+<<<<<<< HEAD
               <td className="border px-4 py-2">{fonctionnaires.ville} - {fonctionnaires.rue}</td>
+=======
+              <td className="border px-4 py-2">{fonctionnaires.ville}</td>
+>>>>>>> 180868d6edaf8598b2deca543f9701c1bb084dfa
               <td className="border px-4 py-2"><div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden' }}>
     <img
       src={fonctionnaires.image}
@@ -147,7 +151,11 @@ const AffichageFonctionnaires = () => {
  marginPagesDisplayed={2}
  pageRangeDisplayed={5}
  onPageChange={({ selected }) => setCurrentPage(selected)}
+<<<<<<< HEAD
  containerClassName={"flex justify-center items-center mt-5"}
+=======
+ containerClassName={"flex justify-center items-center mt-auto mt-3"}
+>>>>>>> 180868d6edaf8598b2deca543f9701c1bb084dfa
  subContainerClassName={"flex space-x-2"}
  activeClassName={"bg-blue-500 text-white"}
  pageClassName={"border border-blue-500 px-3 py-1 rounded"}

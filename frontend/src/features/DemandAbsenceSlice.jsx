@@ -12,6 +12,7 @@ async()=>{
 });
 
 
+ 
 export const downloadPdf = createAsyncThunk('/demande-absence/downloadPdf', async (cin, { dispatch }) => {
   const response = await axiosClient.get(`http://localhost:8000/api/demande-absence/${cin}/pdf`, { responseType: 'blob' });
   const blobUrl = URL.createObjectURL(response.data); // Create a blob URL of the PDF
