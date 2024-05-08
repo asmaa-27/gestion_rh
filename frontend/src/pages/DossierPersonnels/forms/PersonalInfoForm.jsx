@@ -46,20 +46,6 @@ const PersonalInfoForm = () => {
 
  const handleSubmit = (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    // if (uploadedFile) {
-    //   console.log('Uploaded file:', uploadedFile.name);
-    //   // Here you would handle the file upload, e.g., send it to a server
-    // }
-    console.log('hello',formData)
-=======
-    if (uploadedFile) {
-      console.log('Uploaded file:', uploadedFile.name);
-      const formData = new FormData();
-    formData.append('image', uploadedFile);
-      // Here you would handle the file upload, e.g., send it to a server
-    }
->>>>>>> 180868d6edaf8598b2deca543f9701c1bb084dfa
     setFormData({
       cin: '',
       nom: '',
