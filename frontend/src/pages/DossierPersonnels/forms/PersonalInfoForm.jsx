@@ -38,7 +38,7 @@ const PersonalInfoForm = () => {
     // Handle text and select inputs
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value, 
+      [name]: value,
     }));
 
     // Update the formData with the combined centroide values
@@ -108,9 +108,8 @@ const PersonalInfoForm = () => {
     <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
       <label htmlFor="ville" className="block text-sm font-medium text-gray-700 dark:text-white">Ville</label>
       <select name="ville" id="ville" value={formData.ville} onChange={handleInputChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md">
-        <option value="agadir" className="default">Agadir</option>
-        <option value="tanger" className="default">Tanger</option>
-        {/* Add more options as needed */}
+        <option selected>Vous devez selectionner une ville</option>
+        <option value="agadir" > Agadir</option>
       </select>
     </div>
     <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">

@@ -55,6 +55,8 @@ const DemandAbsence = () => {
       const isSearchMatch =
         searchQuery === '' ||
         (demandeAbsence && demandeAbsence.cin.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (demandeAbsence && demandeAbsence.fonctionnaire.nom.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (demandeAbsence && demandeAbsence.fonctionnaire.prenom.toLowerCase().includes(searchQuery.toLowerCase())) ||
         (demandeAbsence && demandeAbsence.type_d_absence && demandeAbsence.type_d_absence.toLowerCase().includes(searchQuery.toLowerCase()));
       return isDateMatch && isSearchMatch;
     })
@@ -81,7 +83,7 @@ const DemandAbsence = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="recherche par nom"
+              placeholder="recherche par ..."
               className="border rounded-md px-2 py-1 pl-8 pr-3  dark:bg-primary-950"
             />
             <RiSearchLine className="absolute h-5 w-5 text-gray-500 top-1/2 transform -translate-y-1/2 left-3" />
@@ -93,13 +95,14 @@ const DemandAbsence = () => {
         </button>
       </div>
       <table className="w-full border-collapse border  dark:bg-primary-950">
-        <thead>
+        <thead className='border-b border-gray-200 dark:border-gray-700'>
           <tr className="border px-4 py-2">
-            <th>ID</th>
-            <th>Nombre de jour</th>
             <th>CIN</th>
+            <th>Nom Fonctionnaire</th>
+            <th>Date de depart</th>
             <th>Type de absence</th>
             <th>Date de retour</th>
+            <th>Nombre de jours </th>
             <th>Reliquant</th>
             <th>Cumul des absence</th>
             <th>Action</th>
@@ -108,12 +111,13 @@ const DemandAbsence = () => {
         <tbody>
           {filtereddemandeAbsence.map((demandeAbsence) => (
             <tr key={demandeAbsence.id}>
-              <td className="border px-4 py-2">{demandeAbsence.id}</td>
-              <td className="border px-4 py-2">{demandeAbsence.nombre_de_jours}</td>
               <td className="border px-4 py-2">{demandeAbsence.cin}</td>
+              <td className="border px-4 py-2">{demandeAbsence.fonctionnaire.nom} - {demandeAbsence.fonctionnaire.prenom}</td>
+              <td className="border px-4 py-2">{demandeAbsence.date_depart}</td>
               <td className="border px-4 py-2">{demandeAbsence.type_d_absence}</td>
               <td className="border px-4 py-2">{demandeAbsence.date_de_retour}</td>
               <td className="border px-4 py-2">{demandeAbsence.reliquat}</td>
+              <td className="border px-4 py-2">{demandeAbsence.nombre_de_jours}</td>
               <td className="border px-4 py-2">{demandeAbsence.cumul_des_absences_de_maladie}</td>
               <td className="border px-4 py-2">
                 <div className="flex space-x-6">
@@ -147,7 +151,7 @@ const DemandAbsence = () => {
  marginPagesDisplayed={2}
  pageRangeDisplayed={5}
  onPageChange={({ selected }) => setCurrentPage(selected)}
- containerClassName={"flex justify-center items-center mt-auto"}
+ containerClassName={"flex justify-center items-center mt-auto mt-3"}
  subContainerClassName={"flex space-x-2"}
  activeClassName={"bg-blue-500 text-white"}
  pageClassName={"border border-blue-500 px-3 py-1 rounded"}

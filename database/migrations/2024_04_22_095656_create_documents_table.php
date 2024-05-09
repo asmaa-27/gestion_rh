@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('cin');
             $table->string('type');
-            $table->string('nom')->nullable();
             $table->string('chemin');
             $table->timestamps();
             $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();

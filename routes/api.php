@@ -14,7 +14,6 @@ use App\Http\Controllers\SanctionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/fonctionnaire/{cin}',[FonctionnaireController::class, 'show']); 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {   return $request->user();
     });

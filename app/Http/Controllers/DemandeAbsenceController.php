@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Holiday;
 use App\Models\Fonctionnaire;
+use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf ;
 
 class DemandeAbsenceController extends Controller
@@ -17,8 +18,8 @@ class DemandeAbsenceController extends Controller
      */
     public function index()
     {
-        $demandeAbsence = DemandeAbsence::all();
-        return response()->json($demandeAbsence);
+        $demandeAbsence = DemandeAbsence::with('fonctionnaire');
+        return response()->json($demandeAbsence->get());
     }
 
     /**
@@ -41,7 +42,12 @@ class DemandeAbsenceController extends Controller
             'nombre_a_deduire' => 'required|integer',
             'nombre_a_ne_pas_deduire' => 'required|integer',
             'type_d_absence' => 'required|string',
-            'remplaçant' => 'nullable|string', 
+            'remplaçant' => 'nullable|string',
+            'file'=>[
+                'nullable',
+                'file',
+                'mimes:jpg,png,jpeg,pdf,zip,rar,txt,doc,docx'
+            ],
         ]);
 
         $dateDepart = Carbon::parse($validatedData['date_depart']);
@@ -58,9 +64,9 @@ class DemandeAbsenceController extends Controller
         }
 
         $reliquat = $validatedData['nombre_de_jours'] - $validatedData['nombre_a_deduire'];
-        $cumulAbsencesMaladie = DemandeAbsence::where('cin', $validatedData['cin'])
-                            ->where('type_d_absence', 'maladie')
-                            ->sum('nombre_de_jours');
+        // $cumulAbsencesMaladie = DemandeAbsence::where('cin', $validatedData['cin'])
+        //                     ->where('type_d_absence', 'maladie')
+        //                     ->sum('nombre_de_jours');
 
 
         $demandeAbsence = DemandeAbsence::create([
@@ -73,9 +79,24 @@ class DemandeAbsenceController extends Controller
             'date_de_retour' => $dateRetour->format('Y-m-d'),
             'remplaçant' => $validatedData['remplaçant'],
             'reliquat' => $reliquat,
-            'cumul_des_absences_de_maladie' => $cumulAbsencesMaladie,
+
         ]);
 
+        if ($validatedData['type_d_absence'] === 'maladie') {
+            $cumulAbsencesMaladie = DemandeAbsence::where('cin', $validatedData['cin'])
+                                ->where('type_d_absence', 'maladie')
+                                ->sum('nombre_de_jours');
+
+            // Update the record with the calculated cumul_des_absences_de_maladie
+            $demandeAbsence->cumul_des_absences_de_maladie = $cumulAbsencesMaladie;
+            $demandeAbsence->save();
+        }
+        // Handle the image upload if present
+        if ($request->hasFile('file')) {
+            $file_url = $request->file('file')->store('files');
+            $demandeAbsence->file = Storage::url($file_url);
+            $demandeAbsence->save();
+        }
         return response()->json(['message' => 'Demande Absence created successfully', 'demandeAbsence' => $demandeAbsence], 201);
     }
 
@@ -101,17 +122,10 @@ class DemandeAbsenceController extends Controller
         })->update(['nombre_jours_conges' => 22]);
     }
 }
-    /**
-     * Display the specified resource.
-     */
-    // public function show(DemandeAbsence $demandeAbsence,$cin)
-    // {
-    //     $demandeAbsence = DemandeAbsence::with(['fonctionnaire'])->where('cin', $cin)->firstOrFail();
-    //     return response()->json($demandeAbsence->get());
-    // }
-public function downloadPdf(Request $request,$cin){
+
+public function downloadPdf( $cin){
     $demandeAbsence =DemandeAbsence::with(['fonctionnaire'])->where('cin', $cin)->firstOrFail();
-    $pdf = PDF::loadView('pdf_view',['demandeAbsence'=>$demandeAbsence]);
+    $pdf = PDF::loadView('pdf_view',['demandeAbsence'=>$demandeAbsence, 'fonctionnaire' => $demandeAbsence->fonctionnaire]);
 
     return $pdf->download('demande_absence.pdf');
 }
@@ -134,8 +148,13 @@ public function downloadPdf(Request $request,$cin){
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DemandeAbsence $demandeAbsence)
-    {
-        //
-    }
+    public function destroy($cin)
+{
+    $demandeAbsence = DemandeAbsence::where('cin', $cin)->firstOrFail();
+
+
+    $demandeAbsence->delete();
+
+    return response()->json(['message' => 'DemandeAbsence deleted successfully'], 200);
+}
 }

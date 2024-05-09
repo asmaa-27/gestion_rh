@@ -69,8 +69,6 @@ const fonctionnairesSlice = createSlice({
                 state.error=action.error.message;
         })
 
-
-
         .addCase(deleteFonctionnaire.fulfilled, (state, action) => {
           state.loading = false;
           state.fonctionnaires = state.fonctionnaires.filter(info => info.cin !== action.payload);

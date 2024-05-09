@@ -72,6 +72,7 @@ if (!fonctionnaires  )
             <td className="border px-4 py-2">{fonctionnaires.id}</td>
             <td className="border px-4 py-2">{fonctionnaires.nom}</td>
             <td className="border px-4 py-2">{fonctionnaires.cin}</td>
+
           </tr>
 
             ))
