@@ -102,17 +102,22 @@ const PersonalInfoForm = () => {
           <label htmlFor="lieu_naissance" className="block text-sm font-medium text-gray-700 dark:text-white">Lieu de naissance</label>
           <input type="text" name="lieu_naissance" id="lieu_naissance" value={formData.lieu_naissance} onChange={handleInputChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
-        <div className="bg-white shadow-md rounded-lg m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
+        <div className=" m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
  <h2 className="text-lg font-semibold mb-4">Adresse</h2>
- <div className="grid grid-cols-2 gap-4">
-    <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
-      <label htmlFor="ville" className="block text-sm font-medium text-gray-700 dark:text-white">Ville</label>
+ <div className="bg-white shadow-md mb-6 rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
+      <label htmlFor="ville" className="block text-sm font-medium  text-gray-700 dark:text-white">Ville</label>
       <select name="ville" id="ville" value={formData.ville} onChange={handleInputChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md">
-        <option value="agadir" className="default">Agadir</option>
-        <option value="tanger" className="default">Tanger</option>
-        {/* Add more options as needed */}
+        <option selected>selectionner la ville:</option>
+        <option value="agadir">Agadir</option>
+        
       </select>
     </div>
+ <div className="grid grid-cols-2 gap-4">
+ <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
+      <label htmlFor="quartier" className="block text-sm font-medium text-gray-700 dark:text-white">quartier </label>
+      <input type="text" name="quartier" id="quartier" value={formData.quartier} onChange={handleInputChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
+    </div>
+    
     <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
       <label htmlFor="rue" className="block text-sm font-medium text-gray-700 dark:text-white">Rue / Avenue</label>
       <input type="text" name="rue" id="rue" value={formData.rue} onChange={handleInputChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
@@ -148,7 +153,7 @@ const PersonalInfoForm = () => {
     <FaExclamationCircle className="text-red-500 mr-2 text-2xl" />
     <span className="text-red-500 font-bold">Veuillez vérifier les informations avant de continuer</span>
     <button  type='submit' className="bg-cyan-400 text-white px-6 py-3 rounded ml-4 relative flex">
-      <span className='pr-4'>Submit</span>
+      <span className='pr-4'>Soumettre</span>
       <span className="inset-0 flex items-center justify-end pr-4">
         <FaRegCheckCircle className="text-2xl" />
       </span>

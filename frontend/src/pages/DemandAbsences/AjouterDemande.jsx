@@ -15,46 +15,48 @@ const AjouterDemande = () => {
     nombre_a_deduire: '',
     nombre_a_ne_pas_deduire: '',
     type_d_absence: '',
-    date_de_retour: '',
     remplaçant: '',
-    // reliquat: '',
-    // cumul_des_absences_de_maladie: '',
+    file:null,
  });
- const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
- };
+
+
+ const handleInputChange = (event) => {
+    const { name, type, value, files } = event.target;
+
+
+    // Handle file inputs
+    if (type === "file") {
+      setFormData((prevState) => ({
+        ...prevState,
+        [name]: files[0], // Assuming single file upload
+      }));
+    } else {
+      // Handle text and select inputs
+      setFormData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+
+      // Update the formData with the combined centroide values
+    }}
 
  const handleSubmit = (e) => {
   e.preventDefault();
+  setFormData({
+    cin:'',
+    date_depart: '',
+    nombre_de_jours: '',
+    nombre_a_deduire: '',
+    nombre_a_ne_pas_deduire: '',
+    type_d_absence: '',
+    remplaçant: '',
+    file:null,
+})
   dispatch(AddemandeAbsence(formData));
 
+
   console.log(formData);
-    // Calculate the return date
-    const date_depart = new Date(formData.date_depart);
-    const daysOff = parseInt(formData.nombre_de_jours);
-    const date_de_retour = new Date(date_depart.getTime() + (daysOff * 24 * 60 * 60 * 1000));
 
-    // Calculate the remaining days
-    const reliquat = 22 - (parseInt(formData.nombre_a_deduire) + parseInt(formData.cumul_des_absences_de_maladie));
-
-    // Update the form data with the calculated values
-    setFormData({
-      ...formData,
-      // date_de_retour: date_de_retour.toISOString().slice(0, 10),
-      // reliquat: reliquat.toString(),
-    });
-
-    // Handle form submission logic
-    console.log('Form submitted:', formData);
-
-    // Print leave decisions on January 2nd of each year
-    if (date_de_retour.getMonth() === 0 && date_de_retour.getDate() === 2) {
-      console.log('Printing leave decisions...');
-    }
     navigate('/Demande-absence')
  };
 
@@ -64,11 +66,11 @@ const AjouterDemande = () => {
       <h1 className="text-2xl font-bold mb-4 text-center">Demande Absence</h1>
 
 
-      <div className="mb-4  dark:bg-primary-950">
-        <label className="block text-sm font-medium dark:text-white dark:bg-slate-900 text-black" htmlFor="cin">
+      <div className="mb-4   ">
+        <label className="block text-sm font-medium dark:text-white  text-black" htmlFor="cin">
            CIN
        </label>
-        <input type="text" name="cin" value={formData.cin} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800  border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
+        <input type="text" name="cin" value={formData.cin} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-950  border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
       </div>
       <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="date_depart">
@@ -98,19 +100,19 @@ const AjouterDemande = () => {
         <input type="number" name="nombre_a_ne_pas_deduire" value={formData.nombre_a_ne_pas_deduire} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
       </div>
 
-      <div className="mb-4  dark:bg-primary-950">
-        <label className="block text-sm font-medium dark:text-white text-black" htmlFor="type_d_absence">
-          Type Absence
-        </label>
-        <input type="text" name="type_d_absence" value={formData.type_d_absence} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
-      </div>
+      <div className="mb-4 dark:bg-primary-950">
+      <label className="block text-sm font-medium text-black dark:text-white" htmlFor="type_d_absence">Type Absence</label>
+          <select name="type_d_absence" value={formData.type_d_absence} onChange={handleInputChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required>
+            <option value="" selected>Sélectionner une option</option>
+            <option value="maladie">Maladie</option>
+            <option value="congé">Congé annuel</option>
+            <option value="formation">Formation</option>
+            <option value="mission">Mission</option>
+            <option value="hajj">Hajj</option>
+            <option value="congé personnel">Congé personnel</option>
+          </select>
 
-      {/* <div className="mb-4  dark:bg-primary-950">
-        <label className="block text-sm font-medium dark:text-white text-black" htmlFor="date_de_retour">
-          Date de retour
-        </label>
-        <input type="date" name="date_de_retour" value={formData.date_de_retour} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
-      </div> */}
+</div>
 
       <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="remplaçant">
@@ -119,22 +121,15 @@ const AjouterDemande = () => {
         <input type="text" name="remplaçant" value={formData.remplaçant} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
       </div>
 
-      {/* <div className="mb-4  dark:bg-primary-950">
-        <label className="block text-sm font-medium dark:text-white text-black" htmlFor="reliquat">
-          Reliquat
+      <div className="mb-4  dark:bg-primary-950">
+        <label className="block text-sm font-medium dark:text-white text-black" htmlFor="file" id='file'>
+        Fichiers
         </label>
-        <input type="number" name="reliquat" value={formData.reliquat} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
+        <input type="file" name="file" id='file'  onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
       </div>
 
-      <div className="mb-4  dark:bg-primary-950">
-        <label className="block text-sm font-medium dark:text-white text-black" htmlFor="cumul_des_absences_de_maladie">
-          Cumul des absences de maladie
-        </label>
-        <input type="number" name="cumul_des_absences_de_maladie" value={formData.cumul_des_absences_de_maladie} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
-      </div> */}
-
       <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4  items-center  flex justify-end">
-  <span className='pr-4'>Submit</span>
+  <span className='pr-4'>Soumettre</span>
 </button>
 
     </form>

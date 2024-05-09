@@ -12,6 +12,12 @@ const data = [
   { name: 'Apr', value: 15 },
   { name: 'May', value: 0 },
   { name: 'Jun', value: 12 },
+  { name: 'july', value: 20 },
+  { name: 'aug', value: 3 },
+  { name: 'sep', value: 10 },
+  { name: 'oct', value: 15 },
+  { name: 'nov', value: 0 },
+  { name: 'dec', value: 12 },
 ];
 
 const pieData = [
@@ -25,9 +31,9 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const Dashboard = () => {
 
-  
+
   return (
-    <> 
+    <>
     <header className="container mx-auto pb-10 px-4 flex justify-center bg-header-bg  rounded-lg shadow-2xl   bg-cover items-center mb-20 mt-4 p-8">
     <div className="text-center lg:text-4xl font-bold text-white">
       <div className="flex-1   bg-center  h-full">
