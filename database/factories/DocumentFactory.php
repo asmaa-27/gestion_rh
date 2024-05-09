@@ -19,7 +19,6 @@ class DocumentFactory extends Factory
         return [
             'cin' => \App\Models\Fonctionnaire::factory()->create()->cin,
             'type' => $this->faker->word,
-            'nom' => $this->faker->sentence(),
             'chemin' => $this->faker->filePath(),
                 ];
     }

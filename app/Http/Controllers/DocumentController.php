@@ -30,8 +30,11 @@ class DocumentController extends Controller
         $request->validate([
             'cin' => 'required|exists:fonctionnaires,cin',
             'type' => 'required|string',
-            'nom' => 'nullable|string',
-            'chemin' => 'required|file',
+            'chemin' => [
+                'required',
+                'file',
+                'mimes:jpg,png,jpeg,pdf,zip,rar,txt,doc,docx'
+            ],
         ]);
 
         if ($request->hasFile('chemin')) {
@@ -41,7 +44,6 @@ class DocumentController extends Controller
             $document = Document::create([
                 'cin' => $request->input('cin'),
                 'type' => $request->input('type'),
-                'nom' => $request->input('nom'),
                 'chemin' => $path,
             ]);
 

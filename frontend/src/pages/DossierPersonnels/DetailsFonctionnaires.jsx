@@ -85,6 +85,7 @@ const DetailsFonctionnaires = () => {
           </div>
         </div>
       </div>
+
     </>
   );
 };

@@ -49,7 +49,7 @@ const DilpomeForm = () =>{
 
             <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
             <label htmlFor="date_obtention" className="block text-sm font-medium text-gray-700  dark:text-white">Date obtention :</label>
-            <input type="text" name="date_obtention" id="date_obtention" value={formData.date_obtention} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
+            <input type="date" name="date_obtention" id="date_obtention" value={formData.date_obtention} onChange={handleChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
             </div>
 
             <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">

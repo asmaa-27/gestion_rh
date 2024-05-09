@@ -24,7 +24,7 @@ class Fonctionnaire extends Model
     }
 
     public function notations (){
-        return $this->hasOne(Notation::class, 'cin', 'cin');
+        return $this->hasMany(Notation::class, 'cin', 'cin');
     }
 
     public function formationsRealisees()

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     use HasFactory;
-    protected $fillable=["cin","type","nom","chemin"];
+    protected $fillable=["cin","type" ,"chemin"];
 
     public function fonctionnaire()
     {

@@ -37,4 +37,8 @@ export const Addocument = createAsyncThunk('/adddocument',async (data, { rejectW
     },
 });
 
+<<<<<<< HEAD
 export default documentSlice.reducer;
+=======
+export default documentSlice.reducer;
+>>>>>>> 32316ed34c7abf92b99f47f49e523e359b12d1cb

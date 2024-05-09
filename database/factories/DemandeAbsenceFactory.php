@@ -27,6 +27,7 @@ class DemandeAbsenceFactory extends Factory
             'remplaçant' => $this->faker->name,
             'reliquat' => $this->faker->numberBetween(1, 10),
             'cumul_des_absences_de_maladie' => $this->faker->numberBetween(1, 10),
+            'file' => $this->faker->filePath(),
         ];
     }
 }
