@@ -35,8 +35,7 @@
 </head>
 <body>
     <div class="header">
-        {{-- <img src="https://agadir-indh.gov.ma/wp-content/themes/html5indh/img/royaume-du-maroc-fr.png" alt=""> --}}
-        {{-- <img src="{{ public_path('storage/logo/logo.png') }}" alt=""> --}}
+         <img src="{{ public_path('logo/logo.png') }}" alt="">
         <h1>Demande d'absence</h1>
     </div>
     <div class="content">

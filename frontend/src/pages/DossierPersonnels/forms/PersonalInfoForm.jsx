@@ -122,7 +122,7 @@ const PersonalInfoForm = () => {
     </div>
     <div className="bg-white shadow-md rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
       <label htmlFor="codePostal" className="block text-sm font-medium text-gray-700 dark:text-white">Code Postal</label>
-      <input type="text" name="codePostal" id="codePostal" value={formData.codePostal} onChange={handleInputChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
+      <input type="number" name="codePostal" id="codePostal" value={formData.codePostal} onChange={handleInputChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
     </div>
  </div>
 
