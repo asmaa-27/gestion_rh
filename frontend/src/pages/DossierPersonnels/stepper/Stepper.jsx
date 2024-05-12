@@ -76,7 +76,7 @@ const Stepper = () => {
         }}
         disabled={currentStep === 1}
       >
-        Previous
+        Precedent
       </button>
 
       {!complete && (
@@ -92,7 +92,7 @@ const Stepper = () => {
             }}
             disabled={false}
           >
-            {currentStep === steps.length ? "Finish" : "Next"}
+            {currentStep === steps.length ? "Fin" : "Suivant"}
           </button>
         )}
     </div>

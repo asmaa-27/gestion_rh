@@ -36,30 +36,35 @@ const AdminInfoForm = () => {
     });
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+      const { name, value, checked } = e.target;
+      const newValue =  e.target.type === 'radio'? checked : value;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: newValue,
+      }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         // Vérifier si le détachement est terminé
-        if (formData.situation_administrative === 'detacheSortant') {
-            const dateDetachement = new Date(formData.date_recrutement);
-            const dateFin = new Date(dateDetachement.getFullYear() + 3, dateDetachement.getMonth(), dateDetachement.getDate());
-            const dateAujourdHui = new Date();
+        // if (formData.situation_administrative === 'detacheSortant') {
+        //     const dateDetachement = new Date(formData.date_recrutement);
+        //     const dateFin = new Date(dateDetachement.getFullYear() + 3, dateDetachement.getMonth(), dateDetachement.getDate());
+        //     const dateAujourdHui = new Date();
 
-            if (dateAujourdHui >= dateFin) {
-                // Afficher un message pour demander le renouvellement, la fin du détachement ou l'intégration
-                if (window.confirm('Le détachement de ce fonctionnaire est terminé. Que souhaitez-vous faire?')) {
-                    // Mettre à jour les informations administratives en conséquence
-                    setFormData({
-                        ...formData,
-                        situation_administrative: 'Integre',
-                        integre_apres_detachement: true,
-                    });
-                }
-            }
-        }
+        //     if (dateAujourdHui >= dateFin) {
+        //         // Afficher un message pour demander le renouvellement, la fin du détachement ou l'intégration
+        //         if (window.confirm('Le détachement de ce fonctionnaire est terminé. Que souhaitez-vous faire?')) {
+        //             // Mettre à jour les informations administratives en conséquence
+        //             setFormData({
+        //                 ...formData,
+        //                 situation_administrative: 'Integre',
+        //                 integre_apres_detachement: true,
+        //             });
+        //         }
+        //     }
+        // }
 
         // Envoyer les données au Redux store
         dispatch(addInfoAdmin(formData));
@@ -80,7 +85,7 @@ const AdminInfoForm = () => {
         </div>
 
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
-        <label htmlFor="ppr" className="block text-sm font-medium text-gray-700 dark:text-white">ppr: Numéro immatriculation :</label>
+        <label htmlFor="ppr" className="block text-sm font-medium text-gray-700 dark:text-white"> Numéro immatriculation :</label>
         <input type="text" name="ppr" id="ppr" value={formData.ppr} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
       </div>
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
@@ -105,34 +110,34 @@ const AdminInfoForm = () => {
       </div>
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
         <label htmlFor="grade" className="block text-sm font-medium text-gray-700 dark:text-white">Grade :</label>
-        <input type="text" name="grade" id="grade" value={formData.grade} onChange={handleChange} className=":mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
+        <input type="number" name="grade" id="grade" value={formData.grade} onChange={handleChange} className=":mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
       </div>
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
         <label htmlFor="anciennete_grade" className="block text-sm font-medium text-gray-700 dark:text-white">Ancienneté grade :</label>
-        <input type="text" name="anciennete_grade" id="anciennete_grade" value={formData.anciennete_grade} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
+        <input type="number" name="anciennete_grade" id="anciennete_grade" value={formData.anciennete_grade} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
       </div>
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
         <label htmlFor="echelle" className="block text-sm font-medium text-gray-700 dark:text-white">Echelle :</label>
-        <input type="text" name="echelle" id="echelle" value={formData.echelle} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
+        <input type="number" name="echelle" id="echelle" value={formData.echelle} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
       </div>
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
         <label htmlFor="anciennete_echelle" className="block text-sm font-medium text-gray-700 dark:text-white">Ancienneté échelle :</label>
-        <input type="text" name="anciennete_echelle" id="anciennete_echelle" value={formData.anciennete_echelle} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
+        <input type="number" name="anciennete_echelle" id="anciennete_echelle" value={formData.anciennete_echelle} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
       </div>
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
         <label htmlFor="echelon" className="block text-sm font-medium text-gray-700 dark:text-white">echelon :</label>
-        <input type="text" name="echelon" id="echelon" value={formData.echelon} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
+        <input type="number" name="echelon" id="echelon" value={formData.echelon} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
       </div>
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
         <label htmlFor="anciennete_echelon" className="block text-sm font-medium text-gray-700 dark:text-white">Ancienneté échelon :</label>
-        <input type="text" name="anciennete_echelon" id="anciennete_echelon" value={formData.anciennete_echelon} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
+        <input type="number" name="anciennete_echelon" id="anciennete_echelon" value={formData.anciennete_echelon} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
       </div>
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
         <label htmlFor="indice" className="block text-sm font-medium text-gray-700 dark:text-white">Indice :</label>
         <input type="text" name="indice" id="indice" value={formData.indice} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
       </div>
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
-        <label htmlFor="statut_administratif" className="block text-sm font-medium text-gray-700 dark:text-white">Statut administratif :</label>
+        <label htmlFor="statut_administratif" className="block text-sm font-medium text-gray-700 dark:text-white">Statut administrative :</label>
         <input type="text" name="statut_administratif" id="statut_administratif" value={formData.statut_administratif} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" />
       </div>
       <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
@@ -145,28 +150,66 @@ const AdminInfoForm = () => {
         </select>
       </div>
       <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
-          <label htmlFor="fin_periode_detachementv" className="block text-sm font-medium text-gray-700 dark:text-white">fin_periode_detachementv</label>
+          <label htmlFor="fin_periode_detachementv" className="block text-sm font-medium text-gray-700 dark:text-white">fin_periode_detachement</label>
           <input type="date" name="fin_periode_detachementv" id="fin_periode_detachementv" value={formData.fin_periode_detachementv} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md"  />
         </div>
+       
+{/* <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
+    <label className="block text-sm font-medium text-gray-700 dark:text-white">Intégré après détachement</label>
+    <div className="flex items-center space-x-8">
+        <input type="checkbox" id="integre_apres_detachement" name="integre_apres_detachement" checked={formData.integre_apres_detachement} onChange={handleChange} className="form-radio text-blue-500" />
+        <label htmlFor="integre_apres_detachement" className="text-sm text-gray-700 dark:text-white">true</label>
+    </div>
+</div> */}
 
-        <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
-        <label htmlFor="integre_apres_detachement" className="block text-sm font-medium text-gray-700 dark:text-white">Situation administrative :</label>
-        <select name="integre_apres_detachement" id="integre_apres_detachement" value={formData.integre_apres_detachement} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md">
-          <option value="">Sélectionnez un choix :</option>
-          <option value="enFonction">vrai</option>
-          <option value="detacheEntrant">faux</option>
-        </select>
-      </div>
+<div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
+  <label className="block text-sm font-medium text-gray-700 dark:text-white">Intégré après détachement</label>
+  <div className="flex items-center space-x-8">
+    <input type="radio" id="integre_apres_detachement_true" name="integre_apres_detachement" value="true" checked={formData.integre_apres_detachement === 'true'} onChange={handleChange} className="form-radio text-blue-500" />
+    <label htmlFor="integre_apres_detachement_true" className="text-sm text-gray-700 dark:text-white">true</label>
+    <input type="radio" id="integre_apres_detachement_false" name="integre_apres_detachement" value="false" checked={formData.integre_apres_detachement === 'false'} onChange={handleChange} className="form-radio text-blue-500" />
+    <label htmlFor="integre_apres_detachement_false" className="text-sm text-gray-700 dark:text-white">false</label>
+  </div>
+</div>
 
-      <div  className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
-        <label htmlFor="integre_apres_mise_disposition" className="block text-sm font-medium text-gray-700 dark:text-white">integration apres disposiion :</label>
-        <select name="integre_apres_mise_disposition" id="integre_apres_mise_disposition" value={formData.integre_apres_mise_disposition} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md">
-          <option value="">Sélectionnez un choix :</option>
-          <option value="enFonction">vrai</option>
-          <option value="detacheEntrant">faux</option>
-        </select>
-      </div>
+<div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">Intégré après mise disposition</label>
+              <div className="flex items-center space-x-8">
+                <input type="radio" id="integre_apres_mise_disposition_true" name="integre_apres_mise_disposition" value="true" checked={formData.integre_apres_mise_disposition === 'true'} onChange={handleChange} className="form-radio text-blue-500" />
+                <label htmlFor="integre_apres_mise_disposition_true" className="text-sm text-gray-700 dark:text-white">true</label>
+                <input type="radio" id="integre_apres_mise_disposition_false" name="integre_apres_mise_disposition" value="false" checked={formData.integre_apres_mise_disposition === 'false'} onChange={handleChange} className="form-radio text-blue-500" />
+                <label htmlFor="integre_apres_mise_disposition_false" className="text-sm text-gray-700 dark:text-white">false</label>
+              </div>
+            </div>
+{/* <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
+  <label className="block text-sm font-medium text-gray-700 dark:text-white">Intégré après détachement</label>
+  <div className="flex items-center space-x-8">
+    <input 
+      type="checkbox" 
+      name="integre_apres_detachement" 
+      checked={formData.integre_apres_detachement} 
+      onChange={(e) => handleChange(e)} 
+      className="form-radio text-blue-500" 
+    />
+    <label htmlFor="integre_apres_detachement" className="text-sm text-gray-700 dark:text-white">true</label>
+  </div>
+</div>
+<div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
+  <label className="block text-sm font-medium text-gray-700 dark:text-white">Intégré après mise disposition</label>
+  <div className="flex items-center space-x-8">
+    <input 
+      type="checkbox" 
+      name="integre_apres_mise_disposition" 
+      checked={formData.integre_apres_mise_disposition} 
+      onChange={(e) => handleChange(e)} 
+      className="form-radio text-blue-500" 
+    />
+    <label htmlFor="integre_apres_mise_disposition" className="text-sm text-gray-700 dark:text-white">true</label>
+  </div>
+</div> */}
 
+
+     
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
           <label htmlFor="affectation" className="block text-sm font-medium text-gray-700 dark:text-white">affectation</label>
           <input type="text" name="affectation" id="affectation" value={formData.affectation} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
@@ -179,15 +222,15 @@ const AdminInfoForm = () => {
 
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
           <label htmlFor="poste" className="block text-sm font-medium text-gray-700 dark:text-white">poste</label>
-          <input type="text" name="poste" id="poste" value={formData.poste} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
+          <input type="textarea" name="poste" id="poste" value={formData.poste} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
 
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
-          <label htmlFor="type_sortie" className="block text-sm font-medium text-gray-700 dark:text-white">type_sortie</label>
+          <label htmlFor="type_sortie" className="block text-sm font-medium text-gray-700 dark:text-white">type de sortie</label>
           <input type="text" name="type_sortie" id="type_sortie" value={formData.type_sortie} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
-          <label htmlFor="date_sortie" className="block text-sm font-medium text-gray-700 dark:text-white">date_sortie</label>
+          <label htmlFor="date_sortie" className="block text-sm font-medium text-gray-700 dark:text-white">date de sortie</label>
           <input type="date" name="date_sortie" id="date_sortie" value={formData.date_sortie} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md"  />
         </div>
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
@@ -195,7 +238,7 @@ const AdminInfoForm = () => {
           <input type="text" name="administration_accueil" id="administration_accueil" value={formData.administration_accueil} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
-          <label htmlFor="statut_activite" className="block text-sm font-medium text-gray-700 dark:text-white">statut_activite</label>
+          <label htmlFor="statut_activite" className="block text-sm font-medium text-gray-700 dark:text-white">statut activite</label>
           <input type="text" name="statut_activite" id="statut_activite" value={formData.statut_activite} onChange={handleChange} className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
       <div className="rounded-lg m-6 p-6 flex items-center justify-start space-x-4">
@@ -203,7 +246,7 @@ const AdminInfoForm = () => {
     <FaExclamationCircle className="text-red-500 mr-2 text-2xl" />
     <span className="text-red-500 font-bold">Veuillez vérifier les informations avant de continuer</span>
     <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4 relative flex">
-      <span className='pr-4'>Submit</span>
+      <span className='pr-4'>Soumettre</span>
       <span className="inset-0 flex items-center justify-end pr-4">
         <FaRegCheckCircle className="text-2xl" />
       </span>

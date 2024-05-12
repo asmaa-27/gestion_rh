@@ -129,7 +129,7 @@ const AjouterDemande = () => {
       </div>
 
       <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4  items-center  flex justify-end">
-  <span className='pr-4'>Submit</span>
+  <span className='pr-4'>Soumettre</span>
 </button>
 
     </form>
