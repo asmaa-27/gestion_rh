@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaExclamationCircle, FaRegCheckCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addInfoAdmin } from "../../../features/AdminInfoSlice";
 
 const AdminInfoForm = () => {
     const dispatch = useDispatch();
-
+    const [additionalFields, setAdditionalFields] = useState(false);
     const [formData, setFormData] = useState({
         cin: "",
         ppr: 0,
@@ -41,12 +41,13 @@ const AdminInfoForm = () => {
 
         if (type === "radio") {
             newValue = value === "true" ? 1 : 0;
-        } 
+        }
 
         const newFormData = { ...formData };
         newFormData[name] = newValue;
         setFormData(newFormData);
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -73,6 +74,37 @@ const AdminInfoForm = () => {
         console.log(formData);
         dispatch(addInfoAdmin(formData));
     };
+
+    useEffect(() => {
+        const calculateDifferenceInYears = (startDate, endDate) => {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+
+            // Ensure both dates are valid
+            if (!start || !end) return;
+
+            // Calculate the difference in milliseconds between the two dates
+            var diff = (end.getTime() - start.getTime()) / 1000;
+            // Convert the difference from milliseconds to days
+            diff /= 60 * 60 * 24;
+            // Calculate the approximate number of years by dividing the difference in days by the average number of days in a year (365.25)
+            return Math.abs(Math.round(diff / 365.25));
+        };
+
+        // Check if date_recrutement has been set
+        if (formData.date_recrutement) {
+            const yearsDifference = calculateDifferenceInYears(
+                formData.date_recrutement,
+                new Date().toISOString()
+            );
+            console.log("Difference in years:", yearsDifference);
+            if (yearsDifference > 3) {
+                setAdditionalFields(true);
+            } else {
+                setAdditionalFields(false);
+            }
+        }
+    }, [formData.date_recrutement]);
 
     return (
         <>
@@ -152,6 +184,7 @@ const AdminInfoForm = () => {
                             className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md"
                         />
                     </div>
+                   
                     <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
                         <label
                             htmlFor="diplome_recrutement"
@@ -368,8 +401,8 @@ const AdminInfoForm = () => {
                             className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md"
                         />
                     </div>
-
-                    <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
+                    {additionalFields && (<>
+                      <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
                         <label className="block text-sm font-medium text-gray-700 dark:text-white">
                             Intégré après détachement
                         </label>
@@ -455,8 +488,6 @@ const AdminInfoForm = () => {
                         </div>
                     </div>
 
-                     
-
                     <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
                         <label
                             htmlFor="affectation"
@@ -464,7 +495,7 @@ const AdminInfoForm = () => {
                         >
                             affectation
                         </label>
-                         
+
                         <select
                             name="affectation"
                             id="affectation"
@@ -496,7 +527,7 @@ const AdminInfoForm = () => {
                         >
                             fonction
                         </label>
-                         
+
                         <select
                             name="fonction"
                             id="fonction"
@@ -508,10 +539,10 @@ const AdminInfoForm = () => {
                             <option value="chef_de_division">
                                 chef de division
                             </option>
-                            <option value="chef_de_service">chef_de_service</option>
-                            <option value="sans_fonction">
-                                sans fonction
+                            <option value="chef_de_service">
+                                chef_de_service
                             </option>
+                            <option value="sans_fonction">sans fonction</option>
                         </select>
                     </div>
 
@@ -566,6 +597,8 @@ const AdminInfoForm = () => {
                             className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md"
                         />
                     </div>
+                    </>)}
+                    
                     <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
                         <label
                             htmlFor="administration_accueil"

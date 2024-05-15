@@ -63,25 +63,30 @@ const DetailsFonctionnaires = () => {
         <h2>Détails du fonctionnaire :</h2>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="border p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md">
-              <h3 className="text-xl font-semibold mb-2">Personnel</h3>
+           
               {fonctionnaires && fonctionnaires.map((fonctionnaire) => (
+                <>
+                 <div className="border p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md">
+                 <h3 className="text-xl font-semibold mb-2">Personnel</h3>
                 <Fragment key={fonctionnaire.id}>
                   <p>{fonctionnaire.id}</p>
                   <p>{fonctionnaire.nom}</p>
                 </Fragment>
+                </div>
+                <div className="border p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md">
+                  <h3 className="text-xl font-semibold mb-2">Demande Absence</h3>
+                  {fonctionnaires && fonctionnaires.map((fonctionnaire) => (
+      <Fragment key={fonctionnaire.id}>
+        <p>{fonctionnaire.informations_administratives
+.grade}</p>
+        <p>{fonctionnaire.informations_administratives
+.grade}</p>
+      </Fragment>
+    ))}
+    
+                </div></>
               ))}
-            </div>
-            <div className="border p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md">
-              <h3 className="text-xl font-semibold mb-2">Demande Absence</h3>
-              {fonctionnaires && fonctionnaires.map((fonctionnaire) => (
-  <Fragment key={fonctionnaire.id}>
-    <p>{fonctionnaire.notations.annee}</p>
-    <p>{fonctionnaire.notations.note}</p>
-  </Fragment>
-))}
-
-            </div>
+            
           </div>
         </div>
       </div>
