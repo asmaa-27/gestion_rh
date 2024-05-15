@@ -8,11 +8,18 @@ export default {
     theme: {
         extend: {
 
-            backgroundImage: {
-              'header-bg': "url('./src/assets/titlebg.jpg')", // Assurez-vous que le chemin est correct
-            },
+          backgroundImage: (theme) => ({
+            'header-bg': theme('colors.light.header'),
+            'dark-bg': theme('colors.dark.header'),
+          }),
 
             colors: {
+              light: {
+                header: "url('./src/assets/titlelight.jpg')",
+              },
+              dark: {
+                header: "url('./src/assets/titlebg.jpg')",
+              },
               primary: {
                 "50": "#eff6ff",
                 "100": "#dbeafe",

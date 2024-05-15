@@ -20,6 +20,7 @@ body {
 }
 .dark {
     --bg-color: #1a202c; /* Couleur de fond sombre */
-    --text-color: #f7fafc; /* Couleur du texte en mode sombre */
-    /* Ajoutez d'autres styles spécifiques au mode sombre ici */
+    --text-color: #f7fafc;
+    --dark-bg:"url('./src/assets/titlebg.jpg')"
   }
+

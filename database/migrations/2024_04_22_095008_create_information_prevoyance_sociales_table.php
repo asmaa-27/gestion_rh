@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('information_prevoyance_sociales', function (Blueprint $table) {
             $table->id();
             $table->string('cin');
-            $table->enum('organisme_retraite', ['CMR', 'RCAR'])->nullable();
+            $table->string('organisme_retraite')->nullable();
             $table->string('numero_affiliation_retraite')->nullable();
             $table->date('date_affiliation_retraite')->nullable();
-            $table->enum('organisme_prevoyance_sociale', ['Mutuelle Général', 'OMFAM', 'MGAP'])->nullable();
+            $table->string('organisme_prevoyance_sociale')->nullable();
             $table->string('numero_affiliation_cnops')->nullable();
             $table->string('numero_immatriculation_cnops')->nullable();
             $table->date('date_affiliation_cnops')->nullable();

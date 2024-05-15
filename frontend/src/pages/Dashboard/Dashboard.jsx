@@ -10,21 +10,30 @@ const data = [
   { name: 'Feb', value: 3 },
   { name: 'Mar', value: 10 },
   { name: 'Apr', value: 15 },
-  { name: 'May', value: 0 },
+  { name: 'May', value: 5 },
   { name: 'Jun', value: 12 },
   { name: 'july', value: 20 },
   { name: 'aug', value: 3 },
   { name: 'sep', value: 10 },
   { name: 'oct', value: 15 },
-  { name: 'nov', value: 0 },
+  { name: 'nov', value: 10 },
   { name: 'dec', value: 12 },
 ];
 
 const pieData = [
-  { name: 'Mars', value: 20 },
-  { name: 'Avril', value: 30 },
-  { name: 'May', value: 20 },
-  { name: 'Jaune', value: 15 },
+  { name: 'Jan', value: 20 },
+  { name: 'Feb', value: 3 },
+  { name: 'Mar', value: 10 },
+  { name: 'Apr', value: 15 },
+  { name: 'May', value: 5 },
+  { name: 'Jun', value: 12 },
+  { name: 'july', value: 20 },
+  { name: 'aug', value: 3 },
+  { name: 'sep', value: 10 },
+  { name: 'oct', value: 15 },
+  { name: 'nov', value: 10 },
+  { name: 'dec', value: 12 },
+
 ];
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -55,7 +64,7 @@ const Dashboard = () => {
 
     <div className="shadow-2xl p-4  dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
       <h2 className="text-lg font-bold mb-4">Charte Absences</h2>
-      <LineChart width={250} height={200} data={data}>
+      <LineChart width={450} height={250} data={data}>
         <XAxis dataKey="name" />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
@@ -66,7 +75,7 @@ const Dashboard = () => {
     </div>
     <div className="shadow-2xl p-4 dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
       <h2 className="text-lg font-bold mb-4">Charte des Stagiaires</h2>
-      <BarChart width={260} height={200} data={data}>
+      <BarChart width={450} height={250} data={data}>
         <XAxis dataKey="name" />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
@@ -77,7 +86,7 @@ const Dashboard = () => {
     </div>
     <div className="shadow-2xl p-4 dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
       <h2 className="text-lg font-bold mb-4">Charte de congés</h2>
-      <PieChart width={250} height={200}>
+      <PieChart width={450} height={250}>
         <Pie data={pieData} color="#000000" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={60}>
           {pieData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

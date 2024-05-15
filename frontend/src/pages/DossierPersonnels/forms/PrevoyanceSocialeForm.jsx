@@ -11,11 +11,7 @@ const PrevoyanceSocialeForm = () => {
     organisme_retraite: '',
     numero_affiliation_retraite: '',
     date_affiliation_retraite_retraite: '',
-    organisme_prevoyance_sociale: {
-      mutuelleGeneral: false,
-      omfam: false,
-      mgap: false
-    },
+    organisme_prevoyance_sociale:'',
     numero_affiliation_cnops: '',
     numero_immatriculation_cnops: '',
     date_affiliation_cnops: '',
@@ -59,12 +55,17 @@ const PrevoyanceSocialeForm = () => {
         </div>
     <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
         <label className="block text-sm font-medium text-gray-700 dark:text-white">Organisme de retraite :</label>
-        <div className="flex items-center space-x-8">
-          <input type="radio" id="CMR" name="organisme_retraite" value="CMR" checked={formData.organisme_retraite === 'CMR'} onChange={handleChangeRadioButon} className="form-radio text-blue-500 dark:bg-primary-800" />
-          <label htmlFor="CMR" className="text-sm text-gray-700 dark:text-white">CMR</label>
-          <input type="radio" id="RCAR" name="organisme_retraite" value="RCAR" checked={formData.organisme_retraite === 'RCAR'} onChange={handleChangeRadioButon} className="form-radio text-blue-500 dark:bg-primary-800" />
-          <label htmlFor="RCAR" className="text-sm text-gray-700 dark:text-white">RCAR</label>
-      </div>
+        <select
+            id="organisme_retraite"
+            name="organisme_retraite"
+            value={formData.organisme_retraite}
+            onChange={handleChange}
+            className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md"
+          >
+            <option value="">Sélectionner un organisme</option>
+            <option value="CMR">CMR</option>
+            <option value="RCAR">RCAR</option>
+          </select>
     </div>
 
 
@@ -93,6 +94,7 @@ const PrevoyanceSocialeForm = () => {
             <option value="mutuelleGeneral">Mutuelle Générale</option>
             <option value="omfam">OMFAM</option>
             <option value="mgap">MGAP</option>
+
           </select>
         </div>
 

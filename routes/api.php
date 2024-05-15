@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {   return $request->user();
     });
-    Route::apiResource('/fonctionnaire', FonctionnaireController::class);
     Route::apiResource('/info-administrative' ,InformationAdministrativeController::class );
+    Route::apiResource('/fonctionnaire', FonctionnaireController::class);
     Route::apiResource('/info-familiale', InformationFamilialeController::class );
     Route::apiResource('/info-prevoyance-sociale', InformationPrevoyanceSocialeController::class );
     Route::apiResource('/affectation', AffectationController::class );
