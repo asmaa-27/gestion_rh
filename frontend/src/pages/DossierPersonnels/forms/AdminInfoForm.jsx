@@ -35,50 +35,13 @@ const AdminInfoForm = () => {
         statut_activite: "",
     });
 
-    // const handleChange = (e) => {
-    //     const { name, value, type, checked } = e.target;
-
-    //     // if (type === 'checkbox') {
-    //     //   // For checkboxes, directly use checked value as boolean
-    //     //   newValue = checked;
-    //     // } else if (type === 'radio') {
-    //     // For radio buttons, directly use checked value as boolean
-    //     // newValue = !formData.integre_apres_detachement;
-    //     // } else if (name === 'integre_apres_detachement' || name === 'integre_apres_mise_disposition') {
-    //     //   // For other fields which should be boolean, convert string 'true' or 'false' to boolean true or false
-    //     // newValue = value === 'true';
-    //     // } else {
-    //     // For other fields, use the value directly
-    //     //   newValue = value;
-    //     // }
-    //     const newFormData = { ...formData };
-    //     if (type === "radio") {
-    //         newFormData[name] = value === "true" ? 1 : 0;
-    //     } else {
-    //         newFormData[name] = value;
-    //     }
-
-    //     setFormData(newFormData);
-    //     console.log(newFormData);
-    // };
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         let newValue = value; // Default behavior
 
         if (type === "radio") {
             newValue = value === "true" ? 1 : 0;
-        } else if (name === "situation_administrative") {
-            // Example validation for 'situation_administrative'
-            // Replace this with actual validation logic based on your database schema
-            if (
-                !["enFonction", "detacheEntrant", "detacheSortant"].includes(
-                    newValue
-                )
-            ) {
-                alert("Invalid situation administrative value");
-                return; // Prevent form submission
-            }
-        }
+        } 
 
         const newFormData = { ...formData };
         newFormData[name] = newValue;
@@ -406,14 +369,6 @@ const AdminInfoForm = () => {
                         />
                     </div>
 
-                    {/* <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
-    <label className="block text-sm font-medium text-gray-700 dark:text-white">Intégré après détachement</label>
-    <div className="flex items-center space-x-8">
-        <input type="checkbox" id="integre_apres_detachement" name="integre_apres_detachement" checked={formData.integre_apres_detachement} onChange={handleChange} className="form-radio text-blue-500" />
-        <label htmlFor="integre_apres_detachement" className="text-sm text-gray-700 dark:text-white">true</label>
-    </div>
-</div> */}
-
                     <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
                         <label className="block text-sm font-medium text-gray-700 dark:text-white">
                             Intégré après détachement
@@ -500,32 +455,7 @@ const AdminInfoForm = () => {
                         </div>
                     </div>
 
-                    {/* <div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
-  <label className="block text-sm font-medium text-gray-700 dark:text-white">Intégré après détachement</label>
-  <div className="flex items-center space-x-8">
-    <input
-      type="checkbox"
-      name="integre_apres_detachement"
-      checked={formData.integre_apres_detachement}
-      onChange={(e) => handleChange(e)}
-      className="form-radio text-blue-500"
-    />
-    <label htmlFor="integre_apres_detachement" className="text-sm text-gray-700 dark:text-white">true</label>
-  </div>
-</div>
-<div className="bg-white shadow-md rounded-lg m-6 p-6 dark:bg-primary-950">
-  <label className="block text-sm font-medium text-gray-700 dark:text-white">Intégré après mise disposition</label>
-  <div className="flex items-center space-x-8">
-    <input
-      type="checkbox"
-      name="integre_apres_mise_disposition"
-      checked={formData.integre_apres_mise_disposition}
-      onChange={(e) => handleChange(e)}
-      className="form-radio text-blue-500"
-    />
-    <label htmlFor="integre_apres_mise_disposition" className="text-sm text-gray-700 dark:text-white">true</label>
-  </div>
-</div> */}
+                     
 
                     <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
                         <label
@@ -534,15 +464,7 @@ const AdminInfoForm = () => {
                         >
                             affectation
                         </label>
-                        {/* <input
-                            type="text"
-                            name="affectation"
-                            id="affectation"
-                            value={formData.affectation}
-                            onChange={handleChange}
-                            className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md"
-                            required
-                        /> */}
+                         
                         <select
                             name="affectation"
                             id="affectation"
@@ -574,15 +496,7 @@ const AdminInfoForm = () => {
                         >
                             fonction
                         </label>
-                        {/* <input
-                            type="text"
-                            name="fonction"
-                            id="fonction"
-                            value={formData.fonction}
-                            onChange={handleChange}
-                            className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md"
-                            required
-                        /> */}
+                         
                         <select
                             name="fonction"
                             id="fonction"
