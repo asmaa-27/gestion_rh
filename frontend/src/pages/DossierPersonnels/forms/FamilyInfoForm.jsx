@@ -44,7 +44,7 @@ const FamilyInfoForm = () => {
       date_naissance_conjoint: '',
       fonction_conjoint: '',
       nombre_enfants: '',
-      conjoints: [{ date_mariage: '', date_divorce: '', nom_conjoint: '' }],
+      conjoints: [{ date_mariage: '', date_divorce: '', nom_conjoint: '' ,cin_conjoint:''}],
       enfants: [{ prenom_enfant: '', nom_mere: '', date_naissance_enfant: '' }],
     });
   };

@@ -30,15 +30,24 @@ const PrevoyanceSocialeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setFormData({
+        cin:'',
+        organisme_retraite: '',
+        numero_affiliation_retraite: '',
+        date_affiliation_retraite_retraite: '',
+        organisme_prevoyance_sociale:'',
+        numero_affiliation_cnops: '',
+        numero_immatriculation_cnops: '',
+        date_affiliation_cnops: '',
+        numero_affiliation_fondation_hassan_ii:'',
+        organisme_assurance: '',
+        numero_affiliation_assurance: '',
+      })
     dispatch(addInfoprev(formData));
 
   };
 
 
-  const handleChangeRadioButon = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
 
  return(

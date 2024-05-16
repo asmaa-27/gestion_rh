@@ -20,6 +20,13 @@ const DilpomeForm = () =>{
 
       const handleSubmit = (e) => {
         e.preventDefault();
+        setFormData({
+            cin:'',
+            intitule: '',
+            specialite: '',
+            date_obtention: '',
+            etablissement: '',
+        })
         dispatch(adddiplome(formData));
 
         console.log(formData);

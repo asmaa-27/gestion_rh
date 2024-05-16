@@ -18,6 +18,11 @@ const NotationForm = () =>{
 
       const handleSubmit = (e) => {
         e.preventDefault();
+        setFormData({
+            cin:'',
+            annee: '',
+            note: '',
+        })
         dispatch(addNotation(formData));
 
       };

@@ -28,7 +28,7 @@ export const showDetailsByCin = createAsyncThunk(
     try{
         const response = await axiosClient.get(`http://localhost:8000/api/fonctionnaire/${cin}`);
         console.log(response.data)
-        return Array.isArray(response.data) ? response.data : [];
+        return Array.isArray(response.data) ? response.data : {};
     }catch(err){console.log(err)}
   }
 );

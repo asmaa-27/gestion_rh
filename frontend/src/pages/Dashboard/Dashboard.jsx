@@ -43,7 +43,7 @@ const Dashboard = () => {
 
   return (
     <>
-    <header className="container mx-auto pb-10 px-4 flex justify-center bg-header-bg  rounded-lg shadow-2xl   bg-cover items-center mb-20 mt-4 p-8">
+    <header className="container mx-auto pb-10 px-4 flex justify-center bg-header-bg  rounded-lg shadow-2xl   bg-cover items-center mb-20 mt-4 p-8  dark:bg-dark-bg">
     <div className="text-center lg:text-4xl font-bold text-white">
       <div className="flex-1   bg-center  h-full">
         <Typewriter
@@ -64,7 +64,7 @@ const Dashboard = () => {
 
     <div className="shadow-2xl p-4  dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
       <h2 className="text-lg font-bold mb-4">Charte Absences</h2>
-      <LineChart width={450} height={250} data={data}>
+      <LineChart width={250} height={250} data={data}>
         <XAxis dataKey="name" />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
@@ -75,7 +75,7 @@ const Dashboard = () => {
     </div>
     <div className="shadow-2xl p-4 dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
       <h2 className="text-lg font-bold mb-4">Charte des Stagiaires</h2>
-      <BarChart width={450} height={250} data={data}>
+      <BarChart width={250} height={250} data={data}>
         <XAxis dataKey="name" />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
@@ -86,7 +86,7 @@ const Dashboard = () => {
     </div>
     <div className="shadow-2xl p-4 dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
       <h2 className="text-lg font-bold mb-4">Charte de congés</h2>
-      <PieChart width={450} height={250}>
+      <PieChart width={250} height={250}>
         <Pie data={pieData} color="#000000" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={60}>
           {pieData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

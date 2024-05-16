@@ -19,6 +19,12 @@ const MouvementForm = () =>{
 
       const handleSubmit = (e) => {
         e.preventDefault();
+        setFormData({
+            cin:'',
+            administration: '',
+            date_debut: '',
+            date_fin: '',
+        })
         dispatch(addMouvement(formData));
 
         console.log(formData);

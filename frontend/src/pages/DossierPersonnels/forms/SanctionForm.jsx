@@ -20,6 +20,13 @@ const SanctionForm = () =>{
 
       const handleSubmit = (e) => {
         e.preventDefault();
+        setFormData({
+            cin:'',
+              date_sanction: '',
+              motif: '',
+              nature_sanction: '',
+              sanction:'',
+          })
         dispatch(addSanction(formData));
 
       };

@@ -19,6 +19,12 @@ const AffectationForm = () =>{
 
       const handleSubmit = (e) => {
         e.preventDefault();
+        setFormData({
+            cin:'',
+            entite: '',
+            date_affectation: '',
+            poste: '',
+        })
         dispatch(addaffectation(formData));
 
         console.log(formData);

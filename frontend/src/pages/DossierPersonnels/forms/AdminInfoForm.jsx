@@ -36,7 +36,7 @@ const AdminInfoForm = () => {
     });
 
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
+        const { name, value, type  } = e.target;
         let newValue = value; // Default behavior
 
         if (type === "radio") {
@@ -50,29 +50,36 @@ const AdminInfoForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // Vérifier si le détachement est terminé
-        // if (formData.situation_administrative === 'detacheSortant') {
-        //     const dateDetachement = new Date(formData.date_recrutement);
-        //     const dateFin = new Date(dateDetachement.getFullYear() + 3, dateDetachement.getMonth(), dateDetachement.getDate());
-        //     const dateAujourdHui = new Date();
-
-        //     if (dateAujourdHui >= dateFin) {
-        //         // Afficher un message pour demander le renouvellement, la fin du détachement ou l'intégration
-        //         if (window.confirm('Le détachement de ce fonctionnaire est terminé. Que souhaitez-vous faire?')) {
-        //             // Mettre à jour les informations administratives en conséquence
-        //             setFormData({
-        //                 ...formData,
-        //                 situation_administrative: 'Integre',
-        //                 integre_apres_detachement: true,
-        //             });
-        //         }
-        //     }
-        // }
-
-        // Envoyer les données au Redux store
-        console.log(formData);
+        setFormData({
+            cin: "",
+            ppr: 0,
+            numero_poste_budgetaire: 0,
+            date_recrutement: "",
+            diplome_recrutement: "",
+            administration_recrutement: "",
+            date_titularisation: "",
+            grade: "",
+            anciennete_grade: "",
+            echelle: "",
+            anciennete_echelle: "",
+            echelon: 0,
+            anciennete_echelon: 0,
+            indice: 0,
+            statut_administratif: "",
+            situation_administrative: "",
+            fin_periode_detachement: "",
+            integre_apres_detachement: 0,
+            integre_apres_mise_disposition: 0,
+            affectation: "",
+            fonction: "",
+            poste: "",
+            type_sortie: "",
+            date_sortie: "",
+            administration_accueil: "",
+            statut_activite: "",
+        });
         dispatch(addInfoAdmin(formData));
+
     };
 
     useEffect(() => {
@@ -184,7 +191,7 @@ const AdminInfoForm = () => {
                             className="mt-1 block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md"
                         />
                     </div>
-                   
+
                     <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950">
                         <label
                             htmlFor="diplome_recrutement"
@@ -598,7 +605,7 @@ const AdminInfoForm = () => {
                         />
                     </div>
                     </>)}
-                    
+
                     <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
                         <label
                             htmlFor="administration_accueil"

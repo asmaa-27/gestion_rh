@@ -42,29 +42,40 @@ const DocumentForm = () => {
 
   return (
     <>
-    <div className="flex items-center justify-center mt-4  text-2xl font-bold"><h1>Les documents  :</h1></div>
-    <div className="flex items-center justify-center  min-h-screen">
-    <form className="space-y-4 mt-1 mb-1   block w-1/2 p-4 border border-gray-300 rounded-md" onSubmit={handleSubmit}>
-      <div className="space-y-2">
-        <label htmlFor="type" className="block text-sm font-medium text-gray-700">Type de document :</label>
-        <select id="type" name="type" value={formData.type} onChange={handleInputChange} className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+
+
+
+
+
+
+    <div className="flex items-center justify-center p-4 mt-4 text-2xl font-bold ">
+          <h1>Les affectations  :</h1>
+        </div>
+        <div className="flex items-center justify-center min-h-screen">
+          <form onSubmit={handleSubmit} className="space-y-4 mb-1 block w-1/2 p-2 border border-gray-300 rounded-md">
+
+          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="type" className="block text-sm font-medium text-gray-700 dark:text-white">type</label>
+          <select id="type" name="type" value={formData.type} onChange={handleInputChange} className="mt-1 block w-full py-2 px-3 border  dark:bg-primary-800 border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             <option selected > vous devez  selectionner un type </option>
-          <option>Dossier familial</option>
-          <option>Dossier administratif</option>
-          <option>Dossier de la prévoyance sociale</option>
-          <option>Dossier notations</option>
-          <option>Dossier affectations</option>
-          <option>Dossier autorisations absences</option>
-          <option>Dossier Divers</option>
-        </select>
-      </div>
-      <div className="space-y-2">
-        <label htmlFor="cin" className="block text-sm font-medium text-gray-700">Numéro de sécurité sociale (CIN) :</label>
-        <input id="cin" name="cin" type="text" value={formData.cin} onChange={handleInputChange} className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-      </div>
-      <div className="space-y-2">
-        <label htmlFor="chemin" className="block text-sm font-medium text-gray-700">Chemin :</label>
-        <input id="chemin" name="chemin" type="file" onChange={handleInputChange} className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            <option>Dossier familial</option>
+            <option>Dossier administratif</option>
+            <option>Dossier de la prévoyance sociale</option>
+            <option>Dossier notations</option>
+            <option>Dossier affectations</option>
+            <option>Dossier autorisations absences</option>
+            <option>Dossier Divers</option>
+          </select>
+        </div>
+
+          <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="cin" className="block text-sm font-medium text-gray-700  dark:text-white">CIN</label>
+          <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleInputChange} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />
+        </div>
+        <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
+          <label htmlFor="chemin" className="block text-sm font-medium text-gray-700  dark:text-white">Chemin</label>
+        <input id="chemin" name="chemin" type="file" onChange={handleInputChange} className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white  dark:bg-primary-800 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
         <div className="rounded-lg m-6 p-6 flex items-center justify-start space-x-4">
  <div className="flex items-center">
     <FaExclamationCircle className="text-red-500 mr-2 text-2xl" />
@@ -77,9 +88,11 @@ const DocumentForm = () => {
     </button>
  </div>
 </div>
-</div>
+
+
     </form>
     </div>
+
     </>
   );
 };
