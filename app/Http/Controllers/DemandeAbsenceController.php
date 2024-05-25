@@ -124,8 +124,13 @@ class DemandeAbsenceController extends Controller
 }
 
 public function downloadPdf( $cin){
-    $demandeAbsence =DemandeAbsence::with(['fonctionnaire'])->where('cin', $cin)->firstOrFail();
-    $pdf = PDF::loadView('pdf_view',['demandeAbsence'=>$demandeAbsence, 'fonctionnaire' => $demandeAbsence->fonctionnaire]);
+    $demandeAbsence = DemandeAbsence::with('fonctionnaire.informationsAdministratives')->where('cin', $cin)->firstOrFail();
+
+    $pdf = PDF::loadView('pdf_view', [
+        'demandeAbsence' => $demandeAbsence,
+        'fonctionnaire' => $demandeAbsence->fonctionnaire,
+        'informationsAdministratives' => $demandeAbsence->fonctionnaire->informationsAdministratives
+    ]);
 
     return $pdf->download('demande_absence.pdf');
 }
