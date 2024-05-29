@@ -8,6 +8,7 @@ import { FaPlus ,FaTrash,FaExclamationCircle } from "react-icons/fa";
 import ReactPaginate from 'react-paginate';
 import { AiFillLeftCircle, AiFillRightCircle } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
+import Typewriter from 'typewriter-effect';
 
 const AffichageFonctionnaires = () => {
  const dispatch = useDispatch();
@@ -59,7 +60,23 @@ const AffichageFonctionnaires = () => {
 
  return (
 <main className="p-4  ">
+<header className="container mx-auto  px-4 flex justify-center items-center ">
+    <div className="text-center lg:text-4xl font-bold text-black dark:text-white"> 
+      <div className="flex-1   bg-center  h-full">
+        <Typewriter
+          onInit={(typewriter) => {
+            typewriter
+            .typeString('Dossiers  Personnels ')
+            .pauseFor(1000)
+            .start();
+          }}
+        />
+      </div>
+    </div>
+  </header>
       <div className="flex flex-col sm:flex-row justify-between items-center mt-16   mb-8">
+     
+      
         <div className="mb-4 sm:mb-0">
           <label htmlFor="filterDate" className="mb-1 pr-4  ">Filter par Date : </label>
           <input
