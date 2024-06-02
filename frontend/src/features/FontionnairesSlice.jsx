@@ -13,6 +13,17 @@ async()=>{
 
 });
 
+export const fetchFonctionnaireCountByMonth = createAsyncThunk(
+  'fonctionnaire/fetchFonctionnaireCountByMonth',
+  async () => {
+    try {
+      const response = await axiosClient.get('http://localhost:8000/api/fonctionnaire/count-by-month');
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
 
 export const deleteFonctionnaire = createAsyncThunk(
   'fonctionnaire/deleteFonctionnaire',
@@ -36,6 +47,7 @@ export const showDetailsByCin = createAsyncThunk(
 
 const initialState = {
   fonctionnaires: [],
+    fonctionnaireCountByMonth: [],
   loading: false,
   error: null,
 };
@@ -57,6 +69,18 @@ const fonctionnairesSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
+      .addCase(fetchFonctionnaireCountByMonth.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchFonctionnaireCountByMonth.fulfilled, (state, action) => {
+        state.loading = false;
+        state.fonctionnaireCountByMonth = action.payload;
+      })
+      .addCase(fetchFonctionnaireCountByMonth.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+
       .addCase(displayFonctionnaire.pending,(state)=> {
         state.loading=true;
         })

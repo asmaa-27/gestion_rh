@@ -9,7 +9,7 @@ import NotationReducer from "../features/NotationSlice";
 import PersonalInfoReducer from "../features/PersonallInfoSlice"
 import PrevoyenceSocialeReducer from "../features/PrevoyanceSocialleInfoSlice"
 import DemandAbsenceReducer from "../features/DemandAbsenceSlice";
-
+import FormationSlice from "../features/FormationSlice";
 const Store=configureStore({
     reducer: {
         AdminInfoReducer,
@@ -21,7 +21,8 @@ const Store=configureStore({
         NotationReducer,
         PersonalInfoReducer,
         PrevoyenceSocialeReducer,
-        demandeAbsence:DemandAbsenceReducer
+        demandeAbsence:DemandAbsenceReducer,
+        formation:FormationSlice
     }
 })
 

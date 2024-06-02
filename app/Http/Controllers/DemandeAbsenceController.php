@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Holiday;
 use App\Models\Fonctionnaire;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf ;
 
 class DemandeAbsenceController extends Controller
@@ -22,6 +23,14 @@ class DemandeAbsenceController extends Controller
         return response()->json($demandeAbsence->get());
     }
 
+    public function countByMonth()
+    {
+        $counts = DemandeAbsence::select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as count'))
+            ->groupBy('month')
+            ->get();
+
+        return response()->json($counts);
+    }
     /**
      * Show the form for creating a new resource.
      */

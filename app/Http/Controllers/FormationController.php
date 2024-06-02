@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Formation;
+use App\Models\FormationRealisee;
 use Illuminate\Http\Request;
 
 class FormationController extends Controller
@@ -15,6 +15,12 @@ class FormationController extends Controller
         //
     }
 
+    public function countByMonth()
+    {
+        return FormationRealisee::selectRaw('MONTH(date_debut) as month, COUNT(*) as count')
+            ->groupBy('month')
+            ->get();
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -34,7 +40,7 @@ class FormationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Formation $formation)
+    public function show(FormationRealisee $formation)
     {
         //
     }
@@ -42,7 +48,7 @@ class FormationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Formation $formation)
+    public function edit(FormationRealisee $formation)
     {
         //
     }
@@ -50,7 +56,7 @@ class FormationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Formation $formation)
+    public function update(Request $request, FormationRealisee $formation)
     {
         //
     }
@@ -58,7 +64,7 @@ class FormationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Formation $formation)
+    public function destroy(FormationRealisee $formation)
     {
         //
     }

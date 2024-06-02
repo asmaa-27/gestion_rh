@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Fonctionnaire;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 class FonctionnaireController extends Controller
 {
@@ -17,7 +18,23 @@ class FonctionnaireController extends Controller
     }
 
 
+public function countByMonth() {
+     $counts = DB::table('fonctionnaires')
+        ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as count'))
+        ->groupBy(DB::raw('MONTH(created_at)'))
+        ->orderBy(DB::raw('MONTH(created_at)'))
+        ->get();
 
+    // Format the results to ensure that each month is represented
+    $formattedCounts = $counts->map(function ($count) {
+        return [
+            'month' => $count->month,
+            'count' => $count->count
+        ];
+    });
+// dd($formattedCounts);
+    return response()->json($formattedCounts);
+}
 
 
     /**

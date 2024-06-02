@@ -40,10 +40,20 @@ export const AddemandeAbsence = createAsyncThunk('/AddemandeAbsence',async (data
       return rejectWithValue(error.response?.data || error.message);
     }
   });
-
-
+        export const fetchDemandeAbsenceCountByMonth = createAsyncThunk(
+    'demandeAbsence/fetchDemandeAbsenceCountByMonth',
+    async () => {
+        try {
+        const response = await axiosClient.get('http://localhost:8000/api/demande-absence/count-by-month');
+        return response.data;
+        } catch (err) {
+        console.log(err);
+        }
+    }
+    );
 
 const initialState = {
+  demandeAbsenceCountByMonth: [],
     demandeAbsence: [],
   loading: false,
   error: null,
@@ -102,7 +112,18 @@ const demandAbsenceSlice = createSlice({
         .addCase(downloadPdf.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message;
-        });
+        })
+        .addCase(fetchDemandeAbsenceCountByMonth.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchDemandeAbsenceCountByMonth.fulfilled, (state, action) => {
+        state.loading = false;
+        state.demandeAbsenceCountByMonth = action.payload;
+      })
+      .addCase(fetchDemandeAbsenceCountByMonth.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   }
 });
 export const { saveBlobAsFile } = demandAbsenceSlice.actions; // Export the new action

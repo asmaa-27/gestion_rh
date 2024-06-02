@@ -59,18 +59,33 @@
         }
 
         .signatures {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+            font-size: 0;
+            margin-top: 10%;
+            margin-bottom: 20%;
         }
 
         .signature {
-            text-align: center;
-            flex: 1;
+            display: inline-block;
+            margin-right: 8%;
+            font-size: 16px;
         }
+        .signatures .signature:first-child {
+            margin-left: 26px;
+        }
+
 
         .footer {
             margin-top: 20px;
+        }
+        .footer h3 {
+            text-decoration: underline;
+            color: rgb(177, 52, 52)
+
+        }
+
+        .footer p {
+            text-decoration: underline;
+             line-height: 1.5;
         }
     </style>
 </head>
@@ -91,7 +106,7 @@
             <div class="content">
                 <ul>
                     <li><strong>C.I.N :</strong>   {{ $demandeAbsence->cin }}</li>
-                    <li><strong>Nom Complete  :  </strong>  {{ $fonctionnaire->prenom }}  {{ $fonctionnaire->nom }}</li>
+                    <li><strong>Nom Complet  :  </strong>  {{ $fonctionnaire->prenom }}  {{ $fonctionnaire->nom }}</li>
                     <li><strong>Remplaçant   :  </strong>   {{ $demandeAbsence->remplaçant }}</li>
                     <li><strong>Grade   :  </strong>   {{ $informationsAdministratives->grade }}</li>
                     <li><strong> Departement   :  </strong>   {{ $informationsAdministratives->affectation }}</li>
@@ -101,10 +116,10 @@
                     <li><strong>Date de retour   :  </strong>   {{ $demandeAbsence->date_de_retour }}</li>
                 </ul>
             </div>
-        <div class="signatures mt-4">
-            <div class="signature">La personne concernée</div>
-            <div class="signature">Chef de département</div>
-            <div class="signature">Chef de service</div>
+            <div class="signatures">
+                <span class="signature">La personne concernée</span>
+                <span class="signature">Chef de département</span>
+                <span class="signature">Chef de service</span>
         </div>
         <div class="footer">
             <h3>Notes :</h3>
