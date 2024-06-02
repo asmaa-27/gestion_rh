@@ -648,8 +648,7 @@ const AdminInfoForm = () => {
                                 continuer
                             </span>
                             <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4 relative flex">
-                                <span className="pr-4">Soumettre</span>
-                                <span className="inset-0 flex items-center justify-end pr-4">
+                                <span className="inset-0 flex items-center justify-end ">
                                     <FaRegCheckCircle className="text-2xl" />
                                 </span>
                             </button>

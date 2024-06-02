@@ -1,38 +1,35 @@
 .step-item {
-    @apply relative flex flex-col justify-center items-center w-36;
-  }
-  .step-item:not(:first-child):before {
-    @apply content-[''] bg-slate-200 absolute w-full h-[3px] right-2/4 top-1/3 -translate-y-2/4;
-  }
-  .step {
-    @apply w-10 h-10 flex items-center  justify-center z-10 relative bg-slate-700 rounded-full font-semibold text-white;
-  }
-  .active .step {
-    @apply bg-sky-600;
-  }
-  .complete .step {
-    @apply bg-green-600;
-  }
-  .complete p {
-    @apply text-green-500;
-  }
-  .complete:not(:first-child):before,
-  .active:not(:first-child):before {
-    @apply bg-green-600;
-  }
-  .btn {
-    @apply px-6 py-2 rounded-md font-semibold transition-colors duration-300;
-  }
-  
-  .btn-previous {
-    @apply bg-blue-400 hover:bg-blue-600 text-white;
-  }
-  
-  .btn-next {
-    @apply bg-emerald-400 hover:bg-emerald-600 text-white;
-  }
-  
-  .btn-finish {
-    @apply bg-green-500 hover:bg-green-600 text-white;
-  }
-  
+  @apply relative flex flex-col justify-center items-center flex-shrink-0;
+  width: 6rem; /* Ajuste la largeur pour que les éléments soient plus petits */
+}
+.step-item:not(:first-child):before {
+  @apply content-[''] bg-slate-200 absolute w-full h-[3px] right-2/4 top-1/3 -translate-y-2/4;
+}
+.step {
+  @apply w-10 h-10 flex items-center justify-center z-10 relative bg-slate-700 rounded-full font-semibold text-white;
+}
+.active .step {
+  @apply bg-sky-600;
+}
+.complete .step {
+  @apply bg-green-600;
+}
+.complete p {
+  @apply text-green-500;
+}
+.complete:not(:first-child):before,
+.active:not(:first-child):before {
+  @apply bg-green-600;
+}
+.btn {
+  @apply px-6 py-2 rounded-md font-semibold transition-colors duration-300;
+}
+.btn-previous {
+  @apply bg-blue-400 hover:bg-blue-600 text-white;
+}
+.btn-next {
+  @apply bg-emerald-400 hover:bg-emerald-600 text-white;
+}
+.btn-finish {
+  @apply bg-green-500 hover:bg-green-600 text-white;
+}
