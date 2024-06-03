@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('remplaçant')->nullable();
             $table->integer('reliquat')->nullable();
             $table->integer('cumul_des_absences_de_maladie')->nullable();
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
 
             $table->foreign('cin')->references('cin')->on('fonctionnaires')->cascadeOnDelete()->cascadeOnUpdate();

@@ -70,39 +70,39 @@ const AjouterDemande = () => {
         <label className="block text-sm font-medium dark:text-white  text-black" htmlFor="cin">
            CIN
        </label>
-        <input type="text" name="cin" value={formData.cin} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-950  border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
+        <input type="text" name="cin" value={formData.cin} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-950  border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"  />
       </div>
       <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="date_depart">
           Date de départ
         </label>
-        <input type="date" name="date_depart" value={formData.date_depart} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
+        <input type="date" name="date_depart" value={formData.date_depart} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"  />
       </div>
 
       <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="nombre_de_jours">
           Nombre de jours
         </label>
-        <input type="number" name="nombre_de_jours" value={formData.nombre_de_jours} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
+        <input type="number" name="nombre_de_jours" value={formData.nombre_de_jours} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"  />
       </div>
 
       <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="nombre_a_deduire">
           Nombre à déduire
         </label>
-        <input type="number" name="nombre_a_deduire" value={formData.nombre_a_deduire} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
+        <input type="number" name="nombre_a_deduire" value={formData.nombre_a_deduire} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"  />
       </div>
 
       <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="nombre_a_ne_pas_deduire">
           Nombre à ne pas déduire
         </label>
-        <input type="number" name="nombre_a_ne_pas_deduire" value={formData.nombre_a_ne_pas_deduire} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
+        <input type="number" name="nombre_a_ne_pas_deduire" value={formData.nombre_a_ne_pas_deduire} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"  />
       </div>
 
       <div className="mb-4 dark:bg-primary-950">
       <label className="block text-sm font-medium text-black dark:text-white" htmlFor="type_d_absence">Type Absence</label>
-          <select name="type_d_absence" value={formData.type_d_absence} onChange={handleInputChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required>
+          <select name="type_d_absence" value={formData.type_d_absence} onChange={handleInputChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" >
             <option value="" selected>Sélectionner une option</option>
             <option value="maladie">Maladie</option>
             <option value="congé">Congé annuel</option>
@@ -118,14 +118,14 @@ const AjouterDemande = () => {
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="remplaçant">
           Remplaçant
         </label>
-        <input type="text" name="remplaçant" value={formData.remplaçant} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
+        <input type="text" name="remplaçant" value={formData.remplaçant} onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"   />
       </div>
 
       <div className="mb-4  dark:bg-primary-950">
         <label className="block text-sm font-medium dark:text-white text-black" htmlFor="file" id='file'>
         Fichiers
         </label>
-        <input type="file" name="file" id='file'  onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" required />
+        <input type="file" name="file" id='file'  onChange={handleInputChange} className="shadow appearance-none  dark:bg-primary-800 border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"   />
       </div>
 
       <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4  items-center  flex justify-end">

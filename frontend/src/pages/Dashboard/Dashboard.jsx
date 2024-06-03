@@ -43,9 +43,9 @@ const Dashboard = () => {
     count: item.count
   }));
 
-  return (
+   return (
     <>
-      <header className="container mx-auto pb-10 px-4 flex justify-center bg-header-bg rounded-lg shadow-2xl bg-cover items-center mb-20 mt-4 p-8 dark:bg-dark-bg">
+      <header className="container mx-auto pb-10 px-4 flex justify-center bg-header-bg rounded-lg shadow-2xl bg-cover items-center mb-20 mt-4 p-8 dark:bg-dark-bg h-64">
         <div className="text-center lg:text-4xl font-bold text-white">
           <div className="flex-1 bg-center h-full">
             <Typewriter
@@ -61,10 +61,10 @@ const Dashboard = () => {
       </header>
 
       <main className="p-8 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="flex shadow-2xl p-4 dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
             <div className="flex-grow">
-              <h2 className="text-lg font-bold mb-4">Charte Fonctionnaires</h2>
+              <h2 className="text-lg font-bold mb-4 ">Charte Fonctionnaires</h2>
               {fonctionnaireLoading ? (
                 <div className="flex justify-center">
                   <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-primary-600"></div>
@@ -87,7 +87,7 @@ const Dashboard = () => {
 
           <div className="flex shadow-2xl p-4 dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
             <div className="flex-grow">
-              <h2 className="text-lg font-bold mb-4">Charte des Demandes des Absence</h2>
+              <h2 className="text-lg font-bold mb-4 ">Charte des Demandes des Absence</h2>
               {demandeLoading ? (
                 <div className="flex justify-center">
                   <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-primary-600"></div>
@@ -108,28 +108,28 @@ const Dashboard = () => {
               )}
             </div>
           </div>
-        </div>
 
-        <div className="flex shadow-2xl p-4 dark:bg-primary-950 dark:shadow-primary-800 rounded-md mt-4">
-          <div className="flex-grow">
-            <h2 className="text-lg font-bold mb-4">Charte de Formation</h2>
-            {formationLoading ? (
-              <div className="flex justify-center">
+          <div className="flex shadow-2xl p-4 dark:bg-primary-950 dark:shadow-primary-800 rounded-md">
+            <div className="flex-grow">
+              <h2 className="text-lg font-bold mb-4 ">Charte de Formation</h2>
+              {formationLoading ? (
+                <div className="flex justify-center">
                   <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-primary-600"></div>
                   <p className="text-lg font-bold text-gray-600"></p>
                 </div>
-            ) : formationError ? (
-              <div>Error: {formationError}</div>
-            ) : (
-              <BarChart width={500} height={300} data={formationChartData}>
-                <XAxis dataKey="month" />
-                <YAxis />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
-                <Bar dataKey="count" fill="#ffc658" />
-                <Legend />
-              </BarChart>
-            )}
+              ) : formationError ? (
+                <div>Error: {formationError}</div>
+              ) : (
+                <BarChart width={500} height={300} data={formationChartData}>
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <Tooltip />
+                  <Bar dataKey="count" fill="#ffc658" />
+                  <Legend />
+                </BarChart>
+              )}
+            </div>
           </div>
         </div>
       </main>

@@ -101,11 +101,13 @@ class DemandeAbsenceController extends Controller
             $demandeAbsence->save();
         }
         // Handle the image upload if present
-        if ($request->hasFile('file')) {
+       if ($request->hasFile('file')) {
             $file_url = $request->file('file')->store('files');
             $demandeAbsence->file = Storage::url($file_url);
-            $demandeAbsence->save();
+        } else {
+            $demandeAbsence->file = null;
         }
+$demandeAbsence->save();
         return response()->json(['message' => 'Demande Absence created successfully', 'demandeAbsence' => $demandeAbsence], 201);
     }
 
