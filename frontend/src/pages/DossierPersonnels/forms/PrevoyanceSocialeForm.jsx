@@ -56,7 +56,7 @@ const PrevoyanceSocialeForm = () => {
     <h1>Les informations de la prévoyance sociale :</h1>
   </div>
   <div className="flex items-center justify-center min-h-screen">
-    <form onSubmit={handleSubmit} className="space-y-4 mt-1 mb-5 block w-1/2 p-2 border border-gray-300 rounded-md">
+    <form onSubmit={handleSubmit} className="space-y-4 mt-1 mb-5 block w-1/2 p-2 border border-gray-300 rounded-md px-6">
 
     <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500  dark:bg-primary-950 ">
           <label htmlFor="cin" className="block text-sm font-medium text-gray-700 dark:text-white">CIN</label>
@@ -143,8 +143,7 @@ const PrevoyanceSocialeForm = () => {
     <FaExclamationCircle className="text-red-500 mr-2 text-2xl" />
     <span className="text-red-500 font-bold">Veuillez vérifier les informations avant de continuer</span>
     <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4 relative flex">
-      <span className='pr-4'>Soumettre</span>
-      <span className="inset-0 flex items-center justify-end pr-4">
+       <span className="inset-0 flex items-center justify-end  ">
         <FaRegCheckCircle className="text-2xl" />
       </span>
     </button>

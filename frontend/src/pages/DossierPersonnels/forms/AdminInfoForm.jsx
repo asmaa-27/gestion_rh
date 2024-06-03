@@ -122,7 +122,7 @@ const AdminInfoForm = () => {
             <div className="flex items-center justify-center min-h-screen">
                 <form
                     onSubmit={handleSubmit}
-                    className="space-y-4 mb-5 block w-1/2 p-2 border border-gray-300 rounded-md"
+                    className="space-y-4 mb-5 block w-1/2 p-2 border border-gray-300 rounded-md px-6"
                 >
                     <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
                         <label
@@ -648,8 +648,8 @@ const AdminInfoForm = () => {
                                 continuer
                             </span>
                             <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4 relative flex">
-                                <span className="pr-4">Soumettre</span>
-                                <span className="inset-0 flex items-center justify-end pr-4">
+
+                                <span className="inset-0 flex items-center justify-end ">
                                     <FaRegCheckCircle className="text-2xl" />
                                 </span>
                             </button>

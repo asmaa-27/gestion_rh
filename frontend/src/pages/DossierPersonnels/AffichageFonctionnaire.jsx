@@ -32,9 +32,9 @@ const AffichageFonctionnaires = () => {
   <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50  ">
     <div className="bg-white p-8 rounded-lg shadow-lg">
       <div className="flex justify-center mb-4">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin lg:w-20 lg:h-20 lg:border-15"></div>
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin  "></div>
       </div>
-      <p className="text-gray-900 font-bold text-lg lg:text-2xl">Loading...</p>
+      <p className="text-gray-900 font-bold text-lg  ">Loading...</p>
     </div>
   </div>
 );
@@ -43,11 +43,11 @@ const AffichageFonctionnaires = () => {
   <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
     <div className="bg-white p-8 rounded-lg shadow-lg">
       <div className="flex justify-center mb-4">
-        <div className="text-red-500 text-4xl lg:text-6xl mb-4">
+        <div className="text-red-500 text-4xl   mb-4">
           <FaExclamationCircle />
         </div>
       </div>
-      <p className="text-gray-900 font-bold text-lg lg:text-2xl">Error: {error}</p>
+      <p className="text-gray-900 font-bold text-lg  ">Error: {error}</p>
     </div>
   </div>
 );
@@ -67,7 +67,7 @@ const AffichageFonctionnaires = () => {
   return (
     <main className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12">
       <header className="text-center mb-8">
-        <h1 className="text-3xl sm:text-4xl font-bold text-black dark:text-white mb-9">
+        <h1 className="text-2xl sm:text-4xl font-bold text-black dark:text-white mb-9">
           <Typewriter
             onInit={(typewriter) => {
               typewriter
@@ -79,13 +79,13 @@ const AffichageFonctionnaires = () => {
         </h1>
         <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 sm:space-x-4">
            <div className="flex items-center space-x-2">
-            <label htmlFor="filterDate" className="text-sm  lg:text-xl font-medium text-gray-700 dark:text-gray-300">Filter par Date  : </label>
+            <label htmlFor="filterDate" className="text-md  font-bold text-gray-700 dark:text-gray-300">Filter par Date  : </label>
             <input
               id="filterDate"
               type="date"
               value={filterDate}
               onChange={(e) => setFilterDate(e.target.value)}
-              className="border rounded-md px-3 py-2 dark:bg-primary-950  lg:text-xl"
+              className="border rounded-md px-3 py-2 dark:bg-primary-950  "
             />
           </div>
           <div>
@@ -96,13 +96,13 @@ const AffichageFonctionnaires = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="recherche par ..."
-                className="border rounded-md px-3 py-2 pl-10 pr-4  lg:text-xl dark:bg-primary-950"
+                className="border rounded-md px-3 py-2 pl-10 pr-4   dark:bg-primary-950"
               />
               <RiSearchLine className="absolute h-5 w-5 text-gray-500 top-1/2 transform -translate-y-1/2 left-3" />
             </div>
           </div>
           <div>
-            <button className="bg-green-500 hover:bg-green-700  lg:text-xl text-white font-bold py-2 px-4 rounded-md flex items-center">
+            <button className="bg-green-500 hover:bg-green-700   text-white font-bold py-2 px-4 rounded-md flex items-center">
               <FaPlus className="mr-2" />
               <Link to="/Stepper">Ajouter</Link>
             </button>
@@ -112,23 +112,23 @@ const AffichageFonctionnaires = () => {
       <main className="overflow-x-auto">
         <table className="min-w-full border-collapse border dark:bg-primary-950">
           <thead>
-            <tr className="border px-3 py-2  lg:text-xl ">
-              <th className="border px-3 py-2  lg:text-xl">ID</th>
-              <th className="border px-3 py-2  lg:text-xl">Fonctionnaires</th>
-              <th className="border px-3 py-2  lg:text-xl">CIN</th>
-              <th className="border px-3 py-2  lg:text-xl">Adresse</th>
-              <th className="border px-3 py-2  lg:text-xl">Image</th>
-              <th className="border px-3 py-2  lg:text-xl">Action</th>
+            <tr className="border px-3 py-2   ">
+              <th className="border px-3 py-2  ">ID</th>
+              <th className="border px-3 py-2  ">Fonctionnaires</th>
+              <th className="border px-3 py-2  ">CIN</th>
+              <th className="border px-3 py-2  ">Adresse</th>
+              <th className="border px-3 py-2  ">Image</th>
+              <th className="border px-3 py-2  ">Action</th>
             </tr>
           </thead>
           <tbody>
             {filteredfonctionnaires.map((fonctionnaire) => (
               <tr key={fonctionnaire.id} className="border-b last:border-b-0">
-                <td className="border px-4 py-2  lg:text-xl">{fonctionnaire.id}</td>
-                <td className="border px-4 py-2  lg:text-xl">{fonctionnaire.nom} {fonctionnaire.prenom}</td>
-                <td className="border px-4 py-2  lg:text-xl">{fonctionnaire.cin}</td>
-                <td className="border px-4 py-2  lg:text-xl">{fonctionnaire.ville} - {fonctionnaire.rue}</td>
-                <td className="border px-4 py-2  lg:text-xl">
+                <td className="border px-4 py-2  ">{fonctionnaire.id}</td>
+                <td className="border px-4 py-2  ">{fonctionnaire.nom} {fonctionnaire.prenom}</td>
+                <td className="border px-4 py-2  ">{fonctionnaire.cin}</td>
+                <td className="border px-4 py-2  ">{fonctionnaire.ville} - {fonctionnaire.rue}</td>
+                <td className="border px-4 py-2  ">
                   <div className="w-24 h-24 rounded-full overflow-hidden mx-auto">
                     <img
                       src={fonctionnaire.image}
@@ -137,15 +137,15 @@ const AffichageFonctionnaires = () => {
                     />
                   </div>
                 </td>
-                <td className="border px-4 py-2  lg:text-xl">
+                <td className="border px-4 py-2  ">
                   <div className="flex justify-center space-x-4">
                     <button
-                      className="bg-red-500 hover:bg-red-700 text-white  lg:text-xl font-bold py-2 px-4 rounded"
+                      className="bg-red-500 hover:bg-red-700 text-white   font-bold py-2 px-4 rounded"
                       onClick={() => handleDelete(fonctionnaire.cin)}
                     >
                       <FaTrash />
                     </button>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white   lg:text-xl font-bold py-2 px-4 rounded">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white    font-bold py-2 px-4 rounded">
                       <Link to={`/fonctionnaire/${fonctionnaire.cin}`}>
                         <FcViewDetails />
                       </Link>
@@ -159,12 +159,12 @@ const AffichageFonctionnaires = () => {
       </main>
      <ReactPaginate
   previousLabel={
-    <IconContext.Provider value={{ size: "1.5em", className: "text-blue-500 lg:text-3em" }}>
+    <IconContext.Provider value={{ size: "1.5em", className: "text-blue-500  " }}>
       <AiFillLeftCircle />
     </IconContext.Provider>
   }
   nextLabel={
-    <IconContext.Provider value={{ size: "1.5em", className: "text-blue-500 lg:text-3em" }}>
+    <IconContext.Provider value={{ size: "1.5em", className: "text-blue-500  " }}>
       <AiFillRightCircle />
     </IconContext.Provider>
   }
@@ -174,10 +174,10 @@ const AffichageFonctionnaires = () => {
   marginPagesDisplayed={2}
   pageRangeDisplayed={5}
   onPageChange={({ selected }) => setCurrentPage(selected)}
-  containerClassName={"flex justify-center items-center mt-auto mt-6"}
+  containerClassName={"flex justify-center items-center   mt-6"}
   subContainerClassName={"flex space-x-2"}
   activeClassName={"bg-blue-500 text-white"}
-  pageClassName={"border border-blue-500 px-3 py-1 rounded lg:px-4 lg:py-2 lg:text-xl"} // Enhanced size on large screens
+  pageClassName={"border border-blue-500 px-3 py-1 rounded lg:px-4 lg:py-2  "} // Enhanced size on large screens
   disabledClassName={"opacity-50 cursor-not-allowed"}
 />
     </main>

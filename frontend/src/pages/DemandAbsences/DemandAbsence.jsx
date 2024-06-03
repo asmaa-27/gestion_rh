@@ -37,9 +37,9 @@ const DemandAbsence = () => {
   <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50  ">
     <div className="bg-white p-8 rounded-lg shadow-lg">
       <div className="flex justify-center mb-4">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin lg:w-20 lg:h-20 lg:border-15"></div>
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin  "></div>
       </div>
-      <p className="text-gray-900 font-bold text-lg lg:text-2xl">Loading...</p>
+      <p className="text-gray-900 font-bold text-lg  ">Loading...</p>
     </div>
   </div>
 );
@@ -47,11 +47,11 @@ const DemandAbsence = () => {
   <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
     <div className="bg-white p-8 rounded-lg shadow-lg">
       <div className="flex justify-center mb-4">
-        <div className="text-red-500 text-4xl lg:text-6xl mb-4">
+        <div className="text-red-500 text-4xl   mb-4">
           <FaExclamationCircle />
         </div>
       </div>
-      <p className="text-gray-900 font-bold text-lg lg:text-2xl">Error: {error}</p>
+      <p className="text-gray-900 font-bold text-lg  ">Error: {error}</p>
     </div>
   </div>
 );
@@ -85,7 +85,7 @@ const DemandAbsence = () => {
         </h1>
         <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 sm:space-x-4">
            <div className="flex items-center space-x-2">
-            <label htmlFor="filterDate" className="text-sm font-medium text-gray-700 dark:text-gray-300 ">Filter par Date  : </label>
+            <label htmlFor="filterDate" className="text-md  font-bold text-gray-700 dark:text-gray-300 ">Filter par Date  : </label>
             <input
               id="filterDate"
               type="date"
@@ -119,29 +119,29 @@ const DemandAbsence = () => {
         <table className="w-full border-collapse border dark:bg-primary-950">
           <thead>
             <tr>
-              <th className="border px-3 py-2 ">CIN</th>
-              <th className=" border px-3 py-2 ">Nom Fonctionnaire</th>
-              <th className="border px-3 py-2 ">Date de depart</th>
-              <th className="border px-3 py-2 ">Type de absence</th>
-              <th className="border px-3 py-2 ">Date de retour</th>
-              <th className="border px-3 py-2 ">Nombre de jours</th>
-              <th className="border px-3 py-2 ">Reliquant</th>
-              <th className="border px-3 py-2 ">Cumul des absences</th>
-              <th className="border px-3 py-2 ">Action</th>
+              <th className="border px-2 py-2 ">CIN</th>
+              <th className=" border px-2 py-2 ">Nom Fonctionnaire</th>
+              <th className="border px-2 py-2 ">Date de depart</th>
+              <th className="border px-2 py-2 ">Type de absence</th>
+              <th className="border px-2 py-2 ">Date de retour</th>
+              <th className="border px-2 py-2 ">Nombre de jours</th>
+              <th className="border px-2 py-2 ">Reliquant</th>
+              <th className="border px-2 py-2 ">Cumul des absences</th>
+              <th className="border px-2 py-2 ">Action</th>
             </tr>
           </thead>
           <tbody>
             {filteredDemandeAbsence.map((demandeAbsence) => (
               <tr key={demandeAbsence.id}>
-                <td className="border px-3  ">{demandeAbsence.cin}</td>
-                <td className="border px-3  ">{demandeAbsence.fonctionnaire.nom} - {demandeAbsence.fonctionnaire.prenom}</td>
-                <td className="border px-3 py-2 ">{demandeAbsence.date_depart}</td>
-                <td className=" border px-3 py-2 ">{demandeAbsence.type_d_absence}</td>
-                <td className=" border px-3 py-2 ">{demandeAbsence.date_de_retour}</td>
-                <td className=" border px-3 py-2 ">{demandeAbsence.reliquat}</td>
-                <td className=" border px-3 py-2 ">{demandeAbsence.nombre_de_jours}</td>
-                <td className=" border px-3 py-2 ">{demandeAbsence.cumul_des_absences_de_maladie}</td>
-                <td className=" border px-3 py-2 ">
+                <td className="border px-2  ">{demandeAbsence.cin}</td>
+                <td className="border px-2  ">{demandeAbsence.fonctionnaire.nom} - {demandeAbsence.fonctionnaire.prenom}</td>
+                <td className="border px-2 py-2 ">{demandeAbsence.date_depart}</td>
+                <td className=" border px-2 py-2 ">{demandeAbsence.type_d_absence}</td>
+                <td className=" border px-2 py-2 ">{demandeAbsence.date_de_retour}</td>
+                <td className=" border px-2 py-2 ">{demandeAbsence.reliquat}</td>
+                <td className=" border px-2 py-2 ">{demandeAbsence.nombre_de_jours}</td>
+                <td className=" border px-2 py-2 ">{demandeAbsence.cumul_des_absences_de_maladie}</td>
+                <td className=" border px-2 py-2 ">
 <div className="flex space-x-6">
 <button className="bg-red-500 hover
 text-white font-bold py-2 px-4 rounded mr-1" onClick={() => handleDelete(demandeAbsence.cin)}>
@@ -160,12 +160,12 @@ text-white font-bold py-2 px-4 rounded">
 </div>
 <ReactPaginate
   previousLabel={
-    <IconContext.Provider value={{ size: "1.5em", className: "text-blue-500 lg:text-3em" }}>
+    <IconContext.Provider value={{ size: "1.5em", className: "text-blue-500  " }}>
       <AiFillLeftCircle />
     </IconContext.Provider>
   }
   nextLabel={
-    <IconContext.Provider value={{ size: "1.5em", className: "text-blue-500 lg:text-3em" }}>
+    <IconContext.Provider value={{ size: "1.5em", className: "text-blue-500  " }}>
       <AiFillRightCircle />
     </IconContext.Provider>
   }
@@ -175,10 +175,10 @@ text-white font-bold py-2 px-4 rounded">
   marginPagesDisplayed={2}
   pageRangeDisplayed={5}
   onPageChange={({ selected }) => setCurrentPage(selected)}
-  containerClassName={"flex justify-center items-center mt-auto mt-6"}
+  containerClassName={"flex justify-center items-center  mt-6"}
   subContainerClassName={"flex space-x-2"}
   activeClassName={"bg-blue-500 text-white"}
-  pageClassName={"border border-blue-500 px-3 py-1 rounded lg:px-4 lg:py-2 "} 
+  pageClassName={"border border-blue-500 px-3 py-1 rounded lg:px-4 lg:py-2 "}
   disabledClassName={"opacity-50 cursor-not-allowed"}
 />
 </main>

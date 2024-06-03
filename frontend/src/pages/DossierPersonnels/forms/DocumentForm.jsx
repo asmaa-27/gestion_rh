@@ -52,7 +52,7 @@ const DocumentForm = () => {
           <h1>Les affectations  :</h1>
         </div>
         <div className="flex items-center justify-center min-h-screen">
-          <form onSubmit={handleSubmit} className="space-y-4 mb-1 block w-1/2 p-2 border border-gray-300 rounded-md">
+          <form onSubmit={handleSubmit} className="space-y-4 mb-1 block w-1/2 p-2 border border-gray-300 rounded-md px-6">
 
           <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
           <label htmlFor="type" className="block text-sm font-medium text-gray-700 dark:text-white">type</label>
@@ -81,8 +81,7 @@ const DocumentForm = () => {
     <FaExclamationCircle className="text-red-500 mr-2 text-2xl" />
     <span className="text-red-500 font-bold">Veuillez vérifier les informations avant de continuer</span>
     <button className="bg-cyan-400 text-white px-6 py-3 rounded ml-4 relative flex">
-      <span className='pr-4'>Submit</span>
-      <span className="inset-0 flex items-center justify-end pr-4">
+       <span className="inset-0 flex items-center justify-end  ">
         <FaRegCheckCircle className="text-2xl" />
       </span>
     </button>

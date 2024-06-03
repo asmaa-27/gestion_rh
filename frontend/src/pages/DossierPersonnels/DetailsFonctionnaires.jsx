@@ -19,9 +19,9 @@ const DetailsFonctionnaires = () => {
   <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50  ">
     <div className="bg-white p-8 rounded-lg shadow-lg">
       <div className="flex justify-center mb-4">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin lg:w-20 lg:h-20 lg:border-15"></div>
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin  "></div>
       </div>
-      <p className="text-gray-900 font-bold text-lg lg:text-2xl">Loading...</p>
+      <p className="text-gray-900 font-bold text-lg  ">Loading...</p>
     </div>
   </div>
 );
@@ -29,11 +29,11 @@ const DetailsFonctionnaires = () => {
   <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
     <div className="bg-white p-8 rounded-lg shadow-lg">
       <div className="flex justify-center mb-4">
-        <div className="text-red-500 text-4xl lg:text-6xl mb-4">
+        <div className="text-red-500 text-4xl   mb-4">
           <FaExclamationCircle />
         </div>
       </div>
-      <p className="text-gray-900 font-bold text-lg lg:text-2xl">Error: {error}</p>
+      <p className="text-gray-900 font-bold text-lg  ">Error: {error}</p>
     </div>
   </div>
 );
@@ -91,7 +91,7 @@ const DetailsFonctionnaires = () => {
 
             <div className="border p-4 rounded-lg bg-gray-100 dark:bg-gray-800 shadow-md mt-4">
               <h3 className="text-xl lg:text-2xl font-semibold mb-2">Informations Administratives</h3>
-              <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p>
+              {/* <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p> */}
               <p className="lg:text-xl">PPR: {fonctionnaire.ppr || "N/A"}</p>
               <p className="lg:text-xl">Numéro Poste Budgétaire: {fonctionnaire.numero_poste_budgetaire || "N/A"}</p>
               <p className="lg:text-xl">Date Recrutement: {fonctionnaire.date_recrutement || "N/A"}</p>
@@ -121,7 +121,7 @@ const DetailsFonctionnaires = () => {
 
             <div className="border p-4 rounded-lg bg-gray-100 dark:bg-gray-800 shadow-md mt-4">
               <h3 className="text-xl  lg:text-2xl font-semibold mb-2">Informations Familiales</h3>
-              <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p>
+              {/* <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p> */}
               <p className="lg:text-xl">Nom Pere: {fonctionnaire.nom_pere || "N/A"}</p>
               <p className="lg:text-xl">Nom Mere: {fonctionnaire.nom_mere || "N/A"}</p>
               <p className="lg:text-xl">Situation Familiale: {fonctionnaire.situation_familiale || "N/A"}</p>
@@ -134,8 +134,8 @@ const DetailsFonctionnaires = () => {
             </div>
 
             <div className="border p-4 rounded-lg bg-gray-100 dark:bg-gray-800 shadow-md mt-4">
-              <h3 className="text-xl lg:text-2xl font-semibold mb-2">Informations Retraite et Assurance</h3>
-              <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p>
+              <h3 className="text-xl lg:text-2xl font-semibold mb-2">Informations  Prevoyances Sociales</h3>
+              {/* <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p> */}
               <p className="lg:text-xl">Organisme Retraite: {fonctionnaire.organisme_retraite || "N/A"}</p>
               <p className="lg:text-xl">Numéro Affiliation Retraite: {fonctionnaire.numero_affiliation_retraite || "N/A"}</p>
               <p className="lg:text-xl">Date Affiliation Retraite: {fonctionnaire.date_affiliation_retraite || "N/A"}</p>
@@ -148,36 +148,36 @@ const DetailsFonctionnaires = () => {
               <p className="lg:text-xl">Numéro Affiliation Assurance: {fonctionnaire.numero_affiliation_assurance || "N/A"}</p>
             </div>
             <div className="border p-4 rounded-lg bg-gray-100 dark:bg-gray-800 shadow-md mt-4">
-              <h3 className="text-xl  lg:text-2xl font-semibold mb-2">Informations de Fonctionnaire</h3>
-              <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p>
-              <p className="lg:text-xl">Entité: {fonctionnaire.entite || "N/A"}</p>
-              <p className="lg:text-xl">Date Affectation: {fonctionnaire.date_affectation || "N/A"}</p>
-              <p className="lg:text-xl">Poste: {fonctionnaire.poste || "N/A"}</p>
+              <h3 className="text-xl  lg:text-2xl font-semibold mb-2">Affectations</h3>
+              {/* <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p> */}
+            <p className="lg:text-xl">Entité: {fonctionnaire.entite || "N/A"}</p>
+            <p className="lg:text-xl">Date Affectation: {fonctionnaire.date_affectation ||"N/A"}</p>
+            <p className="lg:text-xl">Poste: {fonctionnaire.poste || "N/A"}</p>
             </div>
             <div className="border p-4 rounded-lg bg-gray-100 dark:bg-gray-800 shadow-md mt-4">
-              <h3 className="text-xl lg:text-2xl font-semibold mb-2">Informations Académiques</h3>
-              <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p>
+              <h3 className="text-xl lg:text-2xl font-semibold mb-2">Les Diplomes</h3>
+              {/* <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p> */}
               <p className="lg:text-xl">Intitulé: {fonctionnaire.intitule || "N/A"}</p>
               <p className="lg:text-xl">Spécialité: {fonctionnaire.specialite || "N/A"}</p>
               <p className="lg:text-xl">Date Obtention: {fonctionnaire.date_obtention || "N/A"}</p>
               <p className="lg:text-xl">Établissement: {fonctionnaire.etablissement || "N/A"}</p>
             </div>
             <div className="border p-4 rounded-lg bg-gray-100 dark:bg-gray-800 shadow-md mt-4">
-              <h3 className="text-xl  lg:text-2xl font-semibold mb-2">Informations de Mouvements</h3>
-              <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p>
+              <h3 className="text-xl  lg:text-2xl font-semibold mb-2">Les Mouvements</h3>
+              {/* <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p> */}
               <p className="lg:text-xl">Administration: {fonctionnaire.administration || "N/A"}</p>
               <p className="lg:text-xl">Date de Début: {fonctionnaire.date_debut || "N/A"}</p>
               <p className="lg:text-xl">Date de Fin: {fonctionnaire.date_fin || "N/A"}</p>
             </div>
             <div className="border p-4 rounded-lg bg-gray-100 dark:bg-gray-800 shadow-md mt-4">
-              <h3 className="text-xl lg:text-2xl font-semibold mb-2">Informations de Notations</h3>
-              <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p>
+              <h3 className="text-xl lg:text-2xl font-semibold mb-2">Les  Notations</h3>
+              {/* <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p> */}
               <p className="lg:text-xl">Année: {fonctionnaire.annee || "N/A"}</p>
               <p className="lg:text-xl">Note: {fonctionnaire.note || "N/A"}</p>
             </div>
             <div className="border p-4 rounded-lg bg-gray-100 dark:bg-gray-800 shadow-md mt-4">
               <h3 className="text-xl lg:text-2xl font-semibold mb-2">Informations de Prévoyance Sociale</h3>
-              <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p>
+              {/* <p className="lg:text-xl">CIN: {fonctionnaire.cin || "N/A"}</p> */}
               <p className="lg:text-xl">Organisme Retraite: {fonctionnaire.organisme_retraite || "N/A"}</p>
               <p className="lg:text-xl">Numéro Affiliation Retraite: {fonctionnaire.numero_affiliation_retraite || "N/A"}</p>
               <p className="lg:text-xl">Date Affiliation Retraite: {fonctionnaire.date_affiliation_retraite || "N/A"}</p>

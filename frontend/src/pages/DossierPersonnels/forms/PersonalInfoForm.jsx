@@ -72,12 +72,12 @@ const PersonalInfoForm = () => {
   <>
     <div className="flex items-center justify-center  text-2xl font-bold"><h1>Les informations  personnels :</h1></div>
     <div className="flex items-center justify-center min-h-screen">
-      <form onSubmit={handleSubmit} className="space-y-4 mb-5 mt-1 block w-1/2 p-2 border border-gray-300  rounded-md">
+      <form onSubmit={handleSubmit} className="space-y-4 mb-5 mt-1 block w-1/2 p-2 border border-gray-300  rounded-md px-6">
         <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
           <label htmlFor="cin" className="block text-sm font-medium text-gray-700 dark:text-white dark:text-white ">CIN</label>
           <input type="text" name="cin" id="cin" value={formData.cin} onChange={handleInputChange} className="mt-1  block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
-        <div className="bg-white shadow-md rounded-lg p-6  m-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950 ">
+        <div className="bg-white shadow-md rounded-lg p-6  m-6   dark:bg-primary-950 ">
           <label htmlFor="nom" className="  block text-sm font-medium text-gray-700 dark:text-white">Nom</label>
           <input type="text" name="nom" id="nom" value={formData.nom} onChange={handleInputChange} className="mt-1 block w-full  dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
@@ -103,7 +103,7 @@ const PersonalInfoForm = () => {
           <input type="text" name="lieu_naissance" id="lieu_naissance" value={formData.lieu_naissance} onChange={handleInputChange} className="mt-1  block w-full dark:bg-primary-800 p-2 border border-gray-300 rounded-md" required />
         </div>
         <div className=" m-6 p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
- <h2 className="text-lg font-semibold mb-4 ">Adresse</h2>
+ <h2 className="text-lg font-semibold mb-4 ">Adresse : </h2>
  <div className="bg-white shadow-md mb-6 rounded-lg p-6 focus:border-blue-500 focus:ring-blue-500 dark:bg-primary-950">
       <label htmlFor="ville" className="block  text-sm font-medium  text-gray-700 dark:text-white">Ville</label>
       <select name="ville" id="ville" value={formData.ville} onChange={handleInputChange} className="mt-1 block w-full dark:bg-primary-800 p-2  border border-gray-300 rounded-md">
@@ -150,7 +150,7 @@ const PersonalInfoForm = () => {
 
 
       <div className="rounded-lg m-6 p-6 flex items-center justify-start space-x-4">
- <div className="flex items-center ">
+ <div className="flex items-center   ">
     <FaExclamationCircle className="text-red-500 mr-2 text-2xl" />
     <span className="text-red-500 font-bold">Veuillez vérifier les informations avant de continuer</span>
     <button  type='submit' className="bg-cyan-400 text-white px-6 py-3 rounded ml-4 relative flex">
