@@ -29,7 +29,7 @@ import useAuthContext from "../../contexts/AuthContext"
             <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <Link to="/login" className="flex items-center justify-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                        <img className="w-14 h-14 mr-2" src={wilaya} alt="Logo" />
+                        <img className="w-20 h-20 mr-2" src={wilaya} alt="Logo" />
                     </Link>
                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Connectez-vous à votre compte
