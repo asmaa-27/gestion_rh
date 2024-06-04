@@ -47,7 +47,7 @@ const Dashboard = () => {
     <>
       <header className="container mx-auto pb-10 px-4 flex justify-center bg-header-bg rounded-lg shadow-2xl bg-cover items-center mb-20 mt-4 p-8 dark:bg-dark-bg h-64">
         <div className="text-center lg:text-4xl font-bold text-white">
-          <div className="flex-1 bg-center h-full">
+          <div className="flex-1 bg-center h-full sm:text-2xl">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter

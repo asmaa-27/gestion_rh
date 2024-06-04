@@ -36,7 +36,7 @@ const AffectationForm = () =>{
           <h1>Les affectations  :</h1>
         </div>
         <div className="flex items-center justify-center min-h-screen">
-          <form onSubmit={handleSubmit} className="space-y-4 mb-1 block w-1/2 p-2 border border-gray-300 rounded-md px-6">
+          <form onSubmit={handleSubmit} className="space-y-4 mb-1 block w-1/2 p-2 border w-full sm:w-3/4 md:w-2/3 lg:w-1/2 border-gray-300 rounded-md px-6">
 
           <div className="bg-white shadow-md rounded-lg  m-6 p-6 focus:border-blue-500 dark:bg-primary-950 ">
           <label htmlFor="cin" className="block text-sm font-medium text-gray-700 dark:text-white">CIN</label>

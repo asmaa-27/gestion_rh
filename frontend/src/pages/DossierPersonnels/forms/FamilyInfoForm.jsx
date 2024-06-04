@@ -54,7 +54,7 @@ const FamilyInfoForm = () => {
   <>
     <div className="flex items-center justify-center mt-4  text-2xl font-bold"><h1>Les informations Familiales :</h1></div>
     <div className="flex items-center justify-center mt-4 min-h-screen">
-      <form onSubmit={handleSubmit} className="space-y-4 mt-1 mb-5   block w-1/2 p-2 border border-gray-300 rounded-md px-6">
+      <form onSubmit={handleSubmit} className="space-y-4 mt-1 mb-5   block w-1/2 p-2  w-full sm:w-3/4 md:w-2/3 lg:w-1/2 border border-gray-300 rounded-md px-6">
       <div className="bg-white shadow-md rounded-lg dark:bg-primary-950 m-6 p-6">
           <label htmlFor="cin" className="block text-sm font-medium text-gray-700 dark:text-white ">CIN de Fonctionnaire</label>
           <input type="text" name="cin" id="cin" value={formData.cin} onChange={(e) => setFormData({ ...formData, cin: e.target.value })} className="mt-1 block w-full p-2 dark:bg-primary-800 border border-gray-300 rounded-md" required />

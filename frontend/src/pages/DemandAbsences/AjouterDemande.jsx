@@ -62,7 +62,7 @@ const AjouterDemande = () => {
 
  return (
   <div className="flex items-center justify-center min-h-screen">
-    <form onSubmit={handleSubmit} className="space-y-4 mb-5 block w-1/2 p-2 border border-gray-300 rounded-md px-6">
+    <form onSubmit={handleSubmit} className="space-y-4 mb-5 block w-1/2 p-2 border w-full sm:w-3/4 md:w-2/3 lg:w-1/2 border-gray-300 rounded-md px-6">
       <h1 className="text-2xl font-bold mb-4 text-center">Demande Absence</h1>
 
 
