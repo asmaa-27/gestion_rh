@@ -22,14 +22,18 @@ const DefaultLayout = () => {
 
   return (
     <Provider store={Store}>
+        <div className='min-h-screen'>
       <div className="flex h-screen">
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-        <div className="flex-1 flex flex-col">
-          <Navbar toggleSidebar={toggleSidebar} />
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <Navbar toggleSidebar={toggleSidebar}  />
           <main className="flex-1 p-6 overflow-auto">
             <Outlet />
           </main>
         </div>
+      </div>
+
+
       </div>
     </Provider>
   );
